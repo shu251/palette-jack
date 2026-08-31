@@ -1,43 +1,27 @@
-<<<<<<< HEAD
 # Palette Jack
 
-Copy-able hex color palettes for R. A Quarto website with four modes:
+Copy-able hex color palettes for R. Use *Palette Jack* to do all the heavy lifting for creating pretty data visualizations. 
 
-- **Werner** -- randomize a capped, classification-filtered set of colors from Werner's Nomenclature of Colours (1814/1821). *Live.*
-- **Woods Hole** -- browse all 20 palettes from the [PaletteWoodsHole](https://github.com/shu251/PaletteWoodsHole) R package. *Live.*
-- **Wada** -- 2/3/4-color combinations from Sanzo Wada's *Dictionary of Color Combinations*. *Live.*
-- **Oceanography** -- research vessel and oceanographic survey palettes (Jason, Atlantis, Alvin, Nautical Flags). *Live.*
+- **Werner**: randomizes sets of colors from [Werner's Nomenclature of Colours (1814/1821)](https://www.smithsonianbooks.com/store/science-nature/werners-nomenclature-of-colours-adapted-to-zoology-botany-chemistry-mineralogy-anatomy-and-the-arts/). 
+- **Woods Hole**: Curated set of 20 palettes from a previous release of the [PaletteWoodsHole](https://github.com/shu251/PaletteWoodsHole) R package.
+- **Wada**: Select 2, 3, or 4-color combinations from Sanzo Wada's [*Dictionary of Color Combinations*](https://www.wada-sanzo-colors.com/)
+- **Oceanography**: Inspiration from our time on research vessels and oceanographic surveys. Palettes include: ROV Jason, RV Atlantis, HOV Alvin, and nautical flags).
 
-## Stack
+### Behind the scences
 
-Static [Quarto](https://quarto.org) website (knitr/R engine). Each mode page pairs a short R/tidyverse teaching chunk (how the underlying data was shaped) with an Observable JS block that runs the actual interactive picker/randomizer/copy-to-clipboard client-side -- no server, deploys as plain static HTML.
+Static [Quarto](https://quarto.org) website (knitr/R engine). Each module page pairs a short R/tidyverse code chunk to show how the underlying data was shaped. Uses the  with an Observable JS (ojs) block to run interactive component.
 
-## Project layout
+### # Project layout
 
 ```
-_quarto.yml, _brand.yml, styles.scss   site config + San Diego brand theme
-index.qmd                              landing page
-werner/, wada/, pantone/, woods-hole/  one folder per mode, each an index.qmd
-data/                                  cleaned CSVs consumed by each mode's ojs block
-R/                                     tidyverse scripts documenting how data/*.csv were derived
-docs/                                  render output -- GitHub Pages serves from here on main
+_quarto.yml, _brand.yml, styles.scss   # site config
+index.qmd                              # Home/landing page
+werner/, wada/, pantone/, woods-hole/  # one folder per mode, each has an index.qmd
+data/                                  # cleaned CSVs for hex codes and combintations
+R/                                     # tidyverse scripts for how data/*.csv are parsed
+docs/                                  # render output; github pages read this series of htmls
 ```
 
-## Rendering
+### Last updated
 
-```r
-# one-time, if you don't already have these
-install.packages(c("tidyverse", "knitr"))
-```
-
-```bash
-quarto preview   # local dev server with live reload
-quarto render    # writes the site into docs/
-```
-
-## Deploying
-
-Push `docs/` on `main` and point GitHub Pages at `main` / `/docs` in the repo settings.
-=======
-# palette-jack
->>>>>>> 5ca00c2705d01b14468d8ca702e3b6452f8ee115
+Aug 31, 2026

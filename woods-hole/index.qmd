@@ -1,0 +1,177 @@
+---
+title: "Woods Hole"
+subtitle: "Cape Cod and WHOI-inspired palettes"
+format:
+  html:
+    code-fold: show
+    code-summary: "Show the R"
+execute:
+  echo: true
+---
+
+Originally published as `PaletteWoodsHole` as an R package. Hand-picked color palettes inspired by Woods Hole, Falmouth, and Woods Hole Oceanographic Institution. Eel Pond in winter, Siders Pond at sunset, the Shining Sea Bikeway, and more. This mode browses all **20 palettes** and gives you a copy-ready hex list for whichever one fits your figure.
+
+```r
+# install the source package
+remotes::install_github("shu251/PaletteWoodsHole")
+library(PaletteWoodsHole)
+show_color(atlantis)   # scales::show_col() grid, as used in this package
+```
+
+## The palettes
+
+```{r}
+#| label: load-woods-hole
+#| message: false
+#| results: asis
+library(tidyverse)
+library(glue)
+
+woods_hole <- read_csv("../data/woods-hole-palettes.csv")
+
+swatch_html <- function(hex, cap = 8) {
+  n <- length(hex)
+  shown <- head(hex, cap)
+  spans <- glue('<span class="mini-swatch" style="background:{shown}"></span>')
+  out <- paste(spans, collapse = "")
+  if (n > cap) out <- paste0(out, glue('<span class="palette-module-more">+{n - cap} more</span>'))
+  out
+}
+
+gallery <- woods_hole |>
+  arrange(palette, position) |>
+  group_by(palette, display_name, description) |>
+  summarise(
+    n_colors = n(),
+    swatches = swatch_html(hex),
+    .groups = "drop"
+  ) |>
+  arrange(display_name)
+
+cat(
+  '<div class="palette-gallery">',
+  glue_data(
+    gallery,
+    '<div class="palette-module">
+  <h4>{display_name} <span class="palette-module-count">{n_colors} colors</span></h4>
+  <p class="palette-module-desc">{description}</p>
+  <div class="palette-module-swatches">{swatches}</div>
+</div>'
+  ),
+  '</div>',
+  sep = "\n"
+)
+```
+
+## Use it
+
+```{ojs}
+//| echo: false
+whData = FileAttachment("../data/woods-hole-palettes.csv").csv({typed: true})
+whPaletteMeta = Array.from(
+  d3.rollup(whData, v => v[0].display_name, d => d.palette),
+  ([palette, display_name]) => ({palette, display_name})
+).sort((a, b) => a.display_name.localeCompare(b.display_name))
+whOptions = new Map(whPaletteMeta.map(d => [d.display_name, d.palette]))
+```
+
+```{ojs}
+//| echo: false
+viewof whChoiceLabel = Inputs.select(Array.from(whOptions.keys()), {label: "Palette", value: "Atlantis"})
+whChoice = whOptions.get(whChoiceLabel)
+```
+
+```{ojs}
+//| echo: false
+whFiltered = whData.filter(d => d.palette === whChoice).sort((a, b) => a.position - b.position)
+whHexList = whFiltered.map(d => d.hex).join("\n")
+whHexVector = 'c(' + whFiltered.map(d => `"${d.hex}"`).join(', ') + ')'
+```
+
+```{ojs}
+//| echo: false
+function whTextColor(hex) {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return lum > 0.6 ? "#241C1C" : "#FFFFFF";
+}
+
+html`<p style="color:#555;margin-bottom:.5rem;">${whFiltered.length ? whFiltered[0].description : ""}</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;">
+  ${whFiltered.map(d => html`<div class="color-chip" style="background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${whTextColor(d.hex)}">
+    <div style="font-weight:600;">${d.hex}</div>
+  </div>`)}
+</div>`
+```
+
+```{ojs}
+//| echo: false
+whVectorCopyBtn = {
+  const label = () => `Copy R vector (${whFiltered.length})`;
+  const btn = html`<button class="swatch-copy-btn">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(whHexVector).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+whListCopyBtn = {
+  const label = () => `Copy hex list (${whFiltered.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(whHexList).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.5rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">1. Ready for <code>scale_fill_manual()</code></p>
+  ${whVectorCopyBtn}
+  <pre class="hex-list-block"><span class="hl-fu">c</span>(${whFiltered.map((d, i) => html`<span class="hl-st">"${d.hex}"</span>${i < whFiltered.length - 1 ? ", " : ""}`)})</pre>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">2. Or just the hex codes</p>
+  ${whListCopyBtn}
+  <pre class="hex-list-block">${whHexList}</pre>
+</div>`
+```
+
+## Using a palette back in R
+
+```{r}
+#| eval: false
+# straight from the package
+library(PaletteWoodsHole)
+scales::show_col(atlantis)
+
+# or from this site's exported hex list, pasted in
+my_pal <- c("#9dbabb", "#1b334b", "#cfbc9f", "#576f70", "#091a2a")
+ggplot(mpg, aes(class, fill = class)) +
+  geom_bar() +
+  scale_fill_manual(values = my_pal)
+```
+
+## Source
+
+::: {.citation}
+Hu, S. K. *PaletteWoodsHole* [R package]. [https://github.com/shu251/PaletteWoodsHole](https://github.com/shu251/PaletteWoodsHole)
+:::

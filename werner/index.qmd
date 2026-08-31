@@ -1,0 +1,195 @@
+---
+title: "Werner"
+subtitle: "Randomized palettes from a 1814 color classification system"
+format:
+  html:
+    code-fold: show
+    code-summary: "Show the R"
+execute:
+  echo: true
+---
+
+Abraham Gottlob Werner was a German geologist who, in the late 1700s, developed a standardized color-naming system so mineralogists could describe rock and mineral color consistently. In 1814 (2nd ed. 1821), Scottish flower painter Patrick Syme illustrated and expanded Werner's system into **110 named colors, organized into 10 classifications** (White, Grey, Black, Blue, Purple, Green, Yellow, Orange, Red, Brown) -- each cross-referenced against an animal, a plant, and a mineral where that color occurs in nature. Charles Darwin carried a copy on the *Beagle* to describe organisms and landscapes with a shared, precise color vocabulary.
+
+Palette Jack's Werner mode lets you filter by classification and pull a randomized set of these historical colors as a ready-to-paste hex list -- useful for quick categorical palettes, or just for the pleasure of finding out your data happens to be "Arterial Blood Red" or "Skimmed-milk White."
+
+## The classifications
+
+```{r}
+#| label: load-werner
+#| message: false
+#| results: asis
+library(tidyverse)
+library(glue)
+
+werner <- read_csv("../data/werner-colors.csv")
+
+swatch_html <- function(hex, name, cap = 8) {
+  n <- length(hex)
+  hex <- head(hex, cap)
+  name <- head(name, cap)
+  spans <- glue('<span class="mini-swatch" style="background:{hex}" title="{name}"></span>')
+  out <- paste(spans, collapse = "")
+  if (n > cap) out <- paste0(out, glue('<span class="palette-module-more">+{n - cap} more</span>'))
+  out
+}
+
+gallery <- werner |>
+  group_by(group) |>
+  summarise(
+    n_colors = n(),
+    examples = paste(head(name, 4), collapse = ", "),
+    swatches = swatch_html(hex, name),
+    .groups = "drop"
+  ) |>
+  arrange(group)
+
+cat(
+  '<div class="palette-gallery">',
+  glue_data(
+    gallery,
+    '<div class="palette-module">
+  <h4>{group} <span class="palette-module-count">{n_colors} colors</span></h4>
+  <p class="palette-module-desc">e.g. {examples}</p>
+  <div class="palette-module-swatches">{swatches}</div>
+</div>'
+  ),
+  '</div>',
+  sep = "\n"
+)
+```
+
+## How to use it
+
+1. Pick a **classification** below (or leave it on "All classifications").
+2. Drag the **slider** to choose how many colors you want -- it caps at 12, since legibility drops off past that point (see citations below).
+3. Click **Randomize**, then copy the R vector -- or the plain hex list -- straight into your plot.
+
+## Try it
+
+```{ojs}
+//| echo: false
+data = FileAttachment("../data/werner-colors.csv").csv({typed: true})
+groupNames = Array.from(new Set(data.map(d => d.group))).sort()
+groupOptions = ["All classifications", ...groupNames]
+```
+
+```{ojs}
+//| echo: false
+viewof groupChoice = Inputs.select(groupOptions, {label: "Classification", value: "All classifications"})
+```
+
+```{ojs}
+//| echo: false
+filtered = groupChoice === "All classifications" ? data : data.filter(d => d.group === groupChoice)
+maxN = Math.min(12, filtered.length)
+```
+
+```{ojs}
+//| echo: false
+viewof n = Inputs.range([1, maxN], {label: "Number of colors", step: 1, value: Math.min(5, maxN)})
+```
+
+```{ojs}
+//| echo: false
+viewof shuffleSeed = Inputs.button("Randomize", {value: 0, reduce: v => v + 1})
+```
+
+```{ojs}
+//| echo: false
+sample = {
+  shuffleSeed;
+  return d3.shuffle(filtered.slice()).slice(0, n);
+}
+hexList = sample.map(d => d.hex).join("\n")
+hexVector = 'c(' + sample.map(d => `"${d.hex}"`).join(', ') + ')'
+```
+
+```{ojs}
+//| echo: false
+function textColor(hex) {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return lum > 0.6 ? "#241C1C" : "#FFFFFF";
+}
+
+html`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:1.5rem 0;">
+  ${sample.map(d => html`<div class="color-chip" style="background:${d.hex};padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${textColor(d.hex)}">
+    <div style="font-weight:600;">${d.hex}</div>
+    <div style="font-size:.82rem;">${d.name}</div>
+  </div>`)}
+</div>`
+```
+
+```{ojs}
+//| echo: false
+vectorCopyBtn = {
+  const label = () => `Copy R vector (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexVector).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+listCopyBtn = {
+  const label = () => `Copy hex list (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexList).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.5rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">1. Ready for <code>scale_fill_manual()</code></p>
+  ${vectorCopyBtn}
+  <pre class="hex-list-block"><span class="hl-fu">c</span>(${sample.map((d, i) => html`<span class="hl-st">"${d.hex}"</span>${i < sample.length - 1 ? ", " : ""}`)})</pre>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">2. Or just the hex codes</p>
+  ${listCopyBtn}
+  <pre class="hex-list-block">${hexList}</pre>
+</div>`
+```
+
+## Sources & citations
+
+::: {.citation}
+Werner, A. G. (1814). *Werner's Nomenclature of Colours* (P. Syme, Ed. & Ill., 2nd ed., 1821). Edinburgh: William Blackwood.
+:::
+
+::: {.citation}
+Luck, S. J., & Vogel, E. K. (1997). The capacity of visual working memory for features and conjunctions. *Nature*, 390(6657), 279-281. [https://doi.org/10.1038/36846](https://doi.org/10.1038/36846)
+:::
+
+::: {.citation}
+Ngiam, W. X. Q., Loetscher, K. B., & Awh, E. (2023). Object-based encoding constrains storage in visual working memory. *Journal of Experimental Psychology: General*, 153(1), 86-101. [https://doi.org/10.1037/xge0001479](https://doi.org/10.1037/xge0001479)
+:::
+
+::: {.citation}
+Healey, C. G. (1996). Choosing effective colours for data visualization. *Proceedings of the 7th IEEE Conference on Visualization*, 263-270. [https://doi.org/10.1109/visual.1996.568118](https://doi.org/10.1109/visual.1996.568118)
+:::
+
+::: {.citation}
+Tseng, C., Bearfield, C. X., & Franconeri, S. (2023). Measuring categorical perception in color-coded scatterplots. *Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems*. [https://doi.org/10.1145/3544548.3581416](https://doi.org/10.1145/3544548.3581416)
+:::

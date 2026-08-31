@@ -1,0 +1,140 @@
+palette,display_name,description,position,hex
+whoi,WHOI,Colors derived from the WHOI graphics identity and primary color palette.,1,#041e42
+whoi,WHOI,Colors derived from the WHOI graphics identity and primary color palette.,2,#00a9e0
+whoi,WHOI,Colors derived from the WHOI graphics identity and primary color palette.,3,#0069b1
+whoi,WHOI,Colors derived from the WHOI graphics identity and primary color palette.,4,#00b7bd
+whoi,WHOI,Colors derived from the WHOI graphics identity and primary color palette.,5,#53565a
+whoi,WHOI,Colors derived from the WHOI graphics identity and primary color palette.,6,#bbbcbc
+whoisec,WHOI Secondary,WHOI's secondary color palette.,1,#ffd100
+whoisec,WHOI Secondary,WHOI's secondary color palette.,2,#ee5340
+whoisec,WHOI Secondary,WHOI's secondary color palette.,3,#e6e7e8
+whoisec,WHOI Secondary,WHOI's secondary color palette.,4,#b7bf10
+jason,ROV Jason,Colors that represent ROV Jason.,1,#044f9a
+jason,ROV Jason,Colors that represent ROV Jason.,2,#fec44f
+jason,ROV Jason,Colors that represent ROV Jason.,3,#5d86c3
+jason,ROV Jason,Colors that represent ROV Jason.,4,#fc4e2a
+jason,ROV Jason,Colors that represent ROV Jason.,5,#b6c8db
+jason,ROV Jason,Colors that represent ROV Jason.,6,#2a394f
+atlantis,Atlantis,Colors that match the R/V Atlantis.,1,#9dbabb
+atlantis,Atlantis,Colors that match the R/V Atlantis.,2,#1b334b
+atlantis,Atlantis,Colors that match the R/V Atlantis.,3,#cfbc9f
+atlantis,Atlantis,Colors that match the R/V Atlantis.,4,#576f70
+atlantis,Atlantis,Colors that match the R/V Atlantis.,5,#091a2a
+atlantis,Atlantis,Colors that match the R/V Atlantis.,6,#301609
+atlantis,Atlantis,Colors that match the R/V Atlantis.,7,#e0e5e5
+atlantis,Atlantis,Colors that match the R/V Atlantis.,8,#596873
+atlantis,Atlantis,Colors that match the R/V Atlantis.,9,#878a7e
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,1,#ddc794
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,2,#b5623a
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,3,#f95316
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,4,#584438
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,5,#eeba62
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,6,#8c3b25
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,7,#9b8e77
+wefa_sun,West Falmouth Sunset,The West Falmouth sunset over Chappaquoit.,8,#917062
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,1,#6c6865
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,2,#595e44
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,3,#869055
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,4,#e1dfea
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,5,#313e1c
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,6,#d0d4dc
+bikepath,Shining Sea Bikeway,The essence of the Shining Sea Bikeway.,7,#bcb277
+bog,Cranberry Bog,The cranberry bogs of Massachusetts.,1,#ac7070
+bog,Cranberry Bog,The cranberry bogs of Massachusetts.,2,#d6d9da
+bog,Cranberry Bog,The cranberry bogs of Massachusetts.,3,#33291b
+bog,Cranberry Bog,The cranberry bogs of Massachusetts.,4,#c5c7c7
+bog,Cranberry Bog,The cranberry bogs of Massachusetts.,5,#937771
+bog,Cranberry Bog,The cranberry bogs of Massachusetts.,6,#5a4a35
+rocky_beach,Rocky Beach,A summertime visit to a rocky beach in Woods Hole.,1,#716347
+rocky_beach,Rocky Beach,A summertime visit to a rocky beach in Woods Hole.,2,#476aa7
+rocky_beach,Rocky Beach,A summertime visit to a rocky beach in Woods Hole.,3,#7299ce
+rocky_beach,Rocky Beach,A summertime visit to a rocky beach in Woods Hole.,4,#a2937a
+rocky_beach,Rocky Beach,A summertime visit to a rocky beach in Woods Hole.,5,#b2c9e3
+rocky_beach,Rocky Beach,A summertime visit to a rocky beach in Woods Hole.,6,#3d3019
+eelpond_winter,"Eel Pond, Winter",Fresh snowfall on Eel Pond in Woods Hole.,1,#e1e7ed
+eelpond_winter,"Eel Pond, Winter",Fresh snowfall on Eel Pond in Woods Hole.,2,#c5c9cf
+eelpond_winter,"Eel Pond, Winter",Fresh snowfall on Eel Pond in Woods Hole.,3,#353638
+eelpond_winter,"Eel Pond, Winter",Fresh snowfall on Eel Pond in Woods Hole.,4,#6a7072
+eelpond_winter,"Eel Pond, Winter",Fresh snowfall on Eel Pond in Woods Hole.,5,#aaaeb3
+eelpond_winter,"Eel Pond, Winter",Fresh snowfall on Eel Pond in Woods Hole.,6,#ffffff
+tulips,Tulips,Tulips that pop up in late spring.,1,#d77d36
+tulips,Tulips,Tulips that pop up in late spring.,2,#e4bf62
+tulips,Tulips,Tulips that pop up in late spring.,3,#79805e
+tulips,Tulips,Tulips that pop up in late spring.,4,#e2dbc7
+tulips,Tulips,Tulips that pop up in late spring.,5,#81a063
+tulips,Tulips,Tulips that pop up in late spring.,6,#fa9fb5
+tulips,Tulips,Tulips that pop up in late spring.,7,#b24236
+tulips,Tulips,Tulips that pop up in late spring.,8,#fed976
+tulips,Tulips,Tulips that pop up in late spring.,9,#5a7356
+sunset_winter,Winter Sunset,A wintertime sunset on the Cape.,1,#fdeaab
+sunset_winter,Winter Sunset,A wintertime sunset on the Cape.,2,#e9b27a
+sunset_winter,Winter Sunset,A wintertime sunset on the Cape.,3,#a8b1bd
+sunset_winter,Winter Sunset,A wintertime sunset on the Cape.,4,#b58975
+sunset_winter,Winter Sunset,A wintertime sunset on the Cape.,5,#dbdbd2
+sunset_winter,Winter Sunset,A wintertime sunset on the Cape.,6,#f6e7c1
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,1,#6fa9e4
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,2,#a4723f
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,3,#577383
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,4,#f8f5e5
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,5,#d1ab8a
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,6,#fbdb9a
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,7,#5c5e5e
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,8,#a12531
+dock,Dock at Eel Pond,A dock at Eel Pond in Woods Hole.,9,#59372b
+marsh,Sippewissett Marsh,Sippewissett Marsh.,1,#5b2a14
+marsh,Sippewissett Marsh,Sippewissett Marsh.,2,#ae5d3f
+marsh,Sippewissett Marsh,Sippewissett Marsh.,3,#a02e35
+marsh,Sippewissett Marsh,Sippewissett Marsh.,4,#665438
+marsh,Sippewissett Marsh,Sippewissett Marsh.,5,#a27f41
+marsh,Sippewissett Marsh,Sippewissett Marsh.,6,#a99152
+marsh,Sippewissett Marsh,Sippewissett Marsh.,7,#d7c598
+marsh,Sippewissett Marsh,Sippewissett Marsh.,8,#767d27
+marsh,Sippewissett Marsh,Sippewissett Marsh.,9,#8c8987
+alvin,HOV Alvin,Colors from HOV Alvin.,1,#dbfcfd
+alvin,HOV Alvin,Colors from HOV Alvin.,2,#ef6a3f
+alvin,HOV Alvin,Colors from HOV Alvin.,3,#145178
+alvin,HOV Alvin,Colors from HOV Alvin.,4,#dbdbdb
+alvin,HOV Alvin,Colors from HOV Alvin.,5,#233133
+alvin,HOV Alvin,Colors from HOV Alvin.,6,#257c9b
+alvin,HOV Alvin,Colors from HOV Alvin.,7,#ffffff
+siders,Siders Pond,Siders Pond at sunset.,1,#b8bfd0
+siders,Siders Pond,Siders Pond at sunset.,2,#f8ebda
+siders,Siders Pond,Siders Pond at sunset.,3,#fde7c4
+siders,Siders Pond,Siders Pond at sunset.,4,#f9c79f
+siders,Siders Pond,Siders Pond at sunset.,5,#6d3f23
+siders,Siders Pond,Siders Pond at sunset.,6,#787677
+siders,Siders Pond,Siders Pond at sunset.,7,#4b427c
+siders,Siders Pond,Siders Pond at sunset.,8,#1a4f28
+siders_filters,Siders Pond Filters,Filters collected from a depth profile at Siders Pond.,1,#d8c68e
+siders_filters,Siders Pond Filters,Filters collected from a depth profile at Siders Pond.,2,#b29a43
+siders_filters,Siders Pond Filters,Filters collected from a depth profile at Siders Pond.,3,#aa8e71
+siders_filters,Siders Pond Filters,Filters collected from a depth profile at Siders Pond.,4,#684b32
+siders_filters,Siders Pond Filters,Filters collected from a depth profile at Siders Pond.,5,#8e7154
+siders_summer,"Siders Pond, Summer","Siders Pond in the summer, doing fieldwork.",1,#738ec0
+siders_summer,"Siders Pond, Summer","Siders Pond in the summer, doing fieldwork.",2,#435633
+siders_summer,"Siders Pond, Summer","Siders Pond in the summer, doing fieldwork.",3,#5570a1
+siders_summer,"Siders Pond, Summer","Siders Pond in the summer, doing fieldwork.",4,#647825
+siders_summer,"Siders Pond, Summer","Siders Pond in the summer, doing fieldwork.",5,#f36556
+siders_summer,"Siders Pond, Summer","Siders Pond in the summer, doing fieldwork.",6,#9ca0d6
+long_pond,Long Pond,Long Pond in the fall.,1,#c9a456
+long_pond,Long Pond,Long Pond in the fall.,2,#e27741
+long_pond,Long Pond,Long Pond in the fall.,3,#cb4e07
+long_pond,Long Pond,Long Pond in the fall.,4,#8a9b5e
+long_pond,Long Pond,Long Pond in the fall.,5,#643830
+long_pond,Long Pond,Long Pond in the fall.,6,#abc9cb
+long_pond,Long Pond,Long Pond in the fall.,7,#dab576
+long_pond,Long Pond,Long Pond in the fall.,8,#b04029
+knob,The Knob,The Knob beach at sunset.,1,#6d635f
+knob,The Knob,The Knob beach at sunset.,2,#455455
+knob,The Knob,The Knob beach at sunset.,3,#929999
+knob,The Knob,The Knob beach at sunset.,4,#d8c7ae
+knob,The Knob,The Knob beach at sunset.,5,#f4c088
+knob,The Knob,The Knob beach at sunset.,6,#fffa78
+knob,The Knob,The Knob beach at sunset.,7,#f58f52
+knob,The Knob,The Knob beach at sunset.,8,#eb6525
+naushon,Naushon Island,"Naushon Island, Hadley Harbor.",1,#96a1b9
+naushon,Naushon Island,"Naushon Island, Hadley Harbor.",2,#e6cba9
+naushon,Naushon Island,"Naushon Island, Hadley Harbor.",3,#856841
+naushon,Naushon Island,"Naushon Island, Hadley Harbor.",4,#dd9571
+naushon,Naushon Island,"Naushon Island, Hadley Harbor.",5,#5b5b8a
+naushon,Naushon Island,"Naushon Island, Hadley Harbor.",6,#c67b33
