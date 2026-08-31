@@ -1,0 +1,30 @@
+palette,display_name,description,position,hex
+jason,ROV Jason,Colors that represent ROV Jason.,1,#044f9a
+jason,ROV Jason,Colors that represent ROV Jason.,2,#fec44f
+jason,ROV Jason,Colors that represent ROV Jason.,3,#5d86c3
+jason,ROV Jason,Colors that represent ROV Jason.,4,#fc4e2a
+jason,ROV Jason,Colors that represent ROV Jason.,5,#b6c8db
+jason,ROV Jason,Colors that represent ROV Jason.,6,#2a394f
+atlantis,Atlantis,Colors that match the R/V Atlantis.,1,#9dbabb
+atlantis,Atlantis,Colors that match the R/V Atlantis.,2,#1b334b
+atlantis,Atlantis,Colors that match the R/V Atlantis.,3,#cfbc9f
+atlantis,Atlantis,Colors that match the R/V Atlantis.,4,#576f70
+atlantis,Atlantis,Colors that match the R/V Atlantis.,5,#091a2a
+atlantis,Atlantis,Colors that match the R/V Atlantis.,6,#301609
+atlantis,Atlantis,Colors that match the R/V Atlantis.,7,#e0e5e5
+atlantis,Atlantis,Colors that match the R/V Atlantis.,8,#596873
+atlantis,Atlantis,Colors that match the R/V Atlantis.,9,#878a7e
+alvin,HOV Alvin,Colors from HOV Alvin.,1,#dbfcfd
+alvin,HOV Alvin,Colors from HOV Alvin.,2,#ef6a3f
+alvin,HOV Alvin,Colors from HOV Alvin.,3,#145178
+alvin,HOV Alvin,Colors from HOV Alvin.,4,#dbdbdb
+alvin,HOV Alvin,Colors from HOV Alvin.,5,#233133
+alvin,HOV Alvin,Colors from HOV Alvin.,6,#257c9b
+alvin,HOV Alvin,Colors from HOV Alvin.,7,#ffffff
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,1,#DC143C
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,2,#001F3F
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,3,#FFD700
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,4,#FFFFFF
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,5,#000000
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,6,#FF6600
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,7,#FFC700

@@ -1,0 +1,205 @@
+[
+  {
+    "objectID": "index.html#modes",
+    "href": "index.html#modes",
+    "title": "Palette Jack",
+    "section": "Modes",
+    "text": "Modes\n\n\nWerner\nRandomize a capped, classification-filtered set of colors from an 1814 historical color reference.\n\n\n\nWada\n2-, 3-, and 4-color combinations from Sanzo Wada’s 1933 Dictionary of Color Combinations.\n\n\n\nWoods Hole\n20 hand-picked palettes inspired by Woods Hole, Falmouth, and WHOI.\n\n\n\nOceanography\nResearch vessel and oceanographic survey palettes — Jason, Atlantis, Alvin, and more."
+  },
+  {
+    "objectID": "pantone/index.html",
+    "href": "pantone/index.html",
+    "title": "Pantone",
+    "section": "",
+    "text": "Pantone’s PMS system itself is proprietary and trademarked, so this mode doesn’t touch it. What it does cover is the Color of the Year – one color (twice, two) that the Pantone Color Institute names each December, publicly, in its own press releases. Pick a year below and copy the hex."
+  },
+  {
+    "objectID": "pantone/index.html#source",
+    "href": "pantone/index.html#source",
+    "title": "Pantone",
+    "section": "Source",
+    "text": "Source\n\nPantone Color Institute. Pantone Color of the Year (annual press releases). Pantone LLC. https://www.pantone.com/color-of-the-year"
+  },
+  {
+    "objectID": "wada/index.html",
+    "href": "wada/index.html",
+    "title": "Wada",
+    "section": "",
+    "text": "Sanzo Wada was a Japanese textile and costume designer whose 1933 reference book, A Dictionary of Color Combinations (配色総鑑), catalogued 348 named colors alongside hundreds of pre-tested pairings meant to be visually harmonious together – closer to a curated palette-pairing tool than a raw color list. Each base color in this mode’s data is matched to one, two, or three other colors Wada specifically paired with it, giving combos of 2, 3, or 4 total colors.\nPalette Jack’s Wada mode lets you pick a combo size, randomize to one of Wada’s own matched sets, and copy it straight into scale_fill_manual()."
+  },
+  {
+    "objectID": "wada/index.html#source",
+    "href": "wada/index.html#source",
+    "title": "Wada",
+    "section": "Source",
+    "text": "Source\n\nWada, S. (1933). Haishoku Sōkan [配色総鑑 / A Dictionary of Color Combinations]. Kyoto: Kōrinsha. Reissued: Wada, S. (2019). A Dictionary of Color Combinations. Seigensha Art Publishing. ISBN 978-4-86152-568-1."
+  },
+  {
+    "objectID": "woods-hole/index.html",
+    "href": "woods-hole/index.html",
+    "title": "Woods Hole",
+    "section": "",
+    "text": "Originally published as PaletteWoodsHole as an R package. Hand-picked color palettes inspired by Woods Hole, Falmouth, and Woods Hole Oceanographic Institution. Eel Pond in winter, Siders Pond at sunset, the Shining Sea Bikeway, and more. This mode browses all 20 palettes and gives you a copy-ready hex list for whichever one fits your figure."
+  },
+  {
+    "objectID": "woods-hole/index.html#the-data",
+    "href": "woods-hole/index.html#the-data",
+    "title": "Palette Woods Hole",
+    "section": "The data",
+    "text": "The data\n\n\nShow the R\nlibrary(tidyverse)\n\nwoods_hole &lt;- read_csv(\"../data/woods-hole-palettes.csv\")\n\nwoods_hole |&gt;\n  distinct(palette, display_name, description) |&gt;\n  left_join(count(woods_hole, palette, name = \"n_colors\"), by = \"palette\") |&gt;\n  arrange(display_name) |&gt;\n  select(display_name, description, n_colors) |&gt;\n  knitr::kable(col.names = c(\"Palette\", \"Description\", \"n colors\"))\n\n\n\n\n\n\n\n\n\n\nPalette\nDescription\nn colors\n\n\n\n\nAtlantis\nColors that match the R/V Atlantis.\n9\n\n\nCranberry Bog\nThe cranberry bogs of Massachusetts.\n6\n\n\nDock at Eel Pond\nA dock at Eel Pond in Woods Hole.\n9\n\n\nEel Pond, Winter\nFresh snowfall on Eel Pond in Woods Hole.\n6\n\n\nHOV Alvin\nColors from HOV Alvin.\n7\n\n\nLong Pond\nLong Pond in the fall.\n8\n\n\nNaushon Island\nNaushon Island, Hadley Harbor.\n6\n\n\nROV Jason\nColors that represent ROV Jason.\n6\n\n\nRocky Beach\nA summertime visit to a rocky beach in Woods Hole.\n6\n\n\nShining Sea Bikeway\nThe essence of the Shining Sea Bikeway.\n7\n\n\nSiders Pond\nSiders Pond at sunset.\n8\n\n\nSiders Pond Filters\nFilters collected from a depth profile at Siders Pond.\n5\n\n\nSiders Pond, Summer\nSiders Pond in the summer, doing fieldwork.\n6\n\n\nSippewissett Marsh\nSippewissett Marsh.\n9\n\n\nThe Knob\nThe Knob beach at sunset.\n8\n\n\nTulips\nTulips that pop up in late spring.\n9\n\n\nWHOI\nColors derived from the WHOI graphics identity and primary color palette.\n6\n\n\nWHOI Secondary\nWHOI’s secondary color palette.\n4\n\n\nWest Falmouth Sunset\nThe West Falmouth sunset over Chappaquoit.\n8\n\n\nWinter Sunset\nA wintertime sunset on the Cape.\n6"
+  },
+  {
+    "objectID": "woods-hole/index.html#try-it",
+    "href": "woods-hole/index.html#try-it",
+    "title": "Woods Hole",
+    "section": "Try it",
+    "text": "Try it\n\n\nShow the R\nwhData = FileAttachment(\"../data/woods-hole-palettes.csv\").csv({typed: true})\nwhPaletteMeta = Array.from(\n  d3.rollup(whData, v =&gt; v[0].display_name, d =&gt; d.palette),\n  ([palette, display_name]) =&gt; ({palette, display_name})\n).sort((a, b) =&gt; a.display_name.localeCompare(b.display_name))\nwhOptions = new Map(whPaletteMeta.map(d =&gt; [d.display_name, d.palette]))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nviewof whChoiceLabel = Inputs.select(Array.from(whOptions.keys()), {label: \"Palette\", value: \"Atlantis\"})\nwhChoice = whOptions.get(whChoiceLabel)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nwhFiltered = whData.filter(d =&gt; d.palette === whChoice).sort((a, b) =&gt; a.position - b.position)\nwhHexList = whFiltered.map(d =&gt; d.hex).join(\"\\n\")\nwhHexVector = 'c(' + whFiltered.map(d =&gt; `\"${d.hex}\"`).join(', ') + ')'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nfunction whTextColor(hex) {\n  const c = hex.replace(\"#\", \"\");\n  const r = parseInt(c.substring(0, 2), 16);\n  const g = parseInt(c.substring(2, 4), 16);\n  const b = parseInt(c.substring(4, 6), 16);\n  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;\n  return lum &gt; 0.6 ? \"#241C1C\" : \"#FFFFFF\";\n}\n\nhtml`&lt;p style=\"color:#555;margin-bottom:.5rem;\"&gt;${whFiltered.length ? whFiltered[0].description : \"\"}&lt;/p&gt;\n&lt;div style=\"display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;\"&gt;\n  ${whFiltered.map(d =&gt; html`&lt;div class=\"color-chip\" style=\"background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${whTextColor(d.hex)}\"&gt;\n    &lt;div style=\"font-weight:600;\"&gt;${d.hex}&lt;/div&gt;\n  &lt;/div&gt;`)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nwhVectorCopyBtn = {\n  const label = () =&gt; `Copy R vector (${whFiltered.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(whHexVector).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nwhListCopyBtn = {\n  const label = () =&gt; `Copy hex list (${whFiltered.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn swatch-copy-btn--secondary\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(whHexList).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.5rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;\n  ${whVectorCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;&lt;span class=\"hl-fu\"&gt;c&lt;/span&gt;(${whFiltered.map((d, i) =&gt; html`&lt;span class=\"hl-st\"&gt;\"${d.hex}\"&lt;/span&gt;${i &lt; whFiltered.length - 1 ? \", \" : \"\"}`)})&lt;/pre&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.25rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;2. Or just the hex codes&lt;/p&gt;\n  ${whListCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;${whHexList}&lt;/pre&gt;\n&lt;/div&gt;`"
+  },
+  {
+    "objectID": "woods-hole/index.html#using-a-palette-back-in-r",
+    "href": "woods-hole/index.html#using-a-palette-back-in-r",
+    "title": "Woods Hole",
+    "section": "Using a palette back in R",
+    "text": "Using a palette back in R\n\n\nShow the R\n# straight from the package\nlibrary(PaletteWoodsHole)\nscales::show_col(atlantis)\n\n# or from this site's exported hex list, pasted in\nmy_pal &lt;- c(\"#9dbabb\", \"#1b334b\", \"#cfbc9f\", \"#576f70\", \"#091a2a\")\nggplot(mpg, aes(class, fill = class)) +\n  geom_bar() +\n  scale_fill_manual(values = my_pal)"
+  },
+  {
+    "objectID": "woods-hole/index.html#source",
+    "href": "woods-hole/index.html#source",
+    "title": "Woods Hole",
+    "section": "Source",
+    "text": "Source\n\nHu, S. K. PaletteWoodsHole [R package]. https://github.com/shu251/PaletteWoodsHole"
+  },
+  {
+    "objectID": "werner/index.html",
+    "href": "werner/index.html",
+    "title": "Werner",
+    "section": "",
+    "text": "Abraham Gottlob Werner was a German geologist who, in the late 1700s, developed a standardized color-naming system so mineralogists could describe rock and mineral color consistently. In 1814 (2nd ed. 1821), Scottish flower painter Patrick Syme illustrated and expanded Werner’s system into 110 named colors, organized into 10 classifications (White, Grey, Black, Blue, Purple, Green, Yellow, Orange, Red, Brown) – each cross-referenced against an animal, a plant, and a mineral where that color occurs in nature. Charles Darwin carried a copy on the Beagle to describe organisms and landscapes with a shared, precise color vocabulary.\nPalette Jack’s Werner mode lets you filter by classification and pull a randomized set of these historical colors as a ready-to-paste hex list – useful for quick categorical palettes, or just for the pleasure of finding out your data happens to be “Arterial Blood Red” or “Skimmed-milk White.”"
+  },
+  {
+    "objectID": "werner/index.html#the-data",
+    "href": "werner/index.html#the-data",
+    "title": "Werner",
+    "section": "The data",
+    "text": "The data\n\n\nShow the R\nlibrary(tidyverse)\n\nwerner &lt;- read_csv(\"../data/werner-colors.csv\")\n\nwerner |&gt;\n  count(group, sort = TRUE) |&gt;\n  knitr::kable(col.names = c(\"Classification\", \"n colors\"))\n\n\n\n\n\nClassification\nn colors\n\n\n\n\nRed\n18\n\n\nGreen\n16\n\n\nYellow\n14\n\n\nBlue\n11\n\n\nBrown\n11\n\n\nPurple\n11\n\n\nGrey\n8\n\n\nWhite\n8\n\n\nBlack\n7\n\n\nOrange\n6"
+  },
+  {
+    "objectID": "werner/index.html#how-many-colors-should-you-randomize",
+    "href": "werner/index.html#how-many-colors-should-you-randomize",
+    "title": "Werner",
+    "section": "How many colors should you randomize?",
+    "text": "How many colors should you randomize?\nThere’s no universal “right” number, but two lines of vision-science research give a useful working range:\n\nBelow ~4, people reliably hold and recall a set of colors in visual working memory – the classic estimate from change-detection tasks (Luck & Vogel, 1997; Ngiam et al., 2023).\nBeyond roughly 8-10, categorical color palettes get measurably harder to read accurately, and common design tools (e.g. ColorBrewer’s qualitative sets) cap out around 12 (Healey, 1996; Tseng et al., 2023).\n\nSo the randomizer below defaults to 5 colors and caps at 12 – past that point you’re better served by a sequential or continuous scale than a hand-picked categorical one."
+  },
+  {
+    "objectID": "werner/index.html#try-it",
+    "href": "werner/index.html#try-it",
+    "title": "Werner",
+    "section": "Try it",
+    "text": "Try it\n\n\nShow the R\ndata = FileAttachment(\"../data/werner-colors.csv\").csv({typed: true})\ngroupNames = Array.from(new Set(data.map(d =&gt; d.group))).sort()\ngroupOptions = [\"All classifications\", ...groupNames]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nviewof groupChoice = Inputs.select(groupOptions, {label: \"Classification\", value: \"All classifications\"})\n\n\n\n\n\n\n\n\n\nShow the R\nfiltered = groupChoice === \"All classifications\" ? data : data.filter(d =&gt; d.group === groupChoice)\nmaxN = Math.min(12, filtered.length)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nviewof n = Inputs.range([1, maxN], {label: \"Number of colors\", step: 1, value: Math.min(5, maxN)})\n\n\n\n\n\n\n\n\n\nShow the R\nviewof shuffleSeed = Inputs.button(\"Randomize\", {value: 0, reduce: v =&gt; v + 1})\n\n\n\n\n\n\n\n\n\nShow the R\nsample = {\n  shuffleSeed;\n  return d3.shuffle(filtered.slice()).slice(0, n);\n}\nhexList = sample.map(d =&gt; d.hex).join(\"\\n\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nfunction textColor(hex) {\n  const c = hex.replace(\"#\", \"\");\n  const r = parseInt(c.substring(0, 2), 16);\n  const g = parseInt(c.substring(2, 4), 16);\n  const b = parseInt(c.substring(4, 6), 16);\n  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;\n  return lum &gt; 0.6 ? \"#241C1C\" : \"#FFFFFF\";\n}\n\nhtml`&lt;div style=\"display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:1.5rem 0;\"&gt;\n  ${sample.map(d =&gt; html`&lt;div class=\"color-chip\" style=\"background:${d.hex};padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${textColor(d.hex)}\"&gt;\n    &lt;div style=\"font-family:'Source Code Pro',monospace;font-weight:600;\"&gt;${d.hex}&lt;/div&gt;\n    &lt;div style=\"font-size:.82rem;\"&gt;${d.name}&lt;/div&gt;\n  &lt;/div&gt;`)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\ncopyBtn = {\n  const label = () =&gt; `Copy ${sample.length} hex code${sample.length === 1 ? \"\" : \"s\"}`;\n  const btn = html`&lt;button class=\"swatch-copy-btn\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(hexList).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;pre class=\"hex-list-block\"&gt;${hexList}&lt;/pre&gt;`"
+  },
+  {
+    "objectID": "werner/index.html#sources-citations",
+    "href": "werner/index.html#sources-citations",
+    "title": "Werner",
+    "section": "Sources & citations",
+    "text": "Sources & citations\n\nWerner, A. G. (1814). Werner’s Nomenclature of Colours (P. Syme, Ed. & Ill., 2nd ed., 1821). Edinburgh: William Blackwood.\n\n\nLuck, S. J., & Vogel, E. K. (1997). The capacity of visual working memory for features and conjunctions. Nature, 390(6657), 279-281. https://doi.org/10.1038/36846\n\n\nNgiam, W. X. Q., Loetscher, K. B., & Awh, E. (2023). Object-based encoding constrains storage in visual working memory. Journal of Experimental Psychology: General, 153(1), 86-101. https://doi.org/10.1037/xge0001479\n\n\nHealey, C. G. (1996). Choosing effective colours for data visualization. Proceedings of the 7th IEEE Conference on Visualization, 263-270. https://doi.org/10.1109/visual.1996.568118\n\n\nTseng, C., Bearfield, C. X., & Franconeri, S. (2023). Measuring categorical perception in color-coded scatterplots. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems. https://doi.org/10.1145/3544548.3581416"
+  },
+  {
+    "objectID": "pantone/index.html#the-data",
+    "href": "pantone/index.html#the-data",
+    "title": "Pantone",
+    "section": "The data",
+    "text": "The data\n\n\nShow the R\nlibrary(tidyverse)\n\npantone_coty &lt;- read_csv(\"../data/pantone-coty.csv\")\n\npantone_coty |&gt;\n  arrange(desc(year)) |&gt;\n  select(year, name, pantone_code) |&gt;\n  knitr::kable(col.names = c(\"Year\", \"Name\", \"Pantone code\"))\n\n\n\n\n\nYear\nName\nPantone code\n\n\n\n\n2026\nCloud Dancer\n11-4201\n\n\n2025\nMocha Mousse\n17-1230\n\n\n2024\nPeach Fuzz\n13-1023\n\n\n2023\nViva Magenta\n18-1750\n\n\n2022\nVery Peri\n17-3938\n\n\n2021\nUltimate Gray\n17-5104\n\n\n2021\nIlluminating\n13-0647\n\n\n2020\nClassic Blue\n19-4052\n\n\n2019\nLiving Coral\n16-1546\n\n\n2018\nUltra Violet\n18-3838\n\n\n2017\nGreenery\n15-0343\n\n\n2016\nRose Quartz\n13-1520\n\n\n2016\nSerenity\n15-3913\n\n\n2015\nMarsala\n18-1438\n\n\n2014\nRadiant Orchid\n18-3224\n\n\n2013\nEmerald\n17-5641\n\n\n2012\nTangerine Tango\n17-1463\n\n\n2011\nHoneysuckle\n18-2120\n\n\n2010\nTurquoise\n15-5519\n\n\n2009\nMimosa\n14-0848\n\n\n2008\nBlue Iris\n18-3943\n\n\n2007\nChili Pepper\n19-1557\n\n\n2006\nSand Dollar\n13-1106\n\n\n2005\nBlue Turquoise\n15-5217\n\n\n2004\nTigerlily\n17-1456\n\n\n2003\nAqua Sky\n14-4811\n\n\n2002\nTrue Red\n19-1664\n\n\n2001\nFuchsia Rose\n17-2031\n\n\n2000\nCerulean Blue\n15-4020"
+  },
+  {
+    "objectID": "pantone/index.html#try-it",
+    "href": "pantone/index.html#try-it",
+    "title": "Pantone",
+    "section": "Try it",
+    "text": "Try it\n\n\nShow the R\npData = FileAttachment(\"../data/pantone-coty.csv\").csv({typed: true})\npYears = Array.from(new Set(pData.map(d =&gt; d.year))).sort((a, b) =&gt; b - a)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nviewof pYear = Inputs.select(pYears, {label: \"Year\", value: pYears[0]})\n\n\n\n\n\n\n\n\n\nShow the R\npFiltered = pData.filter(d =&gt; d.year === pYear)\npHexList = pFiltered.map(d =&gt; d.hex).join(\"\\n\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nfunction pTextColor(hex) {\n  const c = hex.replace(\"#\", \"\");\n  const r = parseInt(c.substring(0, 2), 16);\n  const g = parseInt(c.substring(2, 4), 16);\n  const b = parseInt(c.substring(4, 6), 16);\n  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;\n  return lum &gt; 0.6 ? \"#241C1C\" : \"#FFFFFF\";\n}\n\nhtml`&lt;div style=\"display:flex;flex-wrap:wrap;gap:12px;margin:1.5rem 0;\"&gt;\n  ${pFiltered.map(d =&gt; html`&lt;div class=\"color-chip\" style=\"background:${d.hex};padding:16px;min-width:200px;min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;color:${pTextColor(d.hex)}\"&gt;\n    &lt;div style=\"font-size:1.05rem;font-weight:600;\"&gt;${d.name}&lt;/div&gt;\n    &lt;div style=\"font-family:'Source Code Pro',monospace;\"&gt;${d.hex}&lt;/div&gt;\n    &lt;div style=\"font-size:.8rem;opacity:.85;\"&gt;PANTONE ${d.pantone_code}&lt;/div&gt;\n  &lt;/div&gt;`)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\npCopyBtn = {\n  const label = () =&gt; `Copy ${pFiltered.length} hex code${pFiltered.length === 1 ? \"\" : \"s\"}`;\n  const btn = html`&lt;button class=\"swatch-copy-btn\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(pHexList).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;pre class=\"hex-list-block\"&gt;${pHexList}&lt;/pre&gt;`\n\n\n\n\n\n\n\n\nHex codes are sRGB approximations of Pantone’s proprietary ink formulations (TCX/TPX), not an official Pantone conversion – expect them to vary slightly by source and render differently than a physical Pantone chip."
+  },
+  {
+    "objectID": "pantone/index.html#sources-citations",
+    "href": "pantone/index.html#sources-citations",
+    "title": "Pantone",
+    "section": "Sources & citations",
+    "text": "Sources & citations\n\nPantone Color Institute. Pantone Color of the Year (annual press releases, 2000-present). Pantone LLC. https://www.pantone.com/color-of-the-year\n\n\nPantone code and hex values cross-checked against Pantone’s own color-finder pages (e.g. pantone.com/color-finder/17-5641) and PantoneConverter’s Color of the Year archive: pantoneconverter.com/pantone-color-of-the-year"
+  },
+  {
+    "objectID": "wada/index.html#the-combinations",
+    "href": "wada/index.html#the-combinations",
+    "title": "Wada",
+    "section": "The combinations",
+    "text": "The combinations\n\nShow the R\nlibrary(tidyverse)\nlibrary(glue)\n\nwada &lt;- read_csv(\"../data/sanzo_wada_colors_long.csv\")\n\nswatch_html &lt;- function(hex, name, cap = 8) {\n  n &lt;- length(hex)\n  hex &lt;- head(hex, cap)\n  name &lt;- head(name, cap)\n  spans &lt;- glue('&lt;span class=\"mini-swatch\" style=\"background:{hex}\" title=\"{name}\"&gt;&lt;/span&gt;')\n  out &lt;- paste(spans, collapse = \"\")\n  if (n &gt; cap) out &lt;- paste0(out, glue('&lt;span class=\"palette-module-more\"&gt;+{n - cap} more&lt;/span&gt;'))\n  out\n}\n\n# a base color's combo size is itself + however many colors Wada matched to\n# it (one row per match) -- see R/prep-wada.R for the same logic documented\n# and validated outside the render path\nwada_bases &lt;- wada |&gt;\n  group_by(color_name) |&gt;\n  summarise(color_hex = first(color_hex), n_matches = n(), .groups = \"drop\") |&gt;\n  mutate(combo_size = n_matches + 1)\n\ngallery &lt;- wada_bases |&gt;\n  filter(combo_size %in% 2:4) |&gt;\n  group_by(combo_size) |&gt;\n  summarise(\n    n_combos = n(),\n    examples = paste(head(color_name, 4), collapse = \", \"),\n    swatches = swatch_html(color_hex, color_name),\n    .groups = \"drop\"\n  ) |&gt;\n  arrange(combo_size) |&gt;\n  mutate(label = glue(\"{combo_size}-color combo\"))\n\ncat(\n  '&lt;div class=\"palette-gallery\"&gt;',\n  glue_data(\n    gallery,\n    '&lt;div class=\"palette-module\"&gt;\n  &lt;h4&gt;{label} &lt;span class=\"palette-module-count\"&gt;{n_combos} combos&lt;/span&gt;&lt;/h4&gt;\n  &lt;p class=\"palette-module-desc\"&gt;e.g. {examples}&lt;/p&gt;\n  &lt;div class=\"palette-module-swatches\"&gt;{swatches}&lt;/div&gt;\n&lt;/div&gt;'\n  ),\n  '&lt;/div&gt;',\n  sep = \"\\n\"\n)\n\n\n\n\n2-color combo 36 combos\n\n\ne.g. Blackish Olive, Blue Violet, Buffy Citrine, Chromium Green\n\n\n+28 more\n\n\n\n\n3-color combo 33 combos\n\n\ne.g. Apricot Yellow, Brick Red, Coral Red, Cossack Green\n\n\n+25 more\n\n\n\n\n4-color combo 19 combos\n\n\ne.g. Aconite Violet, Brown, Calamine BLue, Cinnamon Buff\n\n\n+11 more"
+  },
+  {
+    "objectID": "wada/index.html#how-to-use-it",
+    "href": "wada/index.html#how-to-use-it",
+    "title": "Wada",
+    "section": "How to use it",
+    "text": "How to use it\n\nPick a combo size – 2, 3, or 4 colors.\nClick Randomize to pull one of Wada’s own matched combinations at that size.\nCopy the R vector – or the plain hex list – straight into your plot."
+  },
+  {
+    "objectID": "wada/index.html#try-it",
+    "href": "wada/index.html#try-it",
+    "title": "Wada",
+    "section": "Try it",
+    "text": "Try it\n\n\nShow the R\ndata = FileAttachment(\"../data/sanzo_wada_colors_long.csv\").csv({typed: true})\n\n\n\n\n\n\n\n\n\nShow the R\n// one entry per base color_name, its own hex, and its matched colors\n// sorted back into Wada's original order (combo_index is internal only --\n// never shown in the UI)\ngrouped = Array.from(\n  d3.rollup(\n    data,\n    v =&gt; v.slice().sort((a, b) =&gt; a.combo_index - b.combo_index),\n    d =&gt; d.color_name\n  ),\n  ([color_name, matches]) =&gt; ({\n    color_name,\n    color_hex: matches[0].color_hex,\n    combo_size: matches.length + 1,\n    matches\n  })\n)\n\n\n\n\n\n\n\n\n\nShow the R\nsizeOptions = [\"2-color combo\", \"3-color combo\", \"4-color combo\"]\nsizeMap = new Map([[\"2-color combo\", 2], [\"3-color combo\", 3], [\"4-color combo\", 4]])\nviewof sizeLabel = Inputs.select(sizeOptions, {label: \"Combo size\", value: \"2-color combo\"})\ncomboSize = sizeMap.get(sizeLabel)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\n// base colors with no matches at this size are simply absent here\neligible = grouped.filter(d =&gt; d.combo_size === comboSize)\n\n\n\n\n\n\n\n\n\nShow the R\nviewof shuffleSeed = Inputs.button(\"Randomize\", {value: 0, reduce: v =&gt; v + 1})\n\n\n\n\n\n\n\n\n\nShow the R\nselected = {\n  shuffleSeed; comboSize;\n  return d3.shuffle(eligible.slice())[0];\n}\n\n\n\n\n\n\n\n\n\nShow the R\ncombo = selected\n  ? [\n      {hex: selected.color_hex, name: selected.color_name},\n      ...selected.matches.map(m =&gt; ({hex: m.combo_hex, name: m.combo_name}))\n    ]\n  : []\nhexList = combo.map(d =&gt; d.hex).join(\"\\n\")\nhexVector = 'c(' + combo.map(d =&gt; `\"${d.hex}\"`).join(', ') + ')'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nfunction textColor(hex) {\n  const c = hex.replace(\"#\", \"\");\n  const r = parseInt(c.substring(0, 2), 16);\n  const g = parseInt(c.substring(2, 4), 16);\n  const b = parseInt(c.substring(4, 6), 16);\n  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;\n  return lum &gt; 0.6 ? \"#241C1C\" : \"#FFFFFF\";\n}\n\nhtml`&lt;p style=\"color:#555;margin-bottom:.5rem;\"&gt;Based on Wada's &lt;strong&gt;${selected ? selected.color_name : \"\"}&lt;/strong&gt;&lt;/p&gt;\n&lt;div style=\"display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;\"&gt;\n  ${combo.map(d =&gt; html`&lt;div class=\"color-chip\" style=\"background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${textColor(d.hex)}\"&gt;\n    &lt;div style=\"font-weight:600;\"&gt;${d.hex}&lt;/div&gt;\n    &lt;div style=\"font-size:.82rem;\"&gt;${d.name}&lt;/div&gt;\n  &lt;/div&gt;`)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nvectorCopyBtn = {\n  const label = () =&gt; `Copy R vector (${combo.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(hexVector).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nlistCopyBtn = {\n  const label = () =&gt; `Copy hex list (${combo.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn swatch-copy-btn--secondary\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(hexList).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.5rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;\n  ${vectorCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;&lt;span class=\"hl-fu\"&gt;c&lt;/span&gt;(${combo.map((d, i) =&gt; html`&lt;span class=\"hl-st\"&gt;\"${d.hex}\"&lt;/span&gt;${i &lt; combo.length - 1 ? \", \" : \"\"}`)})&lt;/pre&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.25rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;2. Or just the hex codes&lt;/p&gt;\n  ${listCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;${hexList}&lt;/pre&gt;\n&lt;/div&gt;`"
+  },
+  {
+    "objectID": "woods-hole/index.html#the-palettes",
+    "href": "woods-hole/index.html#the-palettes",
+    "title": "Woods Hole",
+    "section": "The palettes",
+    "text": "The palettes\n\nShow the R\nlibrary(tidyverse)\nlibrary(glue)\n\nwoods_hole &lt;- read_csv(\"../data/woods-hole-palettes.csv\")\n\nswatch_html &lt;- function(hex, cap = 8) {\n  n &lt;- length(hex)\n  shown &lt;- head(hex, cap)\n  spans &lt;- glue('&lt;span class=\"mini-swatch\" style=\"background:{shown}\"&gt;&lt;/span&gt;')\n  out &lt;- paste(spans, collapse = \"\")\n  if (n &gt; cap) out &lt;- paste0(out, glue('&lt;span class=\"palette-module-more\"&gt;+{n - cap} more&lt;/span&gt;'))\n  out\n}\n\ngallery &lt;- woods_hole |&gt;\n  arrange(palette, position) |&gt;\n  group_by(palette, display_name, description) |&gt;\n  summarise(\n    n_colors = n(),\n    swatches = swatch_html(hex),\n    .groups = \"drop\"\n  ) |&gt;\n  arrange(display_name)\n\ncat(\n  '&lt;div class=\"palette-gallery\"&gt;',\n  glue_data(\n    gallery,\n    '&lt;div class=\"palette-module\"&gt;\n  &lt;h4&gt;{display_name} &lt;span class=\"palette-module-count\"&gt;{n_colors} colors&lt;/span&gt;&lt;/h4&gt;\n  &lt;p class=\"palette-module-desc\"&gt;{description}&lt;/p&gt;\n  &lt;div class=\"palette-module-swatches\"&gt;{swatches}&lt;/div&gt;\n&lt;/div&gt;'\n  ),\n  '&lt;/div&gt;',\n  sep = \"\\n\"\n)\n\n\n\n\nAtlantis 9 colors\n\n\nColors that match the R/V Atlantis.\n\n\n+1 more\n\n\n\n\nCranberry Bog 6 colors\n\n\nThe cranberry bogs of Massachusetts.\n\n\n\n\n\n\n\nDock at Eel Pond 9 colors\n\n\nA dock at Eel Pond in Woods Hole.\n\n\n+1 more\n\n\n\n\nEel Pond, Winter 6 colors\n\n\nFresh snowfall on Eel Pond in Woods Hole.\n\n\n\n\n\n\n\nHOV Alvin 7 colors\n\n\nColors from HOV Alvin.\n\n\n\n\n\n\n\nLong Pond 8 colors\n\n\nLong Pond in the fall.\n\n\n\n\n\n\n\nNaushon Island 6 colors\n\n\nNaushon Island, Hadley Harbor.\n\n\n\n\n\n\n\nROV Jason 6 colors\n\n\nColors that represent ROV Jason.\n\n\n\n\n\n\n\nRocky Beach 6 colors\n\n\nA summertime visit to a rocky beach in Woods Hole.\n\n\n\n\n\n\n\nShining Sea Bikeway 7 colors\n\n\nThe essence of the Shining Sea Bikeway.\n\n\n\n\n\n\n\nSiders Pond 8 colors\n\n\nSiders Pond at sunset.\n\n\n\n\n\n\n\nSiders Pond Filters 5 colors\n\n\nFilters collected from a depth profile at Siders Pond.\n\n\n\n\n\n\n\nSiders Pond, Summer 6 colors\n\n\nSiders Pond in the summer, doing fieldwork.\n\n\n\n\n\n\n\nSippewissett Marsh 9 colors\n\n\nSippewissett Marsh.\n\n\n+1 more\n\n\n\n\nThe Knob 8 colors\n\n\nThe Knob beach at sunset.\n\n\n\n\n\n\n\nTulips 9 colors\n\n\nTulips that pop up in late spring.\n\n\n+1 more\n\n\n\n\nWHOI 6 colors\n\n\nColors derived from the WHOI graphics identity and primary color palette.\n\n\n\n\n\n\n\nWHOI Secondary 4 colors\n\n\nWHOI’s secondary color palette.\n\n\n\n\n\n\n\nWest Falmouth Sunset 8 colors\n\n\nThe West Falmouth sunset over Chappaquoit.\n\n\n\n\n\n\n\nWinter Sunset 6 colors\n\n\nA wintertime sunset on the Cape."
+  },
+  {
+    "objectID": "oceanography/index.html",
+    "href": "oceanography/index.html",
+    "title": "Oceanography",
+    "section": "",
+    "text": "Palettes inspired by research vessels and oceanographic expeditions. The ROV Jason, R/V Atlantis, and HOV Alvin are workhorses of deep-sea science; their color schemes evoke their operational identity. This mode lets you pick one and get a copy-ready hex list for your figures."
+  },
+  {
+    "objectID": "oceanography/index.html#the-palettes",
+    "href": "oceanography/index.html#the-palettes",
+    "title": "Oceanography",
+    "section": "The palettes",
+    "text": "The palettes\n\nShow the R\nlibrary(tidyverse)\nlibrary(glue)\n\nocean &lt;- read_csv(\"../data/oceanography-colors.csv\")\n\nswatch_html &lt;- function(hex, cap = 8) {\n  n &lt;- length(hex)\n  shown &lt;- head(hex, cap)\n  spans &lt;- glue('&lt;span class=\"mini-swatch\" style=\"background:{shown}\"&gt;&lt;/span&gt;')\n  out &lt;- paste(spans, collapse = \"\")\n  if (n &gt; cap) out &lt;- paste0(out, glue('&lt;span class=\"palette-module-more\"&gt;+{n - cap} more&lt;/span&gt;'))\n  out\n}\n\ngallery &lt;- ocean |&gt;\n  arrange(palette, position) |&gt;\n  group_by(palette, display_name, description) |&gt;\n  summarise(\n    n_colors = n(),\n    swatches = swatch_html(hex),\n    .groups = \"drop\"\n  ) |&gt;\n  arrange(display_name)\n\ncat(\n  '&lt;div class=\"palette-gallery\"&gt;',\n  glue_data(\n    gallery,\n    '&lt;div class=\"palette-module\"&gt;\n  &lt;h4&gt;{display_name} &lt;span class=\"palette-module-count\"&gt;{n_colors} colors&lt;/span&gt;&lt;/h4&gt;\n  &lt;p class=\"palette-module-desc\"&gt;{description}&lt;/p&gt;\n  &lt;div class=\"palette-module-swatches\"&gt;{swatches}&lt;/div&gt;\n&lt;/div&gt;'\n  ),\n  '&lt;/div&gt;',\n  sep = \"\\n\"\n)\n\n\n\n\nAtlantis 9 colors\n\n\nColors that match the R/V Atlantis.\n\n\n+1 more\n\n\n\n\nHOV Alvin 7 colors\n\n\nColors from HOV Alvin.\n\n\n\n\n\n\n\nNautical Flags 7 colors\n\n\nTraditional nautical flag colors.\n\n\n\n\n\n\n\nROV Jason 6 colors\n\n\nColors that represent ROV Jason."
+  },
+  {
+    "objectID": "oceanography/index.html#how-to-use-it",
+    "href": "oceanography/index.html#how-to-use-it",
+    "title": "Oceanography",
+    "section": "How to use it",
+    "text": "How to use it\n\nPick a palette from the dropdown below.\nCopy your choice — R vector (ready for scale_fill_manual()) or plain hex list.\nPaste into your code and scale your figures."
+  },
+  {
+    "objectID": "oceanography/index.html#try-it",
+    "href": "oceanography/index.html#try-it",
+    "title": "Oceanography",
+    "section": "Try it",
+    "text": "Try it\n\n\nShow the R\noceanData = FileAttachment(\"../data/oceanography-colors.csv\").csv({typed: true})\noceanPaletteMeta = Array.from(\n  d3.rollup(oceanData, v =&gt; v[0].display_name, d =&gt; d.palette),\n  ([palette, display_name]) =&gt; ({palette, display_name})\n).sort((a, b) =&gt; a.display_name.localeCompare(b.display_name))\noceanOptions = new Map(oceanPaletteMeta.map(d =&gt; [d.display_name, d.palette]))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nviewof oceanChoiceLabel = Inputs.select(Array.from(oceanOptions.keys()), {label: \"Palette\", value: \"ROV Jason\"})\noceanChoice = oceanOptions.get(oceanChoiceLabel)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\noceanFiltered = oceanData.filter(d =&gt; d.palette === oceanChoice).sort((a, b) =&gt; a.position - b.position)\noceanHexList = oceanFiltered.map(d =&gt; d.hex).join(\"\\n\")\noceanHexVector = 'c(' + oceanFiltered.map(d =&gt; `\"${d.hex}\"`).join(', ') + ')'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nfunction oceanTextColor(hex) {\n  const c = hex.replace(\"#\", \"\");\n  const r = parseInt(c.substring(0, 2), 16);\n  const g = parseInt(c.substring(2, 4), 16);\n  const b = parseInt(c.substring(4, 6), 16);\n  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;\n  return lum &gt; 0.6 ? \"#241C1C\" : \"#FFFFFF\";\n}\n\nhtml`&lt;p style=\"color:#555;margin-bottom:.5rem;\"&gt;${oceanFiltered.length ? oceanFiltered[0].description : \"\"}&lt;/p&gt;\n&lt;div style=\"display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;\"&gt;\n  ${oceanFiltered.map(d =&gt; html`&lt;div class=\"color-chip\" style=\"background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${oceanTextColor(d.hex)}\"&gt;\n    &lt;div style=\"font-weight:600;\"&gt;${d.hex}&lt;/div&gt;\n  &lt;/div&gt;`)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\noceanVectorCopyBtn = {\n  const label = () =&gt; `Copy R vector (${oceanFiltered.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(oceanHexVector).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\noceanListCopyBtn = {\n  const label = () =&gt; `Copy hex list (${oceanFiltered.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn swatch-copy-btn--secondary\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(oceanHexList).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.5rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;\n  ${oceanVectorCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;&lt;span class=\"hl-fu\"&gt;c&lt;/span&gt;(${oceanFiltered.map((d, i) =&gt; html`&lt;span class=\"hl-st\"&gt;\"${d.hex}\"&lt;/span&gt;${i &lt; oceanFiltered.length - 1 ? \", \" : \"\"}`)})&lt;/pre&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.25rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;2. Or just the hex codes&lt;/p&gt;\n  ${oceanListCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;${oceanHexList}&lt;/pre&gt;\n&lt;/div&gt;`"
+  },
+  {
+    "objectID": "oceanography/index.html#using-a-palette-back-in-r",
+    "href": "oceanography/index.html#using-a-palette-back-in-r",
+    "title": "Oceanography",
+    "section": "Using a palette back in R",
+    "text": "Using a palette back in R\n\n\nShow the R\nmy_pal &lt;- c(\"#044f9a\", \"#fec44f\", \"#5d86c3\", \"#fc4e2a\", \"#b6c8db\", \"#2a394f\")\n\nggplot(mpg, aes(class, fill = class)) +\n  geom_bar() +\n  scale_fill_manual(values = my_pal)"
+  },
+  {
+    "objectID": "oceanography/index.html#sources",
+    "href": "oceanography/index.html#sources",
+    "title": "Oceanography",
+    "section": "Sources",
+    "text": "Sources\nResearch vessel color assignments are drawn from their respective operational identities and institutional branding. Nautical flag colors follow traditional maritime convention."
+  },
+  {
+    "objectID": "woods-hole/index.html#use-it",
+    "href": "woods-hole/index.html#use-it",
+    "title": "Woods Hole",
+    "section": "Use it",
+    "text": "Use it\n\n\nShow the R\nwhData = FileAttachment(\"../data/woods-hole-palettes.csv\").csv({typed: true})\nwhPaletteMeta = Array.from(\n  d3.rollup(whData, v =&gt; v[0].display_name, d =&gt; d.palette),\n  ([palette, display_name]) =&gt; ({palette, display_name})\n).sort((a, b) =&gt; a.display_name.localeCompare(b.display_name))\nwhOptions = new Map(whPaletteMeta.map(d =&gt; [d.display_name, d.palette]))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nviewof whChoiceLabel = Inputs.select(Array.from(whOptions.keys()), {label: \"Palette\", value: \"Atlantis\"})\nwhChoice = whOptions.get(whChoiceLabel)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nwhFiltered = whData.filter(d =&gt; d.palette === whChoice).sort((a, b) =&gt; a.position - b.position)\nwhHexList = whFiltered.map(d =&gt; d.hex).join(\"\\n\")\nwhHexVector = 'c(' + whFiltered.map(d =&gt; `\"${d.hex}\"`).join(', ') + ')'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nfunction whTextColor(hex) {\n  const c = hex.replace(\"#\", \"\");\n  const r = parseInt(c.substring(0, 2), 16);\n  const g = parseInt(c.substring(2, 4), 16);\n  const b = parseInt(c.substring(4, 6), 16);\n  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;\n  return lum &gt; 0.6 ? \"#241C1C\" : \"#FFFFFF\";\n}\n\nhtml`&lt;p style=\"color:#555;margin-bottom:.5rem;\"&gt;${whFiltered.length ? whFiltered[0].description : \"\"}&lt;/p&gt;\n&lt;div style=\"display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;\"&gt;\n  ${whFiltered.map(d =&gt; html`&lt;div class=\"color-chip\" style=\"background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${whTextColor(d.hex)}\"&gt;\n    &lt;div style=\"font-weight:600;\"&gt;${d.hex}&lt;/div&gt;\n  &lt;/div&gt;`)}\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the R\nwhVectorCopyBtn = {\n  const label = () =&gt; `Copy R vector (${whFiltered.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(whHexVector).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nwhListCopyBtn = {\n  const label = () =&gt; `Copy hex list (${whFiltered.length})`;\n  const btn = html`&lt;button class=\"swatch-copy-btn swatch-copy-btn--secondary\"&gt;${label()}&lt;/button&gt;`;\n  btn.onclick = () =&gt; {\n    navigator.clipboard.writeText(whHexList).then(() =&gt; {\n      btn.textContent = \"Copied!\";\n      setTimeout(() =&gt; { btn.textContent = label(); }, 1200);\n    });\n  };\n  return btn;\n}\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.5rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;\n  ${whVectorCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;&lt;span class=\"hl-fu\"&gt;c&lt;/span&gt;(${whFiltered.map((d, i) =&gt; html`&lt;span class=\"hl-st\"&gt;\"${d.hex}\"&lt;/span&gt;${i &lt; whFiltered.length - 1 ? \", \" : \"\"}`)})&lt;/pre&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nShow the R\nhtml`&lt;div style=\"margin-top:1.25rem;\"&gt;\n  &lt;p style=\"font-weight:600;margin-bottom:.4rem;\"&gt;2. Or just the hex codes&lt;/p&gt;\n  ${whListCopyBtn}\n  &lt;pre class=\"hex-list-block\"&gt;${whHexList}&lt;/pre&gt;\n&lt;/div&gt;`"
+  }
+]
