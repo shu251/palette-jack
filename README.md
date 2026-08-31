@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Palette Jack
 
 Copy-able hex color palettes for R. A Quarto website with four modes:
@@ -37,3 +38,6 @@ quarto render    # writes the site into docs/
 ## Deploying
 
 Push `docs/` on `main` and point GitHub Pages at `main` / `/docs` in the repo settings.
+=======
+# palette-jack
+>>>>>>> 5ca00c2705d01b14468d8ca702e3b6452f8ee115
