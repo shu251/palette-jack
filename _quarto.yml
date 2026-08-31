@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Palette Jack"
-  description: "Copy-able hex color palettes for R -- Werner, Wada, Woods Hole, and Oceanography."
+  description: "Copy-able hex color palettes for R."
   site-url: "https://shu251.github.io/palette-jack"
   navbar:
     background: light
@@ -24,7 +24,7 @@ website:
         href: https://github.com/shu251/palette-jack
         aria-label: GitHub
   page-footer:
-    center: "Built with Quarto + Observable JS. Color data cited on each mode's page."
+    center: "Built with Quarto & observable JS. Hu, Sarah."
 
 format:
   html:
