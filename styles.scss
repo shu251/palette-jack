@@ -1,0 +1,188 @@
+/*-- scss:defaults --*/
+// Mirrors _brand.yml. Declared here (with !default) because theme files
+// listed after `brand` in the theme: list compile BEFORE brand's own
+// variables exist yet -- see quarto-r skill design.md for why.
+$charcoal:   #2B2E33 !default;
+$blue:       #2476DB !default;
+$teal:       #39D2B7 !default;
+$periwinkle: #7E9CDB !default;
+$yellow:     #E8C20D !default;
+
+$body-color:    $charcoal;
+$link-color:    $blue;
+$border-radius: .5rem;
+
+/*-- scss:rules --*/
+// Maximum-whitespace pass: statement hero, generous vertical rhythm,
+// quiet chrome, color reserved for small elements (swatches/badges).
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  font-weight: 600;
+}
+
+.quarto-title-block { margin-bottom: 2rem; }
+
+main.content > * { margin-block: 1.75rem; }
+main.content > h2 { margin-top: 3rem; }
+
+.navbar {
+  border-bottom: 3px solid $blue;
+}
+
+// mode landing cards on index.qmd
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-block: 2rem;
+}
+.mode-card {
+  border: 1px solid rgba($charcoal, .12);
+  border-radius: $border-radius;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: $body-color;
+  transition: box-shadow .15s ease, transform .15s ease;
+  display: block;
+}
+.mode-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  transform: translateY(-2px);
+  color: $body-color;
+}
+.mode-card h3 { margin-top: 0; color: $blue; }
+.mode-card p {
+  font-size: .92rem;
+  color: rgba($charcoal, .72);
+  margin: .25rem 0 .85rem;
+  line-height: 1.45;
+}
+.mode-card .badge-soon {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  color: $charcoal;
+  background: rgba($yellow, .35);
+  border-radius: 999px;
+  padding: .15rem .6rem;
+  margin-left: .5rem;
+}
+
+// color chips used by Werner + Woods Hole ojs cells
+.color-chip {
+  border-radius: $border-radius;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+.swatch-copy-btn {
+  border: 1px solid rgba($charcoal, .2);
+  border-radius: $border-radius;
+  background: white;
+  padding: .5rem 1.1rem;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.swatch-copy-btn:hover { background: rgba($blue, .08); }
+
+// secondary/quieter copy action -- used for the plain hex-list option,
+// which sits below the primary R-vector copy option
+.swatch-copy-btn--secondary {
+  background: transparent;
+  border-color: rgba($charcoal, .15);
+  color: rgba($charcoal, .8);
+  font-size: .85rem;
+  padding: .4rem .9rem;
+}
+.swatch-copy-btn--secondary:hover { background: rgba($charcoal, .05); }
+
+// hex output blocks -- styled to match real R code chunks (same
+// background/border as knitr's pre.sourceCode) rather than a plain grey
+// box, so a copy-ready snippet reads as R code. Font family comes from
+// _brand.yml's typography.monospace (Helvetica), same as real chunks.
+.hex-list-block {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: $border-radius;
+  padding: .75rem 1rem;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-size: .875em;
+  color: $charcoal;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+// syntax-highlight spans inside a .hex-list-block, matching the same
+// --quarto-hl-* variables Quarto uses to color real R chunks
+.hl-fu { color: var(--quarto-hl-fu-color, #4758AB); }
+.hl-st { color: var(--quarto-hl-st-color, #20794D); }
+
+// per-palette / per-classification "module" cards -- a mini origin
+// summary plus a swatch strip. Used on index.qmd's mode cards and the
+// Werner/Woods Hole galleries.
+.palette-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-block: 1.5rem;
+}
+.palette-module {
+  border: 1px solid rgba($charcoal, .12);
+  border-radius: $border-radius;
+  padding: 1rem 1.1rem;
+}
+.palette-module h4 {
+  margin: 0 0 .35rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+}
+.palette-module-count {
+  font-size: .75rem;
+  font-weight: 400;
+  color: rgba($charcoal, .55);
+  white-space: nowrap;
+}
+.palette-module-desc {
+  font-size: .85rem;
+  color: rgba($charcoal, .75);
+  margin: 0 0 .65rem;
+  line-height: 1.45;
+}
+.palette-module-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.mini-swatch {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+.palette-module-more {
+  font-size: .72rem;
+  color: rgba($charcoal, .55);
+  margin-left: 2px;
+}
+
+.citation {
+  font-size: .9rem;
+  color: rgba($charcoal, .8);
+  border-left: 3px solid $teal;
+  padding-left: 1rem;
+  margin-block: 1.5rem;
+}
+
+.coming-soon-banner {
+  background: rgba($yellow, .18);
+  border: 1px solid rgba($yellow, .6);
+  border-radius: $border-radius;
+  padding: 1rem 1.25rem;
+  margin-block: 1.5rem;
+}

@@ -1,0 +1,113 @@
+---
+title: "Palette Jack"
+page-layout: full
+---
+
+::: {style="max-width:700px;margin:3rem 0 1rem;"}
+# Copy-able color palettes, built for R.
+:::
+
+::: {style="max-width:640px;color:#555;font-size:1.15rem;margin-bottom:2rem;"}
+Pick a module, pick a few options, and walk away with a hex list ready to paste into `scale_fill_manual()`. Let *Palette Jack* do the heavy lifting.
+:::
+
+```{=html}
+<!-- IMAGE PLACEHOLDER: hero image, ~1600x600px, wide/landscape crop.
+     A Woods Hole / fieldwork / ocean-color shot would suit the site best --
+     send a file or path and I'll drop it in above the fold. -->
+```
+
+::: {style="border:1px dashed rgba(0,0,0,.2); border-radius:.5rem; padding:2.5rem; text-align:center; color:#999; margin-bottom:2.5rem;"}
+Hero image goes here (\~1600×600) -- send a photo and I'll place it.
+:::
+
+```{r}
+#| label: mode-preview-swatches
+#| include: false
+library(tidyverse)
+library(glue)
+
+werner <- read_csv("data/werner-colors.csv")
+woods_hole <- read_csv("data/woods-hole-palettes.csv")
+wada <- read_csv("data/sanzo_wada_colors_long.csv")
+
+mini_swatches <- function(hexes) {
+  paste(glue('<span class="mini-swatch" style="background:{hexes}"></span>'), collapse = "")
+}
+
+# one representative color per classification, for a quick landing-page preview
+werner_preview <- werner |>
+  filter(group %in% c("Blue", "Green", "Red", "Yellow", "Purple")) |>
+  group_by(group) |>
+  slice(1) |>
+  ungroup() |>
+  pull(hex) |>
+  mini_swatches()
+
+# the Atlantis palette, as a representative Woods Hole preview
+wh_preview <- woods_hole |>
+  filter(palette == "atlantis") |>
+  arrange(position) |>
+  pull(hex) |>
+  mini_swatches()
+
+# one representative 4-color combo, base + its 3 matched colors, for a
+# quick landing-page preview
+wada_preview_name <- wada |>
+  count(color_name, name = "n_matches") |>
+  filter(n_matches == 3) |>
+  arrange(color_name) |>
+  slice(1) |>
+  pull(color_name)
+
+wada_preview_df <- wada |>
+  filter(color_name == wada_preview_name) |>
+  arrange(combo_index)
+
+wada_preview <- mini_swatches(c(wada_preview_df$color_hex[1], wada_preview_df$combo_hex))
+
+# Oceanography preview: one representative palette (Jason)
+ocean <- read_csv("data/oceanography-colors.csv")
+
+ocean_preview <- ocean |>
+  filter(palette == "jason") |>
+  arrange(position) |>
+  pull(hex) |>
+  mini_swatches()
+```
+
+## Modes
+
+::::::: mode-grid
+::: mode-card
+### [Werner](werner/index.qmd)
+
+Randomize a capped, classification-filtered set of colors from an 1814 historical color reference.
+
+`r werner_preview`
+:::
+
+::: mode-card
+### [Wada](wada/index.qmd)
+
+2-, 3-, and 4-color combinations from Sanzo Wada’s 1933 Dictionary of Color Combinations.
+
+`r wada_preview`
+:::
+
+::: mode-card
+### [Woods Hole](woods-hole/index.qmd)
+
+20 hand-picked palettes inspired by Woods Hole, Falmouth, and WHOI.
+
+`r wh_preview`
+:::
+
+::: mode-card
+### [Oceanography](oceanography/index.qmd)
+
+Research vessel and oceanographic survey palettes — Jason, Atlantis, Alvin, and more.
+
+`r ocean_preview`
+:::
+:::::::
