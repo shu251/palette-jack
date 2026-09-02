@@ -1,0 +1,212 @@
+---
+title: "Imperial Pale Ale"
+subtitle: "Color palettes from craft beer brewing"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the R"
+execute:
+  echo: true
+---
+
+Imperial Pale Ales are bold, hoppy brews with rich amber and copper tones. Use this palette to represent strong, assertive color schemes in your visualizations.
+
+Palette Jack's Imperial Pale Ale mode lets you pick a palette and copy the hex colors ready to use in your plots.
+
+
+
+
+
+
+:::: {layout="[1,1,1]"}
+![](../images/image1.jpg)
+
+![](../images/image2.jpg)
+
+![](../images/image3.jpg)
+::::
+
+## The palettes
+
+```{r}
+#| label: load-imperial-pale-ale
+#| message: false
+#| results: asis
+library(tidyverse)
+library(glue)
+
+imperial_ale <- read_csv("../data/imperial-pale-ale-colors.csv")
+
+swatch_html <- function(hex, name, cap = 8) {
+  n <- length(hex)
+  hex <- head(hex, cap)
+  name <- head(name, cap)
+  spans <- glue('<span class="mini-swatch" style="background:{hex}" title="{name}"></span>')
+  out <- paste(spans, collapse = "")
+  if (n > cap) out <- paste0(out, glue('<span class="palette-module-more">+{n - cap} more</span>'))
+  out
+}
+
+gallery <- imperial_ale |>
+  group_by(palette) |>
+  summarise(
+    n_colors = n(),
+    palette_name = first(display_name),
+    examples = paste(head(hex, 4), collapse = ", "),
+    swatches = swatch_html(hex, display_name),
+    .groups = "drop"
+  ) |>
+  arrange(palette)
+
+cat(
+  '<div class="palette-gallery">',
+  glue_data(
+    gallery,
+    '<div class="palette-module">
+  <h4>{palette_name} <span class="palette-module-count">{n_colors} colors</span></h4>
+  <p class="palette-module-desc">e.g. {examples}</p>
+  <div class="palette-module-swatches">{swatches}</div>
+</div>'
+  ),
+  '</div>',
+  sep = "\n"
+)
+```
+
+## How to use it
+
+1. Pick a **palette** below.
+2. Click **Randomize** to shuffle the colors.
+3. Copy the R vector — or the plain hex list — straight into your plot.
+
+## Try it
+
+```{ojs}
+//| echo: false
+data = FileAttachment("../data/imperial-pale-ale-colors.csv").csv({typed: true})
+paletteNames = Array.from(new Set(data.map(d => d.palette))).sort()
+paletteOptions = ["All palettes", ...paletteNames]
+```
+
+```{ojs}
+//| echo: false
+viewof paletteChoice = Inputs.select(paletteOptions, {label: "Palette", value: "All palettes"})
+```
+
+```{ojs}
+//| echo: false
+filtered = paletteChoice === "All palettes" ? data : data.filter(d => d.palette === paletteChoice)
+```
+
+```{ojs}
+//| echo: false
+viewof shuffleSeed = Inputs.button("Randomize", {value: 0, reduce: v => v + 1})
+```
+
+```{ojs}
+//| echo: false
+sample = {
+  shuffleSeed;
+  return d3.shuffle(filtered.slice());
+}
+hexList = sample.map(d => d.hex).join("\n")
+hexVector = 'c(' + sample.map(d => `"${d.hex}"`).join(', ') + ')'
+hexSingleQuote = sample.map(d => `'${d.hex}'`).join(', ')
+```
+
+```{ojs}
+//| echo: false
+function textColor(hex) {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return lum > 0.6 ? "#241C1C" : "#FFFFFF";
+}
+
+html`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:1.5rem 0;">
+  ${sample.map(d => html`<div class="color-chip" style="background:${d.hex};padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${textColor(d.hex)}">
+    <div style="font-weight:600;">${d.hex}</div>
+    <div style="font-size:.82rem;">${d.display_name}</div>
+  </div>`)}
+</div>`
+```
+
+```{ojs}
+//| echo: false
+vectorCopyBtn = {
+  const label = () => `Copy R vector (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexVector).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+listCopyBtn = {
+  const label = () => `Copy hex list (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexList).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+singleQuoteCopyBtn = {
+  const label = () => `Copy quoted hex (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexSingleQuote).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.5rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">1. Ready for <code>scale_fill_manual()</code></p>
+  ${vectorCopyBtn}
+  <pre class="hex-list-block"><span class="hl-fu">c</span>(${sample.map((d, i) => html`<span class="hl-st">"${d.hex}"</span>${i < sample.length - 1 ? ", " : ""}`)})</pre>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">2. Or just the hex codes</p>
+  ${listCopyBtn}
+  <pre class="hex-list-block">${hexList}</pre>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">3. Or as quoted strings</p>
+  ${singleQuoteCopyBtn}
+  <pre class="hex-list-block">${hexSingleQuote}</pre>
+</div>`
+```
+
+## Sources & citations
+
+::: {.citation}
+[Add citations here]
+:::

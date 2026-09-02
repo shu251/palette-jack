@@ -1,0 +1,10 @@
+palette,display_name,description,position,hex
+primary,Primary Colors,Texas A&M primary palette: Aggie Maroon and white.,1,#500000
+primary,Primary Colors,Texas A&M primary palette: Aggie Maroon and white.,2,#FFFFFF
+secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,1,#202020
+secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,2,#3E3E3E
+secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,3,#707070
+secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,4,#D1D1D1
+secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,5,#D6D3C4
+accent,Accent Colors,Texas A&M accent palette: dark maroon and burgundy.,1,#3C0000
+accent,Accent Colors,Texas A&M accent palette: dark maroon and burgundy.,2,#732F2F

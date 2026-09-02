@@ -1,0 +1,191 @@
+---
+title: "Oceanography"
+subtitle: "Research vessel and oceanographic survey palettes"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the R"
+execute:
+  echo: true
+---
+
+Palettes inspired by research vessels and oceanographic expeditions. The *ROV Jason*, *R/V Atlantis*, and *HOV Alvin* are workhorses of deep-sea science; their color schemes evoke their operational identity. This mode lets you pick one and get a copy-ready hex list for your figures.
+
+```r
+# import the palette data
+ocean_palettes <- read.csv("data/oceanography-colors.csv")
+head(ocean_palettes)
+```
+
+
+
+
+
+
+:::: {layout="[1,1,1,1]"}
+![](../images/image1.jpg)
+
+![](../images/image2.jpg)
+
+![](../images/image3.jpg)
+
+![](../images/image4.jpg)
+::::
+
+## The palettes
+
+```{r}
+#| label: load-oceanography
+#| message: false
+#| results: asis
+library(tidyverse)
+library(glue)
+
+ocean <- read_csv("../data/oceanography-colors.csv")
+
+swatch_html <- function(hex, cap = 8) {
+  n <- length(hex)
+  shown <- head(hex, cap)
+  spans <- glue('<span class="mini-swatch" style="background:{shown}"></span>')
+  out <- paste(spans, collapse = "")
+  if (n > cap) out <- paste0(out, glue('<span class="palette-module-more">+{n - cap} more</span>'))
+  out
+}
+
+gallery <- ocean |>
+  arrange(palette, position) |>
+  group_by(palette, display_name, description) |>
+  summarise(
+    n_colors = n(),
+    swatches = swatch_html(hex),
+    .groups = "drop"
+  ) |>
+  arrange(display_name)
+
+cat(
+  '<div class="palette-gallery">',
+  glue_data(
+    gallery,
+    '<div class="palette-module">
+  <h4>{display_name} <span class="palette-module-count">{n_colors} colors</span></h4>
+  <p class="palette-module-desc">{description}</p>
+  <div class="palette-module-swatches">{swatches}</div>
+</div>'
+  ),
+  '</div>',
+  sep = "\n"
+)
+```
+
+## How to use it
+
+1. **Pick a palette** from the dropdown below.
+2. **Copy your choice** — R vector (ready for `scale_fill_manual()`) or plain hex list.
+3. **Paste into your code** and scale your figures.
+
+## Try it
+
+```{ojs}
+//| echo: false
+oceanData = FileAttachment("../data/oceanography-colors.csv").csv({typed: true})
+oceanPaletteMeta = Array.from(
+  d3.rollup(oceanData, v => v[0].display_name, d => d.palette),
+  ([palette, display_name]) => ({palette, display_name})
+).sort((a, b) => a.display_name.localeCompare(b.display_name))
+oceanOptions = new Map(oceanPaletteMeta.map(d => [d.display_name, d.palette]))
+```
+
+```{ojs}
+//| echo: false
+viewof oceanChoiceLabel = Inputs.select(Array.from(oceanOptions.keys()), {label: "Palette", value: "ROV Jason"})
+oceanChoice = oceanOptions.get(oceanChoiceLabel)
+```
+
+```{ojs}
+//| echo: false
+oceanFiltered = oceanData.filter(d => d.palette === oceanChoice).sort((a, b) => a.position - b.position)
+oceanHexList = oceanFiltered.map(d => d.hex).join("\n")
+oceanHexVector = 'c(' + oceanFiltered.map(d => `"${d.hex}"`).join(', ') + ')'
+```
+
+```{ojs}
+//| echo: false
+function oceanTextColor(hex) {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return lum > 0.6 ? "#241C1C" : "#FFFFFF";
+}
+
+html`<p style="color:#555;margin-bottom:.5rem;">${oceanFiltered.length ? oceanFiltered[0].description : ""}</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;">
+  ${oceanFiltered.map(d => html`<div class="color-chip" style="background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${oceanTextColor(d.hex)}">
+    <div style="font-weight:600;">${d.hex}</div>
+  </div>`)}
+</div>`
+```
+
+```{ojs}
+//| echo: false
+oceanVectorCopyBtn = {
+  const label = () => `Copy R vector (${oceanFiltered.length})`;
+  const btn = html`<button class="swatch-copy-btn">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(oceanHexVector).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+oceanListCopyBtn = {
+  const label = () => `Copy hex list (${oceanFiltered.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(oceanHexList).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.5rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">1. Ready for <code>scale_fill_manual()</code></p>
+  ${oceanVectorCopyBtn}
+  <pre class="hex-list-block"><span class="hl-fu">c</span>(${oceanFiltered.map((d, i) => html`<span class="hl-st">"${d.hex}"</span>${i < oceanFiltered.length - 1 ? ", " : ""}`)})</pre>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">2. Or just the hex codes</p>
+  ${oceanListCopyBtn}
+  <pre class="hex-list-block">${oceanHexList}</pre>
+</div>`
+```
+
+## Using a palette back in R
+
+```{r}
+#| eval: false
+my_pal <- c("#044f9a", "#fec44f", "#5d86c3", "#fc4e2a", "#b6c8db", "#2a394f")
+
+ggplot(mpg, aes(class, fill = class)) +
+  geom_bar() +
+  scale_fill_manual(values = my_pal)
+```
+
+## Sources
+
+Research vessel color assignments are drawn from their respective operational identities and institutional branding. Nautical flag colors follow traditional maritime convention.

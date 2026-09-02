@@ -1,0 +1,232 @@
+---
+title: "Wada"
+subtitle: "2-, 3-, and 4-color combinations from Sanzo Wada's Dictionary of Color Combinations"
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the R"
+execute:
+  echo: true
+---
+
+Sanzo Wada was a Japanese textile and costume designer whose 1933 reference book, *A Dictionary of Color Combinations* (配色総鑑), catalogued 348 named colors alongside hundreds of pre-tested pairings meant to be visually harmonious together -- closer to a curated palette-pairing tool than a raw color list. Each base color in this mode's data is matched to one, two, or three other colors Wada specifically paired with it, giving combos of 2, 3, or 4 total colors.
+
+Palette Jack's Wada mode lets you pick a combo size, randomize to one of Wada's own matched sets, and copy it straight into `scale_fill_manual()`.
+
+
+
+
+
+
+:::: {layout="[1,1,1,1]"}
+![](../images/image1.jpg)
+
+![](../images/image2.jpg)
+
+![](../images/image3.jpg)
+
+![](../images/image4.jpg)
+::::
+
+## The combinations
+
+```{r}
+#| label: load-wada
+#| message: false
+#| results: asis
+library(tidyverse)
+library(glue)
+
+wada <- read_csv("../data/sanzo_wada_colors_long.csv")
+
+swatch_html <- function(hex, name, cap = 8) {
+  n <- length(hex)
+  hex <- head(hex, cap)
+  name <- head(name, cap)
+  spans <- glue('<span class="mini-swatch" style="background:{hex}" title="{name}"></span>')
+  out <- paste(spans, collapse = "")
+  if (n > cap) out <- paste0(out, glue('<span class="palette-module-more">+{n - cap} more</span>'))
+  out
+}
+
+# a base color's combo size is itself + however many colors Wada matched to
+# it (one row per match) -- see R/prep-wada.R for the same logic documented
+# and validated outside the render path
+wada_bases <- wada |>
+  group_by(color_name) |>
+  summarise(color_hex = first(color_hex), n_matches = n(), .groups = "drop") |>
+  mutate(combo_size = n_matches + 1)
+
+gallery <- wada_bases |>
+  filter(combo_size %in% 2:4) |>
+  group_by(combo_size) |>
+  summarise(
+    n_combos = n(),
+    examples = paste(head(color_name, 4), collapse = ", "),
+    swatches = swatch_html(color_hex, color_name),
+    .groups = "drop"
+  ) |>
+  arrange(combo_size) |>
+  mutate(label = glue("{combo_size}-color combo"))
+
+cat(
+  '<div class="palette-gallery">',
+  glue_data(
+    gallery,
+    '<div class="palette-module">
+  <h4>{label} <span class="palette-module-count">{n_combos} combos</span></h4>
+  <p class="palette-module-desc">e.g. {examples}</p>
+  <div class="palette-module-swatches">{swatches}</div>
+</div>'
+  ),
+  '</div>',
+  sep = "\n"
+)
+```
+
+## How to use it
+
+1. Pick a **combo size** -- 2, 3, or 4 colors.
+2. Click **Randomize** to pull one of Wada's own matched combinations at that size.
+3. Copy the R vector -- or the plain hex list -- straight into your plot.
+
+## Try it
+
+```{ojs}
+//| echo: false
+data = FileAttachment("../data/sanzo_wada_colors_long.csv").csv({typed: true})
+```
+
+```{ojs}
+//| echo: false
+// one entry per base color_name, its own hex, and its matched colors
+// sorted back into Wada's original order (combo_index is internal only --
+// never shown in the UI)
+grouped = Array.from(
+  d3.rollup(
+    data,
+    v => v.slice().sort((a, b) => a.combo_index - b.combo_index),
+    d => d.color_name
+  ),
+  ([color_name, matches]) => ({
+    color_name,
+    color_hex: matches[0].color_hex,
+    combo_size: matches.length + 1,
+    matches
+  })
+)
+```
+
+```{ojs}
+//| echo: false
+sizeOptions = ["2-color combo", "3-color combo", "4-color combo"]
+sizeMap = new Map([["2-color combo", 2], ["3-color combo", 3], ["4-color combo", 4]])
+viewof sizeLabel = Inputs.select(sizeOptions, {label: "Combo size", value: "2-color combo"})
+comboSize = sizeMap.get(sizeLabel)
+```
+
+```{ojs}
+//| echo: false
+// base colors with no matches at this size are simply absent here
+eligible = grouped.filter(d => d.combo_size === comboSize)
+```
+
+```{ojs}
+//| echo: false
+viewof shuffleSeed = Inputs.button("Randomize", {value: 0, reduce: v => v + 1})
+```
+
+```{ojs}
+//| echo: false
+selected = {
+  shuffleSeed; comboSize;
+  return d3.shuffle(eligible.slice())[0];
+}
+```
+
+```{ojs}
+//| echo: false
+combo = selected
+  ? [
+      {hex: selected.color_hex, name: selected.color_name},
+      ...selected.matches.map(m => ({hex: m.combo_hex, name: m.combo_name}))
+    ]
+  : []
+hexList = combo.map(d => d.hex).join("\n")
+hexVector = 'c(' + combo.map(d => `"${d.hex}"`).join(', ') + ')'
+hexSingleQuote = combo.map(d => `'${d.hex}'`).join(', ')
+```
+
+```{ojs}
+//| echo: false
+function textColor(hex) {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return lum > 0.6 ? "#241C1C" : "#FFFFFF";
+}
+
+html`<p style="color:#555;margin-bottom:.5rem;">Based on Wada's <strong>${selected ? selected.color_name : ""}</strong></p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;">
+  ${combo.map(d => html`<div class="color-chip" style="background:${d.hex};padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${textColor(d.hex)}">
+    <div style="font-weight:600;">${d.hex}</div>
+    <div style="font-size:.82rem;">${d.name}</div>
+  </div>`)}
+</div>`
+```
+
+```{ojs}
+//| echo: false
+vectorCopyBtn = {
+  const label = () => `Copy R vector (${combo.length})`;
+  const btn = html`<button class="swatch-copy-btn">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexVector).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+listCopyBtn = {
+  const label = () => `Copy hex list (${combo.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(hexList).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.5rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">1. Ready for <code>scale_fill_manual()</code></p>
+  ${vectorCopyBtn}
+  <pre class="hex-list-block"><span class="hl-fu">c</span>(${combo.map((d, i) => html`<span class="hl-st">"${d.hex}"</span>${i < combo.length - 1 ? ", " : ""}`)})</pre>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">2. Or just the hex codes</p>
+  ${listCopyBtn}
+  <pre class="hex-list-block">${hexList}</pre>
+</div>`
+```
+
+## Source
+
+::: {.citation}
+Wada, S. (1933). *Haishoku Sōkan* [配色総鑑 / *A Dictionary of Color Combinations*]. Kyoto: Kōrinsha. Reissued: Wada, S. (2019). *A Dictionary of Color Combinations*. Seigensha Art Publishing. ISBN 978-4-86152-568-1.
+:::

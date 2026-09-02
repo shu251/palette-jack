@@ -1,40 +1,46 @@
 project:
   type: website
   output-dir: docs
-
 website:
-  title: "Palette Jack"
-  description: "Copy-able hex color palettes for R."
-  site-url: "https://shu251.github.io/palette-jack"
+  title: Palette Jack
+  description: Copy-able hex color palettes for R.
+  site-url: https://shu251.github.io/palette-jack
   navbar:
     background: light
     left:
-      - href: index.qmd
-        text: Home
-      - href: werner/index.qmd
-        text: Werner
-      - href: wada/index.qmd
-        text: Wada
-      - href: woods-hole/index.qmd
-        text: "Woods Hole"
-      - href: oceanography/index.qmd
-        text: "Oceanography"
+    - href: index.qmd
+      text: Home
+    - href: werner/index.qmd
+      text: Werner
+    - href: wada/index.qmd
+      text: Wada
+    - href: woods-hole/index.qmd
+      text: Woods Hole
+    - href: aggieland/index.qmd
+      text: Aggieland
+    - href: imperial-pale-ale/index.qmd
+      text: Imperial Pale Ale
+    - href: kids/index.qmd
+      text: Kids
+    - href: oceanography/index.qmd
+      text: Oceanography
     tools:
-      - icon: github
-        href: https://github.com/shu251/palette-jack
-        aria-label: GitHub
+    - icon: github
+      href: https://github.com/shu251/palette-jack
+      aria-label: GitHub
   page-footer:
-    center: "Built with Quarto & observable JS. Hu, Sarah."
-
+    center: Built with Quarto & observable JS. Hu, Sarah.
 format:
   html:
-    theme: [cosmo, brand, styles.scss]
+    theme:
+    - cosmo
+    - brand
+    - styles.scss
     toc: false
     fontsize: 1.05rem
     linestretch: 1.6
     grid:
       body-width: 900px
-
 execute:
   echo: false
   warning: false

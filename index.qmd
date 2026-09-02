@@ -1,25 +1,34 @@
 ---
 title: "Palette Jack"
 page-layout: full
+format:
+  html:
+    code-fold: true
+editor: source
 ---
 
 ::: {style="max-width:700px;margin:3rem 0 1rem;"}
+
+:::: {layout="[1,1,1,1]"}
+![](images/eel-pond-winter.jpg)
+
+![](images/west-fal-sunset.jpg)
+
+![](images/nautical-flags.jpeg)
+
+![](images/sunset_ptSur.jpeg)
+::::
+
+
 # Copy-able color palettes, built for R.
 :::
 
 ::: {style="max-width:640px;color:#555;font-size:1.15rem;margin-bottom:2rem;"}
-Pick a module, pick a few options, and walk away with a hex list ready to paste into `scale_fill_manual()`. Let *Palette Jack* do the heavy lifting.
+Pick a module, pick a few options, and walk away with a hex list ready to paste into `scale_fill_manual()`.
+
+Let *Palette Jack* do the heavy lifting.
 :::
 
-```{=html}
-<!-- IMAGE PLACEHOLDER: hero image, ~1600x600px, wide/landscape crop.
-     A Woods Hole / fieldwork / ocean-color shot would suit the site best --
-     send a file or path and I'll drop it in above the fold. -->
-```
-
-::: {style="border:1px dashed rgba(0,0,0,.2); border-radius:.5rem; padding:2.5rem; text-align:center; color:#999; margin-bottom:2.5rem;"}
-Hero image goes here (\~1600×600) -- send a photo and I'll place it.
-:::
 
 ```{r}
 #| label: mode-preview-swatches
@@ -111,3 +120,8 @@ Research vessel and oceanographic survey palettes — Jason, Atlantis, Alvin, an
 `r ocean_preview`
 :::
 :::::::
+
+
+
+##### Image contributors
+Sarah Hu, Markie Hu, Julie Huber, Gretta Serres

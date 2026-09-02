@@ -3,8 +3,8 @@ title: "Woods Hole"
 subtitle: "Cape Cod and WHOI-inspired palettes"
 format:
   html:
-    code-fold: show
-    code-summary: "Show the R"
+    code-fold: true
+    code-summary: "Show the code"
 execute:
   echo: true
 ---
@@ -17,6 +17,17 @@ remotes::install_github("shu251/PaletteWoodsHole")
 library(PaletteWoodsHole)
 show_color(atlantis)   # scales::show_col() grid, as used in this package
 ```
+
+
+:::: {layout="[1,1,1,1]"}
+![](../images/dock.png)
+
+![](../images/marsh.png)
+
+![](../images/shiningsea.jpg)
+
+![](../images/sunset-winter.jpg)
+::::
 
 ## The palettes
 
@@ -86,6 +97,7 @@ whChoice = whOptions.get(whChoiceLabel)
 whFiltered = whData.filter(d => d.palette === whChoice).sort((a, b) => a.position - b.position)
 whHexList = whFiltered.map(d => d.hex).join("\n")
 whHexVector = 'c(' + whFiltered.map(d => `"${d.hex}"`).join(', ') + ')'
+whHexSingleQuote = whFiltered.map(d => `'${d.hex}'`).join(', ')
 ```
 
 ```{ojs}
@@ -169,6 +181,18 @@ ggplot(mpg, aes(class, fill = class)) +
   geom_bar() +
   scale_fill_manual(values = my_pal)
 ```
+
+
+:::: {layout="[1,1,1]"}
+![](../images/eel-pond-winter.jpg)
+
+![](../images/cranberrybog.jpg)
+
+![](../images/west-fal-sunset.jpg)
+
+::::
+
+
 
 ## Source
 

@@ -77,9 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-69306c8be9eb19739279d537f347a53c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1244e1c6a56ec17735eb049694cbd11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-ee662bf815024086afd9a93fdc44ed19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-c1244e1c6a56ec17735eb049694cbd11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-24cbf0ab766810cb29ad3627e87f3684.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ca1b20e5eb2f3aab6a98e345f7cdc5a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-24cbf0ab766810cb29ad3627e87f3684.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,6 +147,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Woods Hole</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../aggieland/index.html"> 
+<span class="menu-text">Aggieland</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../imperial-pale-ale/index.html"> 
+<span class="menu-text">Imperial Pale Ale</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../kids/index.html"> 
+<span class="menu-text">Kids</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../oceanography/index.html"> 
 <span class="menu-text">Oceanography</span></a>
   </li>  
@@ -188,90 +200,194 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Abraham Gottlob Werner was a German geologist who, in the late 1700s, developed a standardized color-naming system so mineralogists could describe rock and mineral color consistently. In 1814 (2nd ed.&nbsp;1821), Scottish flower painter Patrick Syme illustrated and expanded Werner’s system into <strong>110 named colors, organized into 10 classifications</strong> (White, Grey, Black, Blue, Purple, Green, Yellow, Orange, Red, Brown) – each cross-referenced against an animal, a plant, and a mineral where that color occurs in nature. Charles Darwin carried a copy on the <em>Beagle</em> to describe organisms and landscapes with a shared, precise color vocabulary.</p>
 <p>Palette Jack’s Werner mode lets you filter by classification and pull a randomized set of these historical colors as a ready-to-paste hex list – useful for quick categorical palettes, or just for the pleasure of finding out your data happens to be “Arterial Blood Red” or “Skimmed-milk White.”</p>
-<section id="the-data" class="level2">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
-<div class="cell">
+<div class="quarto-layout-panel" data-layout="[1,1,1,1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../images/image1.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../images/image2.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../images/image3.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="../images/image4.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<section id="the-classifications" class="level2">
+<h2 class="anchored" data-anchor-id="the-classifications">The classifications</h2>
 <details open="" class="code-fold">
 <summary>Show the R</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>werner <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/werner-colors.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>werner <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(group, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Classification"</span>, <span class="st">"n colors"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>werner <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/werner-colors.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>swatch_html <span class="ot">&lt;-</span> <span class="cf">function</span>(hex, name, <span class="at">cap =</span> <span class="dv">8</span>) {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(hex)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  hex <span class="ot">&lt;-</span> <span class="fu">head</span>(hex, cap)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> <span class="fu">head</span>(name, cap)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  spans <span class="ot">&lt;-</span> <span class="fu">glue</span>(<span class="st">'&lt;span class="mini-swatch" style="background:{hex}" title="{name}"&gt;&lt;/span&gt;'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">paste</span>(spans, <span class="at">collapse =</span> <span class="st">""</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&gt;</span> cap) out <span class="ot">&lt;-</span> <span class="fu">paste0</span>(out, <span class="fu">glue</span>(<span class="st">'&lt;span class="palette-module-more"&gt;+{n - cap} more&lt;/span&gt;'</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>gallery <span class="ot">&lt;-</span> werner <span class="sc">|&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_colors =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">examples =</span> <span class="fu">paste</span>(<span class="fu">head</span>(name, <span class="dv">4</span>), <span class="at">collapse =</span> <span class="st">", "</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">swatches =</span> <span class="fu">swatch_html</span>(hex, name),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(group)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">'&lt;div class="palette-gallery"&gt;'</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glue_data</span>(</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    gallery,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'&lt;div class="palette-module"&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;h4&gt;{group} &lt;span class="palette-module-count"&gt;{n_colors} colors&lt;/span&gt;&lt;/h4&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;p class="palette-module-desc"&gt;e.g. {examples}&lt;/p&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;div class="palette-module-swatches"&gt;{swatches}&lt;/div&gt;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/div&gt;'</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">'&lt;/div&gt;'</span>,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Classification</th>
-<th style="text-align: right;">n colors</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Red</td>
-<td style="text-align: right;">18</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Green</td>
-<td style="text-align: right;">16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Yellow</td>
-<td style="text-align: right;">14</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Blue</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Brown</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Purple</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Grey</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Black</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Orange</td>
-<td style="text-align: right;">6</td>
-</tr>
-</tbody>
-</table>
+<div class="palette-gallery">
+<div class="palette-module">
+<h4 class="anchored">
+Black <span class="palette-module-count">7 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Greyish Black, Bluish Black, Greenish Black, Pitch or Brownish Black
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#555152" title="Greyish Black"></span><span class="mini-swatch" style="background:#413f44" title="Bluish Black"></span><span class="mini-swatch" style="background:#454445" title="Greenish Black"></span><span class="mini-swatch" style="background:#423937" title="Pitch or Brownish Black"></span><span class="mini-swatch" style="background:#433635" title="Reddish Black"></span><span class="mini-swatch" style="background:#252024" title="Ink Black"></span><span class="mini-swatch" style="background:#241f20" title="Velvet Black"></span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Blue <span class="palette-module-count">11 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Scotch Blue, Prussian Blue, Indigo Blue, China Blue
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#281f3f" title="Scotch Blue"></span><span class="mini-swatch" style="background:#1c1949" title="Prussian Blue"></span><span class="mini-swatch" style="background:#4f638d" title="Indigo Blue"></span><span class="mini-swatch" style="background:#383867" title="China Blue"></span><span class="mini-swatch" style="background:#5c6b8f" title="Azure Blue"></span><span class="mini-swatch" style="background:#657abb" title="Ultramarine Blue"></span><span class="mini-swatch" style="background:#6f88af" title="Flax-Flower Blue"></span><span class="mini-swatch" style="background:#7994b5" title="Berlin Blue"></span><span class="palette-module-more">+3 more</span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Brown <span class="palette-module-count">11 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Deep Orange-coloured Brown, Deep Reddish Brown, Umber Brown, Chestnut Brown
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#864735" title="Deep Orange-coloured Brown"></span><span class="mini-swatch" style="background:#553d3a" title="Deep Reddish Brown"></span><span class="mini-swatch" style="background:#613936" title="Umber Brown"></span><span class="mini-swatch" style="background:#7a4b3a" title="Chestnut Brown"></span><span class="mini-swatch" style="background:#946943" title="Yellowish Brown"></span><span class="mini-swatch" style="background:#c39e6d" title="Wood Brown"></span><span class="mini-swatch" style="background:#513e32" title="Liver Brown"></span><span class="mini-swatch" style="background:#8b7859" title="Hair Brown"></span><span class="palette-module-more">+3 more</span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Green <span class="palette-module-count">16 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Celadine Green, Mountain Green, Leek Green, Blackish Green
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#b8bfaf" title="Celadine Green"></span><span class="mini-swatch" style="background:#b2b599" title="Mountain Green"></span><span class="mini-swatch" style="background:#979c84" title="Leek Green"></span><span class="mini-swatch" style="background:#5d6161" title="Blackish Green"></span><span class="mini-swatch" style="background:#61ac86" title="Verdigris Green"></span><span class="mini-swatch" style="background:#a4b6a7" title="Bluish Green"></span><span class="mini-swatch" style="background:#adba98" title="Apple Green"></span><span class="mini-swatch" style="background:#93b778" title="Emerald Green"></span><span class="palette-module-more">+8 more</span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Grey <span class="palette-module-count">8 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Ash Grey, Smoke Grey, French Grey, Pearl Grey
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#cbc8b7" title="Ash Grey"></span><span class="mini-swatch" style="background:#bfbbb0" title="Smoke Grey"></span><span class="mini-swatch" style="background:#bebeb3" title="French Grey"></span><span class="mini-swatch" style="background:#b7b5ac" title="Pearl Grey"></span><span class="mini-swatch" style="background:#bab191" title="Yellowish Grey"></span><span class="mini-swatch" style="background:#9c9d9a" title="Bluish Grey"></span><span class="mini-swatch" style="background:#8a8d84" title="Greenish Grey"></span><span class="mini-swatch" style="background:#5b5c61" title="Blackish Grey"></span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Orange <span class="palette-module-count">6 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Dutch Orange, Buff Orange, Orpiment Orange, Brownish Orange
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#dfa837" title="Dutch Orange"></span><span class="mini-swatch" style="background:#ebbc71" title="Buff Orange"></span><span class="mini-swatch" style="background:#d17c3f" title="Orpiment Orange"></span><span class="mini-swatch" style="background:#92462f" title="Brownish Orange"></span><span class="mini-swatch" style="background:#be7249" title="Reddish Orange"></span><span class="mini-swatch" style="background:#bb603c" title="Deep Reddish Orange"></span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Purple <span class="palette-module-count">11 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Bluish Lilac Purple, Bluish Purple, Violet Purple, Pansy Purple
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#d0d5d3" title="Bluish Lilac Purple"></span><span class="mini-swatch" style="background:#8590ae" title="Bluish Purple"></span><span class="mini-swatch" style="background:#3a2f52" title="Violet Purple"></span><span class="mini-swatch" style="background:#39334a" title="Pansy Purple"></span><span class="mini-swatch" style="background:#6c6d94" title="Campanula Purple"></span><span class="mini-swatch" style="background:#584c77" title="Imperial Purple"></span><span class="mini-swatch" style="background:#533552" title="Auricula Purple"></span><span class="mini-swatch" style="background:#463759" title="Plum Purple"></span><span class="palette-module-more">+3 more</span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Red <span class="palette-module-count">18 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Tile Red, Hyacinth Red, Scarlet Red, Vermilion Red
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#c76b4a" title="Tile Red"></span><span class="mini-swatch" style="background:#a75536" title="Hyacinth Red"></span><span class="mini-swatch" style="background:#b63e36" title="Scarlet Red"></span><span class="mini-swatch" style="background:#b5493a" title="Vermilion Red"></span><span class="mini-swatch" style="background:#cd6d57" title="Aurora Red"></span><span class="mini-swatch" style="background:#711518" title="Arterial Blood Red"></span><span class="mini-swatch" style="background:#e9c49d" title="Flesh Red"></span><span class="mini-swatch" style="background:#eedac3" title="Rose Red"></span><span class="palette-module-more">+10 more</span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+White <span class="palette-module-count">8 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Snow White, Reddish White, Purplish White, Yellowish White
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#f1e9cd" title="Snow White"></span><span class="mini-swatch" style="background:#f2e7cf" title="Reddish White"></span><span class="mini-swatch" style="background:#ece6d0" title="Purplish White"></span><span class="mini-swatch" style="background:#f2eacc" title="Yellowish White"></span><span class="mini-swatch" style="background:#f3e9ca" title="Orange coloured White"></span><span class="mini-swatch" style="background:#f2ebcd" title="Greenish White"></span><span class="mini-swatch" style="background:#e6e1c9" title="Skimmed milk White"></span><span class="mini-swatch" style="background:#e2ddc6" title="Greyish White"></span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+Yellow <span class="palette-module-count">14 colors</span>
+</h4>
+<p class="palette-module-desc">
+e.g.&nbsp;Sulphur Yellow, Primrose Yellow, Wax Yellow, Lemon Yellow
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#ccc050" title="Sulphur Yellow"></span><span class="mini-swatch" style="background:#ebdd99" title="Primrose Yellow"></span><span class="mini-swatch" style="background:#ab9649" title="Wax Yellow"></span><span class="mini-swatch" style="background:#dbc364" title="Lemon Yellow"></span><span class="mini-swatch" style="background:#e6d058" title="Gamboge Yellow"></span><span class="mini-swatch" style="background:#ead665" title="Kings Yellow"></span><span class="mini-swatch" style="background:#d09b2c" title="Saffron Yellow"></span><span class="mini-swatch" style="background:#a36629" title="Gallstone Yellow"></span><span class="palette-module-more">+6 more</span>
+</div>
 </div>
 </div>
 </section>
-<section id="how-many-colors-should-you-randomize" class="level2">
-<h2 class="anchored" data-anchor-id="how-many-colors-should-you-randomize">How many colors should you randomize?</h2>
-<p>There’s no universal “right” number, but two lines of vision-science research give a useful working range:</p>
-<ul>
-<li><strong>Below ~4</strong>, people reliably hold and recall a set of colors in visual working memory – the classic estimate from change-detection tasks (Luck &amp; Vogel, 1997; Ngiam et al., 2023).</li>
-<li><strong>Beyond roughly 8-10</strong>, categorical color palettes get measurably harder to read accurately, and common design tools (e.g.&nbsp;ColorBrewer’s qualitative sets) cap out around 12 (Healey, 1996; Tseng et al., 2023).</li>
-</ul>
-<p>So the randomizer below defaults to 5 colors and caps at 12 – past that point you’re better served by a sequential or continuous scale than a hand-picked categorical one.</p>
+<section id="how-to-use-it" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-it">How to use it</h2>
+<ol type="1">
+<li>Pick a <strong>classification</strong> below (or leave it on “All classifications”).</li>
+<li>Drag the <strong>slider</strong> to choose how many colors you want – it caps at 12, since legibility drops off past that point (see citations below).</li>
+<li>Click <strong>Randomize</strong>, then copy the R vector – or the plain hex list – straight into your plot.</li>
+</ol>
 </section>
 <section id="try-it" class="level2">
 <h2 class="anchored" data-anchor-id="try-it">Try it</h2>
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="72" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 71;"><span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../data/werner-colors.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>groupNames <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(<span class="kw">new</span> <span class="bu">Set</span>(data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">group</span>)))<span class="op">.</span><span class="fu">sort</span>()</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>groupOptions <span class="op">=</span> [<span class="st">"All classifications"</span><span class="op">,</span> <span class="op">...</span>groupNames]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="87" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 86;"><span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../data/werner-colors.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>groupNames <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(<span class="kw">new</span> <span class="bu">Set</span>(data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">group</span>)))<span class="op">.</span><span class="fu">sort</span>()</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>groupOptions <span class="op">=</span> [<span class="st">"All classifications"</span><span class="op">,</span> <span class="op">...</span>groupNames]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -298,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="78" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 77;"><span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>viewof groupChoice <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(groupOptions<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Classification"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All classifications"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="93" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>viewof groupChoice <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(groupOptions<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Classification"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"All classifications"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
@@ -309,8 +425,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="84" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> groupChoice <span class="op">===</span> <span class="st">"All classifications"</span> <span class="op">?</span> data <span class="op">:</span> data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">group</span> <span class="op">===</span> groupChoice)</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>maxN <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">12</span><span class="op">,</span> filtered<span class="op">.</span><span class="at">length</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="99" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 98;"><span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> groupChoice <span class="op">===</span> <span class="st">"All classifications"</span> <span class="op">?</span> data <span class="op">:</span> data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">group</span> <span class="op">===</span> groupChoice)</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>maxN <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">12</span><span class="op">,</span> filtered<span class="op">.</span><span class="at">length</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -330,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="89" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 88;"><span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> maxN]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Number of colors"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">5</span><span class="op">,</span> maxN)})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="104" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 103;"><span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> maxN]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Number of colors"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">5</span><span class="op">,</span> maxN)})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
@@ -341,7 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="94" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 93;"><span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>viewof shuffleSeed <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Randomize"</span><span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> v <span class="kw">=&gt;</span> v <span class="op">+</span> <span class="dv">1</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="109" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 108;"><span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>viewof shuffleSeed <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Randomize"</span><span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> v <span class="kw">=&gt;</span> v <span class="op">+</span> <span class="dv">1</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
@@ -352,11 +468,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="100" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> {</span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>  shuffleSeed<span class="op">;</span></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> d3<span class="op">.</span><span class="fu">shuffle</span>(filtered<span class="op">.</span><span class="fu">slice</span>())<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> n)<span class="op">;</span></span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>hexList <span class="op">=</span> sample<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">hex</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="115" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 114;"><span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> {</span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>  shuffleSeed<span class="op">;</span></span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> d3<span class="op">.</span><span class="fu">shuffle</span>(filtered<span class="op">.</span><span class="fu">slice</span>())<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> n)<span class="op">;</span></span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>hexList <span class="op">=</span> sample<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">hex</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>hexVector <span class="op">=</span> <span class="st">'c('</span> <span class="op">+</span> sample<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>) <span class="op">+</span> <span class="st">')'</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>hexSingleQuote <span class="op">=</span> sample<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`'</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">'`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -372,25 +490,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </div>
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="110" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 109;"><span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">textColor</span>(hex) {</span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> c <span class="op">=</span> hex<span class="op">.</span><span class="fu">replace</span>(<span class="st">"#"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> b <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lum <span class="op">=</span> (<span class="fl">0.299</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> g <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> b) <span class="op">/</span> <span class="dv">255</span><span class="op">;</span></span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lum <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="op">?</span> <span class="st">"#241C1C"</span> <span class="op">:</span> <span class="st">"#FFFFFF"</span><span class="op">;</span></span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:1.5rem 0;"&gt;</span></span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>sample<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;div class="color-chip" style="background:</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">;padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:</span><span class="sc">${</span><span class="fu">textColor</span>(d<span class="op">.</span><span class="at">hex</span>)<span class="sc">}</span><span class="vs">"&gt;</span></span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-family:'Source Code Pro',monospace;font-weight:600;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-size:.82rem;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span>)<span class="sc">}</span></span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="126" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">textColor</span>(hex) {</span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> c <span class="op">=</span> hex<span class="op">.</span><span class="fu">replace</span>(<span class="st">"#"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> b <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lum <span class="op">=</span> (<span class="fl">0.299</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> g <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> b) <span class="op">/</span> <span class="dv">255</span><span class="op">;</span></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lum <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="op">?</span> <span class="st">"#241C1C"</span> <span class="op">:</span> <span class="st">"#FFFFFF"</span><span class="op">;</span></span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:1.5rem 0;"&gt;</span></span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>sample<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;div class="color-chip" style="background:</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">;padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:</span><span class="sc">${</span><span class="fu">textColor</span>(d<span class="op">.</span><span class="at">hex</span>)<span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-weight:600;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-size:.82rem;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -410,17 +542,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="128" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>copyBtn <span class="op">=</span> {</span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy </span><span class="sc">${</span>sample<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs"> hex code</span><span class="sc">${</span>sample<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">""</span> <span class="op">:</span> <span class="st">"s"</span><span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(hexList)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
-<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="144" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 143;"><span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>vectorCopyBtn <span class="op">=</span> {</span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy R vector (</span><span class="sc">${</span>sample<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(hexVector)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="declaration">
@@ -431,10 +563,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="143" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 142;"><span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>hexList<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="159" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 158;"><span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>listCopyBtn <span class="op">=</span> {</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy hex list (</span><span class="sc">${</span>sample<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(hexList)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-9" data-nodetype="expression">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the R</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="174" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 173;"><span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.5rem;"&gt;</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>vectorCopyBtn<span class="sc">}</span></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;&lt;span class="hl-fu"&gt;c&lt;/span&gt;(</span><span class="sc">${</span>sample<span class="op">.</span><span class="fu">map</span>((d<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;span class="hl-st"&gt;"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"&lt;/span&gt;</span><span class="sc">${</span>i <span class="op">&lt;</span> sample<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">", "</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">)&lt;/pre&gt;</span></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the R</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="183" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 182;"><span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a>singleQuoteCopyBtn <span class="op">=</span> {</span>
+<span id="cb12-184"><a href="#cb12-184" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy quoted hex (</span><span class="sc">${</span>sample<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb12-185"><a href="#cb12-185" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb12-186"><a href="#cb12-186" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb12-187"><a href="#cb12-187" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(hexSingleQuote)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb12-192"><a href="#cb12-192" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb12-193"><a href="#cb12-193" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the R</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="198" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;2. Or just the hex codes&lt;/p&gt;</span></span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>listCopyBtn<span class="sc">}</span></span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>hexList<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the R</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb14" data-startfrom="207" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 206;"><span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;3. Or as quoted strings&lt;/p&gt;</span></span>
+<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>singleQuoteCopyBtn<span class="sc">}</span></span>
+<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>hexSingleQuote<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
+<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-13" data-nodetype="expression">
 
 </div>
 </div>
@@ -463,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRhdGEgPSBGaWxlQXR0YWNobWVudChcIi4uL2RhdGEvd2VybmVyLWNvbG9ycy5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pXG5ncm91cE5hbWVzID0gQXJyYXkuZnJvbShuZXcgU2V0KGRhdGEubWFwKGQgPT4gZC5ncm91cCkpKS5zb3J0KClcbmdyb3VwT3B0aW9ucyA9IFtcIkFsbCBjbGFzc2lmaWNhdGlvbnNcIiwgLi4uZ3JvdXBOYW1lc11cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBncm91cENob2ljZSA9IElucHV0cy5zZWxlY3QoZ3JvdXBPcHRpb25zLCB7bGFiZWw6IFwiQ2xhc3NpZmljYXRpb25cIiwgdmFsdWU6IFwiQWxsIGNsYXNzaWZpY2F0aW9uc1wifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpbHRlcmVkID0gZ3JvdXBDaG9pY2UgPT09IFwiQWxsIGNsYXNzaWZpY2F0aW9uc1wiID8gZGF0YSA6IGRhdGEuZmlsdGVyKGQgPT4gZC5ncm91cCA9PT0gZ3JvdXBDaG9pY2UpXG5tYXhOID0gTWF0aC5taW4oMTIsIGZpbHRlcmVkLmxlbmd0aClcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuID0gSW5wdXRzLnJhbmdlKFsxLCBtYXhOXSwge2xhYmVsOiBcIk51bWJlciBvZiBjb2xvcnNcIiwgc3RlcDogMSwgdmFsdWU6IE1hdGgubWluKDUsIG1heE4pfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzaHVmZmxlU2VlZCA9IElucHV0cy5idXR0b24oXCJSYW5kb21pemVcIiwge3ZhbHVlOiAwLCByZWR1Y2U6IHYgPT4gdiArIDF9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2FtcGxlID0ge1xuICBzaHVmZmxlU2VlZDtcbiAgcmV0dXJuIGQzLnNodWZmbGUoZmlsdGVyZWQuc2xpY2UoKSkuc2xpY2UoMCwgbik7XG59XG5oZXhMaXN0ID0gc2FtcGxlLm1hcChkID0+IGQuaGV4KS5qb2luKFwiXFxuXCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJmdW5jdGlvbiB0ZXh0Q29sb3IoaGV4KSB7XG4gIGNvbnN0IGMgPSBoZXgucmVwbGFjZShcIiNcIiwgXCJcIik7XG4gIGNvbnN0IHIgPSBwYXJzZUludChjLnN1YnN0cmluZygwLCAyKSwgMTYpO1xuICBjb25zdCBnID0gcGFyc2VJbnQoYy5zdWJzdHJpbmcoMiwgNCksIDE2KTtcbiAgY29uc3QgYiA9IHBhcnNlSW50KGMuc3Vic3RyaW5nKDQsIDYpLCAxNik7XG4gIGNvbnN0IGx1bSA9ICgwLjI5OSAqIHIgKyAwLjU4NyAqIGcgKyAwLjExNCAqIGIpIC8gMjU1O1xuICByZXR1cm4gbHVtID4gMC42ID8gXCIjMjQxQzFDXCIgOiBcIiNGRkZGRkZcIjtcbn1cblxuaHRtbGA8ZGl2IHN0eWxlPVwiZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoYXV0by1maWxsLG1pbm1heCgxNTBweCwxZnIpKTtnYXA6MTJweDttYXJnaW46MS41cmVtIDA7XCI+XG4gICR7c2FtcGxlLm1hcChkID0+IGh0bWxgPGRpdiBjbGFzcz1cImNvbG9yLWNoaXBcIiBzdHlsZT1cImJhY2tncm91bmQ6JHtkLmhleH07cGFkZGluZzoxMnB4O21pbi1oZWlnaHQ6OTZweDtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2p1c3RpZnktY29udGVudDpmbGV4LWVuZDtjb2xvcjoke3RleHRDb2xvcihkLmhleCl9XCI+XG4gICAgPGRpdiBzdHlsZT1cImZvbnQtZmFtaWx5OidTb3VyY2UgQ29kZSBQcm8nLG1vbm9zcGFjZTtmb250LXdlaWdodDo2MDA7XCI+JHtkLmhleH08L2Rpdj5cbiAgICA8ZGl2IHN0eWxlPVwiZm9udC1zaXplOi44MnJlbTtcIj4ke2QubmFtZX08L2Rpdj5cbiAgPC9kaXY+YCl9XG48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJjb3B5QnRuID0ge1xuICBjb25zdCBsYWJlbCA9ICgpID0+IGBDb3B5ICR7c2FtcGxlLmxlbmd0aH0gaGV4IGNvZGUke3NhbXBsZS5sZW5ndGggPT09IDEgPyBcIlwiIDogXCJzXCJ9YDtcbiAgY29uc3QgYnRuID0gaHRtbGA8YnV0dG9uIGNsYXNzPVwic3dhdGNoLWNvcHktYnRuXCI+JHtsYWJlbCgpfTwvYnV0dG9uPmA7XG4gIGJ0bi5vbmNsaWNrID0gKCkgPT4ge1xuICAgIG5hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KGhleExpc3QpLnRoZW4oKCkgPT4ge1xuICAgICAgYnRuLnRleHRDb250ZW50ID0gXCJDb3BpZWQhXCI7XG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHsgYnRuLnRleHRDb250ZW50ID0gbGFiZWwoKTsgfSwgMTIwMCk7XG4gICAgfSk7XG4gIH07XG4gIHJldHVybiBidG47XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxwcmUgY2xhc3M9XCJoZXgtbGlzdC1ibG9ja1wiPiR7aGV4TGlzdH08L3ByZT5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2dyb3VwQ2hvaWNlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ24nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc2h1ZmZsZVNlZWQnKSJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRhdGEgPSBGaWxlQXR0YWNobWVudChcIi4uL2RhdGEvd2VybmVyLWNvbG9ycy5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pXG5ncm91cE5hbWVzID0gQXJyYXkuZnJvbShuZXcgU2V0KGRhdGEubWFwKGQgPT4gZC5ncm91cCkpKS5zb3J0KClcbmdyb3VwT3B0aW9ucyA9IFtcIkFsbCBjbGFzc2lmaWNhdGlvbnNcIiwgLi4uZ3JvdXBOYW1lc11cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBncm91cENob2ljZSA9IElucHV0cy5zZWxlY3QoZ3JvdXBPcHRpb25zLCB7bGFiZWw6IFwiQ2xhc3NpZmljYXRpb25cIiwgdmFsdWU6IFwiQWxsIGNsYXNzaWZpY2F0aW9uc1wifSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZpbHRlcmVkID0gZ3JvdXBDaG9pY2UgPT09IFwiQWxsIGNsYXNzaWZpY2F0aW9uc1wiID8gZGF0YSA6IGRhdGEuZmlsdGVyKGQgPT4gZC5ncm91cCA9PT0gZ3JvdXBDaG9pY2UpXG5tYXhOID0gTWF0aC5taW4oMTIsIGZpbHRlcmVkLmxlbmd0aClcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuID0gSW5wdXRzLnJhbmdlKFsxLCBtYXhOXSwge2xhYmVsOiBcIk51bWJlciBvZiBjb2xvcnNcIiwgc3RlcDogMSwgdmFsdWU6IE1hdGgubWluKDUsIG1heE4pfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzaHVmZmxlU2VlZCA9IElucHV0cy5idXR0b24oXCJSYW5kb21pemVcIiwge3ZhbHVlOiAwLCByZWR1Y2U6IHYgPT4gdiArIDF9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2FtcGxlID0ge1xuICBzaHVmZmxlU2VlZDtcbiAgcmV0dXJuIGQzLnNodWZmbGUoZmlsdGVyZWQuc2xpY2UoKSkuc2xpY2UoMCwgbik7XG59XG5oZXhMaXN0ID0gc2FtcGxlLm1hcChkID0+IGQuaGV4KS5qb2luKFwiXFxuXCIpXG5oZXhWZWN0b3IgPSAnYygnICsgc2FtcGxlLm1hcChkID0+IGBcIiR7ZC5oZXh9XCJgKS5qb2luKCcsICcpICsgJyknXG5oZXhTaW5nbGVRdW90ZSA9IHNhbXBsZS5tYXAoZCA9PiBgJyR7ZC5oZXh9J2ApLmpvaW4oJywgJylcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIHRleHRDb2xvcihoZXgpIHtcbiAgY29uc3QgYyA9IGhleC5yZXBsYWNlKFwiI1wiLCBcIlwiKTtcbiAgY29uc3QgciA9IHBhcnNlSW50KGMuc3Vic3RyaW5nKDAsIDIpLCAxNik7XG4gIGNvbnN0IGcgPSBwYXJzZUludChjLnN1YnN0cmluZygyLCA0KSwgMTYpO1xuICBjb25zdCBiID0gcGFyc2VJbnQoYy5zdWJzdHJpbmcoNCwgNiksIDE2KTtcbiAgY29uc3QgbHVtID0gKDAuMjk5ICogciArIDAuNTg3ICogZyArIDAuMTE0ICogYikgLyAyNTU7XG4gIHJldHVybiBsdW0gPiAwLjYgPyBcIiMyNDFDMUNcIiA6IFwiI0ZGRkZGRlwiO1xufVxuXG5odG1sYDxkaXYgc3R5bGU9XCJkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdChhdXRvLWZpbGwsbWlubWF4KDE1MHB4LDFmcikpO2dhcDoxMnB4O21hcmdpbjoxLjVyZW0gMDtcIj5cbiAgJHtzYW1wbGUubWFwKGQgPT4gaHRtbGA8ZGl2IGNsYXNzPVwiY29sb3ItY2hpcFwiIHN0eWxlPVwiYmFja2dyb3VuZDoke2QuaGV4fTtwYWRkaW5nOjEycHg7bWluLWhlaWdodDo5NnB4O2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW47anVzdGlmeS1jb250ZW50OmZsZXgtZW5kO2NvbG9yOiR7dGV4dENvbG9yKGQuaGV4KX1cIj5cbiAgICA8ZGl2IHN0eWxlPVwiZm9udC13ZWlnaHQ6NjAwO1wiPiR7ZC5oZXh9PC9kaXY+XG4gICAgPGRpdiBzdHlsZT1cImZvbnQtc2l6ZTouODJyZW07XCI+JHtkLm5hbWV9PC9kaXY+XG4gIDwvZGl2PmApfVxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmVjdG9yQ29weUJ0biA9IHtcbiAgY29uc3QgbGFiZWwgPSAoKSA9PiBgQ29weSBSIHZlY3RvciAoJHtzYW1wbGUubGVuZ3RofSlgO1xuICBjb25zdCBidG4gPSBodG1sYDxidXR0b24gY2xhc3M9XCJzd2F0Y2gtY29weS1idG5cIj4ke2xhYmVsKCl9PC9idXR0b24+YDtcbiAgYnRuLm9uY2xpY2sgPSAoKSA9PiB7XG4gICAgbmF2aWdhdG9yLmNsaXBib2FyZC53cml0ZVRleHQoaGV4VmVjdG9yKS50aGVuKCgpID0+IHtcbiAgICAgIGJ0bi50ZXh0Q29udGVudCA9IFwiQ29waWVkIVwiO1xuICAgICAgc2V0VGltZW91dCgoKSA9PiB7IGJ0bi50ZXh0Q29udGVudCA9IGxhYmVsKCk7IH0sIDEyMDApO1xuICAgIH0pO1xuICB9O1xuICByZXR1cm4gYnRuO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibGlzdENvcHlCdG4gPSB7XG4gIGNvbnN0IGxhYmVsID0gKCkgPT4gYENvcHkgaGV4IGxpc3QgKCR7c2FtcGxlLmxlbmd0aH0pYDtcbiAgY29uc3QgYnRuID0gaHRtbGA8YnV0dG9uIGNsYXNzPVwic3dhdGNoLWNvcHktYnRuIHN3YXRjaC1jb3B5LWJ0bi0tc2Vjb25kYXJ5XCI+JHtsYWJlbCgpfTwvYnV0dG9uPmA7XG4gIGJ0bi5vbmNsaWNrID0gKCkgPT4ge1xuICAgIG5hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KGhleExpc3QpLnRoZW4oKCkgPT4ge1xuICAgICAgYnRuLnRleHRDb250ZW50ID0gXCJDb3BpZWQhXCI7XG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHsgYnRuLnRleHRDb250ZW50ID0gbGFiZWwoKTsgfSwgMTIwMCk7XG4gICAgfSk7XG4gIH07XG4gIHJldHVybiBidG47XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEwIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxLjVyZW07XCI+XG4gIDxwIHN0eWxlPVwiZm9udC13ZWlnaHQ6NjAwO21hcmdpbi1ib3R0b206LjRyZW07XCI+MS4gUmVhZHkgZm9yIDxjb2RlPnNjYWxlX2ZpbGxfbWFudWFsKCk8L2NvZGU+PC9wPlxuICAke3ZlY3RvckNvcHlCdG59XG4gIDxwcmUgY2xhc3M9XCJoZXgtbGlzdC1ibG9ja1wiPjxzcGFuIGNsYXNzPVwiaGwtZnVcIj5jPC9zcGFuPigke3NhbXBsZS5tYXAoKGQsIGkpID0+IGh0bWxgPHNwYW4gY2xhc3M9XCJobC1zdFwiPlwiJHtkLmhleH1cIjwvc3Bhbj4ke2kgPCBzYW1wbGUubGVuZ3RoIC0gMSA/IFwiLCBcIiA6IFwiXCJ9YCl9KTwvcHJlPlxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNpbmdsZVF1b3RlQ29weUJ0biA9IHtcbiAgY29uc3QgbGFiZWwgPSAoKSA9PiBgQ29weSBxdW90ZWQgaGV4ICgke3NhbXBsZS5sZW5ndGh9KWA7XG4gIGNvbnN0IGJ0biA9IGh0bWxgPGJ1dHRvbiBjbGFzcz1cInN3YXRjaC1jb3B5LWJ0biBzd2F0Y2gtY29weS1idG4tLXNlY29uZGFyeVwiPiR7bGFiZWwoKX08L2J1dHRvbj5gO1xuICBidG4ub25jbGljayA9ICgpID0+IHtcbiAgICBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dChoZXhTaW5nbGVRdW90ZSkudGhlbigoKSA9PiB7XG4gICAgICBidG4udGV4dENvbnRlbnQgPSBcIkNvcGllZCFcIjtcbiAgICAgIHNldFRpbWVvdXQoKCkgPT4geyBidG4udGV4dENvbnRlbnQgPSBsYWJlbCgpOyB9LCAxMjAwKTtcbiAgICB9KTtcbiAgfTtcbiAgcmV0dXJuIGJ0bjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxkaXYgc3R5bGU9XCJtYXJnaW4tdG9wOjEuMjVyZW07XCI+XG4gIDxwIHN0eWxlPVwiZm9udC13ZWlnaHQ6NjAwO21hcmdpbi1ib3R0b206LjRyZW07XCI+Mi4gT3IganVzdCB0aGUgaGV4IGNvZGVzPC9wPlxuICAke2xpc3RDb3B5QnRufVxuICA8cHJlIGNsYXNzPVwiaGV4LWxpc3QtYmxvY2tcIj4ke2hleExpc3R9PC9wcmU+XG48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEzIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxLjI1cmVtO1wiPlxuICA8cCBzdHlsZT1cImZvbnQtd2VpZ2h0OjYwMDttYXJnaW4tYm90dG9tOi40cmVtO1wiPjMuIE9yIGFzIHF1b3RlZCBzdHJpbmdzPC9wPlxuICAke3NpbmdsZVF1b3RlQ29weUJ0bn1cbiAgPHByZSBjbGFzcz1cImhleC1saXN0LWJsb2NrXCI+JHtoZXhTaW5nbGVRdW90ZX08L3ByZT5cbjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZ3JvdXBDaG9pY2UnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzaHVmZmxlU2VlZCcpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -880,7 +1088,7 @@ window._ojs.runtime.interpretFromScriptTags();
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Built with Quarto + Observable JS. Color data cited on each mode’s page.</p>
+<p>Built with Quarto &amp; observable JS. Hu, Sarah.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

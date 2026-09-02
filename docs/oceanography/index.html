@@ -77,9 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-69306c8be9eb19739279d537f347a53c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1244e1c6a56ec17735eb049694cbd11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-ee662bf815024086afd9a93fdc44ed19.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-c1244e1c6a56ec17735eb049694cbd11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-24cbf0ab766810cb29ad3627e87f3684.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ca1b20e5eb2f3aab6a98e345f7cdc5a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-24cbf0ab766810cb29ad3627e87f3684.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,6 +147,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Woods Hole</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../aggieland/index.html"> 
+<span class="menu-text">Aggieland</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../imperial-pale-ale/index.html"> 
+<span class="menu-text">Imperial Pale Ale</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../kids/index.html"> 
+<span class="menu-text">Kids</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="../oceanography/index.html" aria-current="page"> 
 <span class="menu-text">Oceanography</span></a>
   </li>  
@@ -190,6 +202,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the palette data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ocean_palettes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/oceanography-colors.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ocean_palettes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; max-width: 800px;">
+<p><img src="../images/image1.jpg" class="img-fluid" style="width:100.0%" alt="Image 1"> <img src="../images/image2.jpg" class="img-fluid" style="width:100.0%" alt="Image 2"> <img src="../images/image3.jpg" class="img-fluid" style="width:100.0%" alt="Image 3"> <img src="../images/image4.jpg" class="img-fluid" style="width:100.0%" alt="Image 4"></p>
+</div>
 <section id="the-palettes" class="level2">
 <h2 class="anchored" data-anchor-id="the-palettes">The palettes</h2>
 <details open="" class="code-fold">
@@ -257,13 +272,24 @@ Colors from HOV Alvin.
 </div>
 <div class="palette-module">
 <h4 class="anchored">
-Nautical Flags <span class="palette-module-count">7 colors</span>
+Nautical Flags <span class="palette-module-count">5 colors</span>
 </h4>
 <p class="palette-module-desc">
 Traditional nautical flag colors.
 </p>
 <div class="palette-module-swatches">
-<span class="mini-swatch" style="background:#DC143C"></span><span class="mini-swatch" style="background:#001F3F"></span><span class="mini-swatch" style="background:#FFD700"></span><span class="mini-swatch" style="background:#FFFFFF"></span><span class="mini-swatch" style="background:#000000"></span><span class="mini-swatch" style="background:#FF6600"></span><span class="mini-swatch" style="background:#FFC700"></span>
+<span class="mini-swatch" style="background:#2D5090"></span><span class="mini-swatch" style="background:#9D3728"></span><span class="mini-swatch" style="background:#E7D33F"></span><span class="mini-swatch" style="background:#1C1916"></span><span class="mini-swatch" style="background:#F0EEED"></span>
+</div>
+</div>
+<div class="palette-module">
+<h4 class="anchored">
+PPE <span class="palette-module-count">7 colors</span>
+</h4>
+<p class="palette-module-desc">
+Shipboard PPE
+</p>
+<div class="palette-module-swatches">
+<span class="mini-swatch" style="background:#0E4087"></span><span class="mini-swatch" style="background:#F97827"></span><span class="mini-swatch" style="background:#773A1B"></span><span class="mini-swatch" style="background:#EEB52A"></span><span class="mini-swatch" style="background:#F14030"></span><span class="mini-swatch" style="background:#0BAA94"></span><span class="mini-swatch" style="background:#F8FDF9"></span>
 </div>
 </div>
 <div class="palette-module">
@@ -292,12 +318,12 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="75" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 74;"><span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>oceanData <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../data/oceanography-colors.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>oceanPaletteMeta <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">rollup</span>(oceanData<span class="op">,</span> v <span class="kw">=&gt;</span> v[<span class="dv">0</span>]<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span>)<span class="op">,</span></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>  ([palette<span class="op">,</span> display_name]) <span class="kw">=&gt;</span> ({palette<span class="op">,</span> display_name})</span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">display_name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">display_name</span>))</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>oceanOptions <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(oceanPaletteMeta<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d<span class="op">.</span><span class="at">palette</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="90" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 89;"><span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>oceanData <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../data/oceanography-colors.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>oceanPaletteMeta <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">rollup</span>(oceanData<span class="op">,</span> v <span class="kw">=&gt;</span> v[<span class="dv">0</span>]<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span>)<span class="op">,</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>  ([palette<span class="op">,</span> display_name]) <span class="kw">=&gt;</span> ({palette<span class="op">,</span> display_name})</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">display_name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">display_name</span>))</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>oceanOptions <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(oceanPaletteMeta<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d<span class="op">.</span><span class="at">palette</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -324,8 +350,8 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="85" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 84;"><span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>viewof oceanChoiceLabel <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(oceanOptions<span class="op">.</span><span class="fu">keys</span>())<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Palette"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"ROV Jason"</span>})</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>oceanChoice <span class="op">=</span> oceanOptions<span class="op">.</span><span class="fu">get</span>(oceanChoiceLabel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="100" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>viewof oceanChoiceLabel <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(oceanOptions<span class="op">.</span><span class="fu">keys</span>())<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Palette"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"ROV Jason"</span>})</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>oceanChoice <span class="op">=</span> oceanOptions<span class="op">.</span><span class="fu">get</span>(oceanChoiceLabel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -345,9 +371,9 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="91" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>oceanFiltered <span class="op">=</span> oceanData<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span> <span class="op">===</span> oceanChoice)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">position</span> <span class="op">-</span> b<span class="op">.</span><span class="at">position</span>)</span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>oceanHexList <span class="op">=</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">hex</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>oceanHexVector <span class="op">=</span> <span class="st">'c('</span> <span class="op">+</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>) <span class="op">+</span> <span class="st">')'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="106" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 105;"><span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>oceanFiltered <span class="op">=</span> oceanData<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span> <span class="op">===</span> oceanChoice)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">position</span> <span class="op">-</span> b<span class="op">.</span><span class="at">position</span>)</span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>oceanHexList <span class="op">=</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">hex</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>oceanHexVector <span class="op">=</span> <span class="st">'c('</span> <span class="op">+</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>) <span class="op">+</span> <span class="st">')'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -374,21 +400,21 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="98" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">oceanTextColor</span>(hex) {</span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> c <span class="op">=</span> hex<span class="op">.</span><span class="fu">replace</span>(<span class="st">"#"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> b <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lum <span class="op">=</span> (<span class="fl">0.299</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> g <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> b) <span class="op">/</span> <span class="dv">255</span><span class="op">;</span></span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lum <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="op">?</span> <span class="st">"#241C1C"</span> <span class="op">:</span> <span class="st">"#FFFFFF"</span><span class="op">;</span></span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p style="color:#555;margin-bottom:.5rem;"&gt;</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">?</span> oceanFiltered[<span class="dv">0</span>]<span class="op">.</span><span class="at">description</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;"&gt;</span></span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;div class="color-chip" style="background:</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">;padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:</span><span class="sc">${</span><span class="fu">oceanTextColor</span>(d<span class="op">.</span><span class="at">hex</span>)<span class="sc">}</span><span class="vs">"&gt;</span></span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-weight:600;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span>)<span class="sc">}</span></span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="113" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 112;"><span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">oceanTextColor</span>(hex) {</span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> c <span class="op">=</span> hex<span class="op">.</span><span class="fu">replace</span>(<span class="st">"#"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> b <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lum <span class="op">=</span> (<span class="fl">0.299</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> g <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> b) <span class="op">/</span> <span class="dv">255</span><span class="op">;</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lum <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="op">?</span> <span class="st">"#241C1C"</span> <span class="op">:</span> <span class="st">"#FFFFFF"</span><span class="op">;</span></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p style="color:#555;margin-bottom:.5rem;"&gt;</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">?</span> oceanFiltered[<span class="dv">0</span>]<span class="op">.</span><span class="at">description</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;"&gt;</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;div class="color-chip" style="background:</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">;padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:</span><span class="sc">${</span><span class="fu">oceanTextColor</span>(d<span class="op">.</span><span class="at">hex</span>)<span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-weight:600;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -408,17 +434,17 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="116" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 115;"><span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>oceanVectorCopyBtn <span class="op">=</span> {</span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy R vector (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexVector)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
-<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="131" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>oceanVectorCopyBtn <span class="op">=</span> {</span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy R vector (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexVector)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
@@ -429,17 +455,17 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="131" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>oceanListCopyBtn <span class="op">=</span> {</span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy hex list (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexList)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="146" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 145;"><span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>oceanListCopyBtn <span class="op">=</span> {</span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy hex list (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexList)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
@@ -450,11 +476,11 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="146" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 145;"><span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.5rem;"&gt;</span></span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;</span></span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanVectorCopyBtn<span class="sc">}</span></span>
-<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;&lt;span class="hl-fu"&gt;c&lt;/span&gt;(</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>((d<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;span class="hl-st"&gt;"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"&lt;/span&gt;</span><span class="sc">${</span>i <span class="op">&lt;</span> oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">", "</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">)&lt;/pre&gt;</span></span>
-<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="161" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 160;"><span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.5rem;"&gt;</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanVectorCopyBtn<span class="sc">}</span></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;&lt;span class="hl-fu"&gt;c&lt;/span&gt;(</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>((d<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;span class="hl-st"&gt;"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"&lt;/span&gt;</span><span class="sc">${</span>i <span class="op">&lt;</span> oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">", "</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">)&lt;/pre&gt;</span></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="expression">
@@ -465,11 +491,11 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="155" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 154;"><span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;2. Or just the hex codes&lt;/p&gt;</span></span>
-<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanListCopyBtn<span class="sc">}</span></span>
-<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>oceanHexList<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
-<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="170" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 169;"><span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;2. Or just the hex codes&lt;/p&gt;</span></span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanListCopyBtn<span class="sc">}</span></span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>oceanHexList<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
@@ -917,7 +943,7 @@ window._ojs.runtime.interpretFromScriptTags();
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Built with Quarto + Observable JS. Color data cited on each mode’s page.</p>
+<p>Built with Quarto &amp; observable JS. Hu, Sarah.</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
