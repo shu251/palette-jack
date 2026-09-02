@@ -10,13 +10,13 @@ editor: source
 ::: {style="max-width:700px;margin:3rem 0 1rem;"}
 
 :::: {layout="[1,1,1,1]"}
-![](images/eel-pond-winter.jpg)
+![Eel pond](images/eel-pond-winter.jpg)
 
-![](images/west-fal-sunset.jpg)
+![West Falmouth](images/west-fal-sunset.jpg)
 
-![](images/nautical-flags.jpeg)
+![Nautical Flags](images/nautical-flags.jpeg)
 
-![](images/sunset_ptSur.jpeg)
+![Pt. Sur sunset](images/sunset_ptSur.jpeg)
 ::::
 
 
@@ -83,6 +83,24 @@ ocean_preview <- ocean |>
   arrange(position) |>
   pull(hex) |>
   mini_swatches()
+
+# Aggieland preview: primary palette
+aggieland <- read_csv("data/aggieland-colors.csv")
+
+aggieland_preview <- aggieland |>
+  filter(palette == "primary") |>
+  arrange(position) |>
+  pull(hex) |>
+  mini_swatches()
+
+# Imperial Pale Ale preview: one representative palette
+imperial_ale <- read_csv("data/imperial-pale-ale-colors.csv")
+
+imperial_preview <- imperial_ale |>
+  filter(palette == "zilker") |>
+  arrange(position) |>
+  pull(hex) |>
+  mini_swatches()
 ```
 
 ## Modes
@@ -118,6 +136,28 @@ Randomize a capped, classification-filtered set of colors from an 1814 historica
 Research vessel and oceanographic survey palettes — Jason, Atlantis, Alvin, and more.
 
 `r ocean_preview`
+:::
+
+::: mode-card
+### [Aggieland](aggieland/index.qmd)
+
+Texas A&M University's brand palette — Aggie Maroon, secondary neutrals, and accent shades.
+
+`r aggieland_preview`
+:::
+
+::: mode-card
+### [Imperial Pale Ale](imperial-pale-ale/index.qmd)
+
+Color palettes pulled from craft beer labels and coasters.
+
+`r imperial_preview`
+:::
+
+::: mode-card
+### Kids
+
+Coming soon. inspiration from children's literature.
 :::
 :::::::
 

@@ -1,6 +1,27 @@
 palette,display_name,description,position,hex
-# palette: name of the palette group (e.g., "pale_ale", "ipa", "stout")
-# display_name: friendly display name (e.g., "Pale Ale", "IPA")
-# description: one-line description of the palette
-# position: order within the palette (1, 2, 3, ...)
-# hex: hex color code (e.g., #A94151)
+bright_wave,Bright Wave,"Anchor weight co, from IPA label",1,#19354f
+bright_wave,Bright Wave,"Anchor weight co, from IPA label",2,#d19e2f
+bright_wave,Bright Wave,"Anchor weight co, from IPA label",3,#6f9e7d
+bright_wave,Bright Wave,"Anchor weight co, from IPA label",4,#1795be
+bright_wave,Bright Wave,"Anchor weight co, from IPA label",5,#c6d5de
+altbier,Alt Bier,Occidental brewing label,1,#782b21
+altbier,Alt Bier,Occidental brewing label,2,#f3ceb1
+altbier,Alt Bier,Occidental brewing label,3,#3c5945
+altbier,Alt Bier,Occidental brewing label,4,#7ca38e
+altbier,Alt Bier,Occidental brewing label,5,#cf6f63
+modern_times,Modern Times,Modern Times brewing coaster,1,#c39bad
+modern_times,Modern Times,Modern Times brewing coaster,2,#b18243
+modern_times,Modern Times,Modern Times brewing coaster,3,#246ca1
+modern_times,Modern Times,Modern Times brewing coaster,4,#9f4440
+modern_times,Modern Times,Modern Times brewing coaster,5,#3a8995
+modern_times,Modern Times,Modern Times brewing coaster,6,#eb9a77
+modern_times,Modern Times,Modern Times brewing coaster,7,#aac0cc
+polite_coffee,Polite Coffee,Polite Coffee,1,#ba8357
+polite_coffee,Polite Coffee,Polite Coffee,2,#ac612b
+polite_coffee,Polite Coffee,Polite Coffee,3,#7e1822
+polite_coffee,Polite Coffee,Polite Coffee,4,#6d8cb0
+zilker,Zilker,Zilker IPA,1,#33c6ae
+zilker,Zilker,Zilker IPA,2,#eab500
+zilker,Zilker,Zilker IPA,3,#ee6398
+zilker,Zilker,Zilker IPA,4,#071239
+zilker,Zilker,Zilker IPA,5,#1790e6

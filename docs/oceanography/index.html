@@ -143,6 +143,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Wada</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link active" href="../oceanography/index.html" aria-current="page"> 
+<span class="menu-text">Oceanography</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../woods-hole/index.html"> 
 <span class="menu-text">Woods Hole</span></a>
   </li>  
@@ -157,10 +161,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="../kids/index.html"> 
 <span class="menu-text">Kids</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../oceanography/index.html" aria-current="page"> 
-<span class="menu-text">Oceanography</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -202,12 +202,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the palette data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ocean_palettes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/oceanography-colors.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ocean_palettes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; max-width: 800px;">
-<p><img src="../images/image1.jpg" class="img-fluid" style="width:100.0%" alt="Image 1"> <img src="../images/image2.jpg" class="img-fluid" style="width:100.0%" alt="Image 2"> <img src="../images/image3.jpg" class="img-fluid" style="width:100.0%" alt="Image 3"> <img src="../images/image4.jpg" class="img-fluid" style="width:100.0%" alt="Image 4"></p>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/nautical-flags.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Nautical flags</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/jason.jpg" class="img-fluid figure-img"></p>
+<figcaption>ROVJaons</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 <section id="the-palettes" class="level2">
 <h2 class="anchored" data-anchor-id="the-palettes">The palettes</h2>
-<details open="" class="code-fold">
+<details class="code-fold">
 <summary>Show the R</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
@@ -318,12 +335,12 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="90" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 89;"><span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>oceanData <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../data/oceanography-colors.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>oceanPaletteMeta <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">rollup</span>(oceanData<span class="op">,</span> v <span class="kw">=&gt;</span> v[<span class="dv">0</span>]<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span>)<span class="op">,</span></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>  ([palette<span class="op">,</span> display_name]) <span class="kw">=&gt;</span> ({palette<span class="op">,</span> display_name})</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">display_name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">display_name</span>))</span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>oceanOptions <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(oceanPaletteMeta<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d<span class="op">.</span><span class="at">palette</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="82" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 81;"><span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>oceanData <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../data/oceanography-colors.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>oceanPaletteMeta <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">rollup</span>(oceanData<span class="op">,</span> v <span class="kw">=&gt;</span> v[<span class="dv">0</span>]<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span>)<span class="op">,</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>  ([palette<span class="op">,</span> display_name]) <span class="kw">=&gt;</span> ({palette<span class="op">,</span> display_name})</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">display_name</span><span class="op">.</span><span class="fu">localeCompare</span>(b<span class="op">.</span><span class="at">display_name</span>))</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>oceanOptions <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>(oceanPaletteMeta<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">display_name</span><span class="op">,</span> d<span class="op">.</span><span class="at">palette</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -350,8 +367,8 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="100" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>viewof oceanChoiceLabel <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(oceanOptions<span class="op">.</span><span class="fu">keys</span>())<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Palette"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"ROV Jason"</span>})</span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>oceanChoice <span class="op">=</span> oceanOptions<span class="op">.</span><span class="fu">get</span>(oceanChoiceLabel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="92" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>viewof oceanChoiceLabel <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(<span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(oceanOptions<span class="op">.</span><span class="fu">keys</span>())<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Palette"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"ROV Jason"</span>})</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>oceanChoice <span class="op">=</span> oceanOptions<span class="op">.</span><span class="fu">get</span>(oceanChoiceLabel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -371,9 +388,10 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="106" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 105;"><span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>oceanFiltered <span class="op">=</span> oceanData<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span> <span class="op">===</span> oceanChoice)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">position</span> <span class="op">-</span> b<span class="op">.</span><span class="at">position</span>)</span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>oceanHexList <span class="op">=</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">hex</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>oceanHexVector <span class="op">=</span> <span class="st">'c('</span> <span class="op">+</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>) <span class="op">+</span> <span class="st">')'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="98" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>oceanFiltered <span class="op">=</span> oceanData<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">palette</span> <span class="op">===</span> oceanChoice)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">position</span> <span class="op">-</span> b<span class="op">.</span><span class="at">position</span>)</span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>oceanHexList <span class="op">=</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">hex</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>oceanHexVector <span class="op">=</span> <span class="st">'c('</span> <span class="op">+</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>) <span class="op">+</span> <span class="st">')'</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>oceanHexSingleQuote <span class="op">=</span> oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="vs">`'</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">'`</span>)<span class="op">.</span><span class="fu">join</span>(<span class="st">', '</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -396,25 +414,32 @@ Colors that represent ROV Jason.
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </div>
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="113" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 112;"><span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">oceanTextColor</span>(hex) {</span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> c <span class="op">=</span> hex<span class="op">.</span><span class="fu">replace</span>(<span class="st">"#"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> b <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lum <span class="op">=</span> (<span class="fl">0.299</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> g <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> b) <span class="op">/</span> <span class="dv">255</span><span class="op">;</span></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lum <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="op">?</span> <span class="st">"#241C1C"</span> <span class="op">:</span> <span class="st">"#FFFFFF"</span><span class="op">;</span></span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p style="color:#555;margin-bottom:.5rem;"&gt;</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">?</span> oceanFiltered[<span class="dv">0</span>]<span class="op">.</span><span class="at">description</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;"&gt;</span></span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;div class="color-chip" style="background:</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">;padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:</span><span class="sc">${</span><span class="fu">oceanTextColor</span>(d<span class="op">.</span><span class="at">hex</span>)<span class="sc">}</span><span class="vs">"&gt;</span></span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-weight:600;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span>)<span class="sc">}</span></span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="106" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 105;"><span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">oceanTextColor</span>(hex) {</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> c <span class="op">=</span> hex<span class="op">.</span><span class="fu">replace</span>(<span class="st">"#"</span><span class="op">,</span> <span class="st">""</span>)<span class="op">;</span></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> b <span class="op">=</span> <span class="pp">parseInt</span>(c<span class="op">.</span><span class="fu">substring</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lum <span class="op">=</span> (<span class="fl">0.299</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> g <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> b) <span class="op">/</span> <span class="dv">255</span><span class="op">;</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lum <span class="op">&gt;</span> <span class="fl">0.6</span> <span class="op">?</span> <span class="st">"#241C1C"</span> <span class="op">:</span> <span class="st">"#FFFFFF"</span><span class="op">;</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p style="color:#555;margin-bottom:.5rem;"&gt;</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">?</span> oceanFiltered[<span class="dv">0</span>]<span class="op">.</span><span class="at">description</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0 1.5rem;"&gt;</span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;div class="color-chip" style="background:</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">;padding:12px;min-width:120px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:</span><span class="sc">${</span><span class="fu">oceanTextColor</span>(d<span class="op">.</span><span class="at">hex</span>)<span class="sc">}</span><span class="vs">"&gt;</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div style="font-weight:600;"&gt;</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span>)<span class="sc">}</span></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -434,17 +459,17 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="131" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>oceanVectorCopyBtn <span class="op">=</span> {</span>
-<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy R vector (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
-<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexVector)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
-<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
-<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
-<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="124" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>oceanVectorCopyBtn <span class="op">=</span> {</span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy R vector (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexVector)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
@@ -455,17 +480,17 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="146" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 145;"><span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>oceanListCopyBtn <span class="op">=</span> {</span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy hex list (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
-<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
-<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexList)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
-<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
-<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
-<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
-<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="139" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 138;"><span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>oceanListCopyBtn <span class="op">=</span> {</span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy hex list (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexList)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
@@ -476,11 +501,11 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="161" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 160;"><span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.5rem;"&gt;</span></span>
-<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;</span></span>
-<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanVectorCopyBtn<span class="sc">}</span></span>
-<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;&lt;span class="hl-fu"&gt;c&lt;/span&gt;(</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>((d<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;span class="hl-st"&gt;"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"&lt;/span&gt;</span><span class="sc">${</span>i <span class="op">&lt;</span> oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">", "</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">)&lt;/pre&gt;</span></span>
-<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="154" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 153;"><span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.5rem;"&gt;</span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;1. Ready for &lt;code&gt;scale_fill_manual()&lt;/code&gt;&lt;/p&gt;</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanVectorCopyBtn<span class="sc">}</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;&lt;span class="hl-fu"&gt;c&lt;/span&gt;(</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="fu">map</span>((d<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`&lt;span class="hl-st"&gt;"</span><span class="sc">${</span>d<span class="op">.</span><span class="at">hex</span><span class="sc">}</span><span class="vs">"&lt;/span&gt;</span><span class="sc">${</span>i <span class="op">&lt;</span> oceanFiltered<span class="op">.</span><span class="at">length</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">", "</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">)&lt;/pre&gt;</span></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="expression">
@@ -491,14 +516,50 @@ Colors that represent ROV Jason.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="170" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 169;"><span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
-<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;2. Or just the hex codes&lt;/p&gt;</span></span>
-<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanListCopyBtn<span class="sc">}</span></span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>oceanHexList<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="163" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 162;"><span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;2. Or just the hex codes&lt;/p&gt;</span></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanListCopyBtn<span class="sc">}</span></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>oceanHexList<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the R</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="172" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 171;"><span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>oceanSingleQuoteCopyBtn <span class="op">=</span> {</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> label <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="vs">`Copy quoted hex (</span><span class="sc">${</span>oceanFiltered<span class="op">.</span><span class="at">length</span><span class="sc">}</span><span class="vs">)`</span><span class="op">;</span></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> btn <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;button class="swatch-copy-btn swatch-copy-btn--secondary"&gt;</span><span class="sc">${</span><span class="fu">label</span>()<span class="sc">}</span><span class="vs">&lt;/button&gt;`</span><span class="op">;</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>  btn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>    <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span><span class="op">.</span><span class="fu">writeText</span>(oceanHexSingleQuote)<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>      btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"Copied!"</span><span class="op">;</span></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>      <span class="pp">setTimeout</span>(() <span class="kw">=&gt;</span> { btn<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="fu">label</span>()<span class="op">;</span> }<span class="op">,</span> <span class="dv">1200</span>)<span class="op">;</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> btn<span class="op">;</span></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the R</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="187" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb12-187"><a href="#cb12-187" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="margin-top:1.25rem;"&gt;</span></span>
+<span id="cb12-188"><a href="#cb12-188" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="font-weight:600;margin-bottom:.4rem;"&gt;3. Or as quoted strings&lt;/p&gt;</span></span>
+<span id="cb12-189"><a href="#cb12-189" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>oceanSingleQuoteCopyBtn<span class="sc">}</span></span>
+<span id="cb12-190"><a href="#cb12-190" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;pre class="hex-list-block"&gt;</span><span class="sc">${</span>oceanHexSingleQuote<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
+<span id="cb12-191"><a href="#cb12-191" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="expression">
 
 </div>
 </div>
@@ -507,26 +568,46 @@ Colors that represent ROV Jason.
 <section id="using-a-palette-back-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="using-a-palette-back-in-r">Using a palette back in R</h2>
 <div class="cell">
-<details open="" class="code-fold">
+<details class="code-fold">
 <summary>Show the R</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my_pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#044f9a"</span>, <span class="st">"#fec44f"</span>, <span class="st">"#5d86c3"</span>, <span class="st">"#fc4e2a"</span>, <span class="st">"#b6c8db"</span>, <span class="st">"#2a394f"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_pal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#044f9a"</span>, <span class="st">"#fec44f"</span>, <span class="st">"#5d86c3"</span>, <span class="st">"#fc4e2a"</span>, <span class="st">"#b6c8db"</span>, <span class="st">"#2a394f"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> my_pal)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/bottlenet.jpeg" class="img-fluid figure-img"></p>
+<figcaption>BottleNet</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ppe.jpeg" class="img-fluid figure-img"></p>
+<figcaption>PPE</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
-<p>Research vessel color assignments are drawn from their respective operational identities and institutional branding. Nautical flag colors follow traditional maritime convention.</p>
+<p>Images from Sarah Hu. Research vessel color assignments were determined from their respective operational identities and institutional branding. Nautical flag colors follow traditional maritime convention.</p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im9jZWFuRGF0YSA9IEZpbGVBdHRhY2htZW50KFwiLi4vZGF0YS9vY2Vhbm9ncmFwaHktY29sb3JzLmNzdlwiKS5jc3Yoe3R5cGVkOiB0cnVlfSlcbm9jZWFuUGFsZXR0ZU1ldGEgPSBBcnJheS5mcm9tKFxuICBkMy5yb2xsdXAob2NlYW5EYXRhLCB2ID0+IHZbMF0uZGlzcGxheV9uYW1lLCBkID0+IGQucGFsZXR0ZSksXG4gIChbcGFsZXR0ZSwgZGlzcGxheV9uYW1lXSkgPT4gKHtwYWxldHRlLCBkaXNwbGF5X25hbWV9KVxuKS5zb3J0KChhLCBiKSA9PiBhLmRpc3BsYXlfbmFtZS5sb2NhbGVDb21wYXJlKGIuZGlzcGxheV9uYW1lKSlcbm9jZWFuT3B0aW9ucyA9IG5ldyBNYXAob2NlYW5QYWxldHRlTWV0YS5tYXAoZCA9PiBbZC5kaXNwbGF5X25hbWUsIGQucGFsZXR0ZV0pKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIG9jZWFuQ2hvaWNlTGFiZWwgPSBJbnB1dHMuc2VsZWN0KEFycmF5LmZyb20ob2NlYW5PcHRpb25zLmtleXMoKSksIHtsYWJlbDogXCJQYWxldHRlXCIsIHZhbHVlOiBcIlJPViBKYXNvblwifSlcbm9jZWFuQ2hvaWNlID0gb2NlYW5PcHRpb25zLmdldChvY2VhbkNob2ljZUxhYmVsKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoib2NlYW5GaWx0ZXJlZCA9IG9jZWFuRGF0YS5maWx0ZXIoZCA9PiBkLnBhbGV0dGUgPT09IG9jZWFuQ2hvaWNlKS5zb3J0KChhLCBiKSA9PiBhLnBvc2l0aW9uIC0gYi5wb3NpdGlvbilcbm9jZWFuSGV4TGlzdCA9IG9jZWFuRmlsdGVyZWQubWFwKGQgPT4gZC5oZXgpLmpvaW4oXCJcXG5cIilcbm9jZWFuSGV4VmVjdG9yID0gJ2MoJyArIG9jZWFuRmlsdGVyZWQubWFwKGQgPT4gYFwiJHtkLmhleH1cImApLmpvaW4oJywgJykgKyAnKSdcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZ1bmN0aW9uIG9jZWFuVGV4dENvbG9yKGhleCkge1xuICBjb25zdCBjID0gaGV4LnJlcGxhY2UoXCIjXCIsIFwiXCIpO1xuICBjb25zdCByID0gcGFyc2VJbnQoYy5zdWJzdHJpbmcoMCwgMiksIDE2KTtcbiAgY29uc3QgZyA9IHBhcnNlSW50KGMuc3Vic3RyaW5nKDIsIDQpLCAxNik7XG4gIGNvbnN0IGIgPSBwYXJzZUludChjLnN1YnN0cmluZyg0LCA2KSwgMTYpO1xuICBjb25zdCBsdW0gPSAoMC4yOTkgKiByICsgMC41ODcgKiBnICsgMC4xMTQgKiBiKSAvIDI1NTtcbiAgcmV0dXJuIGx1bSA+IDAuNiA/IFwiIzI0MUMxQ1wiIDogXCIjRkZGRkZGXCI7XG59XG5cbmh0bWxgPHAgc3R5bGU9XCJjb2xvcjojNTU1O21hcmdpbi1ib3R0b206LjVyZW07XCI+JHtvY2VhbkZpbHRlcmVkLmxlbmd0aCA/IG9jZWFuRmlsdGVyZWRbMF0uZGVzY3JpcHRpb24gOiBcIlwifTwvcD5cbjxkaXYgc3R5bGU9XCJkaXNwbGF5OmZsZXg7ZmxleC13cmFwOndyYXA7Z2FwOjEycHg7bWFyZ2luOjFyZW0gMCAxLjVyZW07XCI+XG4gICR7b2NlYW5GaWx0ZXJlZC5tYXAoZCA9PiBodG1sYDxkaXYgY2xhc3M9XCJjb2xvci1jaGlwXCIgc3R5bGU9XCJiYWNrZ3JvdW5kOiR7ZC5oZXh9O3BhZGRpbmc6MTJweDttaW4td2lkdGg6MTIwcHg7bWluLWhlaWdodDo5NnB4O2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW47anVzdGlmeS1jb250ZW50OmZsZXgtZW5kO2NvbG9yOiR7b2NlYW5UZXh0Q29sb3IoZC5oZXgpfVwiPlxuICAgIDxkaXYgc3R5bGU9XCJmb250LXdlaWdodDo2MDA7XCI+JHtkLmhleH08L2Rpdj5cbiAgPC9kaXY+YCl9XG48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJvY2VhblZlY3RvckNvcHlCdG4gPSB7XG4gIGNvbnN0IGxhYmVsID0gKCkgPT4gYENvcHkgUiB2ZWN0b3IgKCR7b2NlYW5GaWx0ZXJlZC5sZW5ndGh9KWA7XG4gIGNvbnN0IGJ0biA9IGh0bWxgPGJ1dHRvbiBjbGFzcz1cInN3YXRjaC1jb3B5LWJ0blwiPiR7bGFiZWwoKX08L2J1dHRvbj5gO1xuICBidG4ub25jbGljayA9ICgpID0+IHtcbiAgICBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dChvY2VhbkhleFZlY3RvcikudGhlbigoKSA9PiB7XG4gICAgICBidG4udGV4dENvbnRlbnQgPSBcIkNvcGllZCFcIjtcbiAgICAgIHNldFRpbWVvdXQoKCkgPT4geyBidG4udGV4dENvbnRlbnQgPSBsYWJlbCgpOyB9LCAxMjAwKTtcbiAgICB9KTtcbiAgfTtcbiAgcmV0dXJuIGJ0bjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im9jZWFuTGlzdENvcHlCdG4gPSB7XG4gIGNvbnN0IGxhYmVsID0gKCkgPT4gYENvcHkgaGV4IGxpc3QgKCR7b2NlYW5GaWx0ZXJlZC5sZW5ndGh9KWA7XG4gIGNvbnN0IGJ0biA9IGh0bWxgPGJ1dHRvbiBjbGFzcz1cInN3YXRjaC1jb3B5LWJ0biBzd2F0Y2gtY29weS1idG4tLXNlY29uZGFyeVwiPiR7bGFiZWwoKX08L2J1dHRvbj5gO1xuICBidG4ub25jbGljayA9ICgpID0+IHtcbiAgICBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dChvY2VhbkhleExpc3QpLnRoZW4oKCkgPT4ge1xuICAgICAgYnRuLnRleHRDb250ZW50ID0gXCJDb3BpZWQhXCI7XG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHsgYnRuLnRleHRDb250ZW50ID0gbGFiZWwoKTsgfSwgMTIwMCk7XG4gICAgfSk7XG4gIH07XG4gIHJldHVybiBidG47XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxkaXYgc3R5bGU9XCJtYXJnaW4tdG9wOjEuNXJlbTtcIj5cbiAgPHAgc3R5bGU9XCJmb250LXdlaWdodDo2MDA7bWFyZ2luLWJvdHRvbTouNHJlbTtcIj4xLiBSZWFkeSBmb3IgPGNvZGU+c2NhbGVfZmlsbF9tYW51YWwoKTwvY29kZT48L3A+XG4gICR7b2NlYW5WZWN0b3JDb3B5QnRufVxuICA8cHJlIGNsYXNzPVwiaGV4LWxpc3QtYmxvY2tcIj48c3BhbiBjbGFzcz1cImhsLWZ1XCI+Yzwvc3Bhbj4oJHtvY2VhbkZpbHRlcmVkLm1hcCgoZCwgaSkgPT4gaHRtbGA8c3BhbiBjbGFzcz1cImhsLXN0XCI+XCIke2QuaGV4fVwiPC9zcGFuPiR7aSA8IG9jZWFuRmlsdGVyZWQubGVuZ3RoIC0gMSA/IFwiLCBcIiA6IFwiXCJ9YCl9KTwvcHJlPlxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxLjI1cmVtO1wiPlxuICA8cCBzdHlsZT1cImZvbnQtd2VpZ2h0OjYwMDttYXJnaW4tYm90dG9tOi40cmVtO1wiPjIuIE9yIGp1c3QgdGhlIGhleCBjb2RlczwvcD5cbiAgJHtvY2Vhbkxpc3RDb3B5QnRufVxuICA8cHJlIGNsYXNzPVwiaGV4LWxpc3QtYmxvY2tcIj4ke29jZWFuSGV4TGlzdH08L3ByZT5cbjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnb2NlYW5DaG9pY2VMYWJlbCcpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im9jZWFuRGF0YSA9IEZpbGVBdHRhY2htZW50KFwiLi4vZGF0YS9vY2Vhbm9ncmFwaHktY29sb3JzLmNzdlwiKS5jc3Yoe3R5cGVkOiB0cnVlfSlcbm9jZWFuUGFsZXR0ZU1ldGEgPSBBcnJheS5mcm9tKFxuICBkMy5yb2xsdXAob2NlYW5EYXRhLCB2ID0+IHZbMF0uZGlzcGxheV9uYW1lLCBkID0+IGQucGFsZXR0ZSksXG4gIChbcGFsZXR0ZSwgZGlzcGxheV9uYW1lXSkgPT4gKHtwYWxldHRlLCBkaXNwbGF5X25hbWV9KVxuKS5zb3J0KChhLCBiKSA9PiBhLmRpc3BsYXlfbmFtZS5sb2NhbGVDb21wYXJlKGIuZGlzcGxheV9uYW1lKSlcbm9jZWFuT3B0aW9ucyA9IG5ldyBNYXAob2NlYW5QYWxldHRlTWV0YS5tYXAoZCA9PiBbZC5kaXNwbGF5X25hbWUsIGQucGFsZXR0ZV0pKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIG9jZWFuQ2hvaWNlTGFiZWwgPSBJbnB1dHMuc2VsZWN0KEFycmF5LmZyb20ob2NlYW5PcHRpb25zLmtleXMoKSksIHtsYWJlbDogXCJQYWxldHRlXCIsIHZhbHVlOiBcIlJPViBKYXNvblwifSlcbm9jZWFuQ2hvaWNlID0gb2NlYW5PcHRpb25zLmdldChvY2VhbkNob2ljZUxhYmVsKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoib2NlYW5GaWx0ZXJlZCA9IG9jZWFuRGF0YS5maWx0ZXIoZCA9PiBkLnBhbGV0dGUgPT09IG9jZWFuQ2hvaWNlKS5zb3J0KChhLCBiKSA9PiBhLnBvc2l0aW9uIC0gYi5wb3NpdGlvbilcbm9jZWFuSGV4TGlzdCA9IG9jZWFuRmlsdGVyZWQubWFwKGQgPT4gZC5oZXgpLmpvaW4oXCJcXG5cIilcbm9jZWFuSGV4VmVjdG9yID0gJ2MoJyArIG9jZWFuRmlsdGVyZWQubWFwKGQgPT4gYFwiJHtkLmhleH1cImApLmpvaW4oJywgJykgKyAnKSdcbm9jZWFuSGV4U2luZ2xlUXVvdGUgPSBvY2VhbkZpbHRlcmVkLm1hcChkID0+IGAnJHtkLmhleH0nYCkuam9pbignLCAnKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZnVuY3Rpb24gb2NlYW5UZXh0Q29sb3IoaGV4KSB7XG4gIGNvbnN0IGMgPSBoZXgucmVwbGFjZShcIiNcIiwgXCJcIik7XG4gIGNvbnN0IHIgPSBwYXJzZUludChjLnN1YnN0cmluZygwLCAyKSwgMTYpO1xuICBjb25zdCBnID0gcGFyc2VJbnQoYy5zdWJzdHJpbmcoMiwgNCksIDE2KTtcbiAgY29uc3QgYiA9IHBhcnNlSW50KGMuc3Vic3RyaW5nKDQsIDYpLCAxNik7XG4gIGNvbnN0IGx1bSA9ICgwLjI5OSAqIHIgKyAwLjU4NyAqIGcgKyAwLjExNCAqIGIpIC8gMjU1O1xuICByZXR1cm4gbHVtID4gMC42ID8gXCIjMjQxQzFDXCIgOiBcIiNGRkZGRkZcIjtcbn1cblxuaHRtbGA8cCBzdHlsZT1cImNvbG9yOiM1NTU7bWFyZ2luLWJvdHRvbTouNXJlbTtcIj4ke29jZWFuRmlsdGVyZWQubGVuZ3RoID8gb2NlYW5GaWx0ZXJlZFswXS5kZXNjcmlwdGlvbiA6IFwiXCJ9PC9wPlxuPGRpdiBzdHlsZT1cImRpc3BsYXk6ZmxleDtmbGV4LXdyYXA6d3JhcDtnYXA6MTJweDttYXJnaW46MXJlbSAwIDEuNXJlbTtcIj5cbiAgJHtvY2VhbkZpbHRlcmVkLm1hcChkID0+IGh0bWxgPGRpdiBjbGFzcz1cImNvbG9yLWNoaXBcIiBzdHlsZT1cImJhY2tncm91bmQ6JHtkLmhleH07cGFkZGluZzoxMnB4O21pbi13aWR0aDoxMjBweDttaW4taGVpZ2h0Ojk2cHg7ZGlzcGxheTpmbGV4O2ZsZXgtZGlyZWN0aW9uOmNvbHVtbjtqdXN0aWZ5LWNvbnRlbnQ6ZmxleC1lbmQ7Y29sb3I6JHtvY2VhblRleHRDb2xvcihkLmhleCl9XCI+XG4gICAgPGRpdiBzdHlsZT1cImZvbnQtd2VpZ2h0OjYwMDtcIj4ke2QuaGV4fTwvZGl2PlxuICA8L2Rpdj5gKX1cbjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im9jZWFuVmVjdG9yQ29weUJ0biA9IHtcbiAgY29uc3QgbGFiZWwgPSAoKSA9PiBgQ29weSBSIHZlY3RvciAoJHtvY2VhbkZpbHRlcmVkLmxlbmd0aH0pYDtcbiAgY29uc3QgYnRuID0gaHRtbGA8YnV0dG9uIGNsYXNzPVwic3dhdGNoLWNvcHktYnRuXCI+JHtsYWJlbCgpfTwvYnV0dG9uPmA7XG4gIGJ0bi5vbmNsaWNrID0gKCkgPT4ge1xuICAgIG5hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KG9jZWFuSGV4VmVjdG9yKS50aGVuKCgpID0+IHtcbiAgICAgIGJ0bi50ZXh0Q29udGVudCA9IFwiQ29waWVkIVwiO1xuICAgICAgc2V0VGltZW91dCgoKSA9PiB7IGJ0bi50ZXh0Q29udGVudCA9IGxhYmVsKCk7IH0sIDEyMDApO1xuICAgIH0pO1xuICB9O1xuICByZXR1cm4gYnRuO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoib2NlYW5MaXN0Q29weUJ0biA9IHtcbiAgY29uc3QgbGFiZWwgPSAoKSA9PiBgQ29weSBoZXggbGlzdCAoJHtvY2VhbkZpbHRlcmVkLmxlbmd0aH0pYDtcbiAgY29uc3QgYnRuID0gaHRtbGA8YnV0dG9uIGNsYXNzPVwic3dhdGNoLWNvcHktYnRuIHN3YXRjaC1jb3B5LWJ0bi0tc2Vjb25kYXJ5XCI+JHtsYWJlbCgpfTwvYnV0dG9uPmA7XG4gIGJ0bi5vbmNsaWNrID0gKCkgPT4ge1xuICAgIG5hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KG9jZWFuSGV4TGlzdCkudGhlbigoKSA9PiB7XG4gICAgICBidG4udGV4dENvbnRlbnQgPSBcIkNvcGllZCFcIjtcbiAgICAgIHNldFRpbWVvdXQoKCkgPT4geyBidG4udGV4dENvbnRlbnQgPSBsYWJlbCgpOyB9LCAxMjAwKTtcbiAgICB9KTtcbiAgfTtcbiAgcmV0dXJuIGJ0bjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPGRpdiBzdHlsZT1cIm1hcmdpbi10b3A6MS41cmVtO1wiPlxuICA8cCBzdHlsZT1cImZvbnQtd2VpZ2h0OjYwMDttYXJnaW4tYm90dG9tOi40cmVtO1wiPjEuIFJlYWR5IGZvciA8Y29kZT5zY2FsZV9maWxsX21hbnVhbCgpPC9jb2RlPjwvcD5cbiAgJHtvY2VhblZlY3RvckNvcHlCdG59XG4gIDxwcmUgY2xhc3M9XCJoZXgtbGlzdC1ibG9ja1wiPjxzcGFuIGNsYXNzPVwiaGwtZnVcIj5jPC9zcGFuPigke29jZWFuRmlsdGVyZWQubWFwKChkLCBpKSA9PiBodG1sYDxzcGFuIGNsYXNzPVwiaGwtc3RcIj5cIiR7ZC5oZXh9XCI8L3NwYW4+JHtpIDwgb2NlYW5GaWx0ZXJlZC5sZW5ndGggLSAxID8gXCIsIFwiIDogXCJcIn1gKX0pPC9wcmU+XG48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxkaXYgc3R5bGU9XCJtYXJnaW4tdG9wOjEuMjVyZW07XCI+XG4gIDxwIHN0eWxlPVwiZm9udC13ZWlnaHQ6NjAwO21hcmdpbi1ib3R0b206LjRyZW07XCI+Mi4gT3IganVzdCB0aGUgaGV4IGNvZGVzPC9wPlxuICAke29jZWFuTGlzdENvcHlCdG59XG4gIDxwcmUgY2xhc3M9XCJoZXgtbGlzdC1ibG9ja1wiPiR7b2NlYW5IZXhMaXN0fTwvcHJlPlxuPC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoib2NlYW5TaW5nbGVRdW90ZUNvcHlCdG4gPSB7XG4gIGNvbnN0IGxhYmVsID0gKCkgPT4gYENvcHkgcXVvdGVkIGhleCAoJHtvY2VhbkZpbHRlcmVkLmxlbmd0aH0pYDtcbiAgY29uc3QgYnRuID0gaHRtbGA8YnV0dG9uIGNsYXNzPVwic3dhdGNoLWNvcHktYnRuIHN3YXRjaC1jb3B5LWJ0bi0tc2Vjb25kYXJ5XCI+JHtsYWJlbCgpfTwvYnV0dG9uPmA7XG4gIGJ0bi5vbmNsaWNrID0gKCkgPT4ge1xuICAgIG5hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KG9jZWFuSGV4U2luZ2xlUXVvdGUpLnRoZW4oKCkgPT4ge1xuICAgICAgYnRuLnRleHRDb250ZW50ID0gXCJDb3BpZWQhXCI7XG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHsgYnRuLnRleHRDb250ZW50ID0gbGFiZWwoKTsgfSwgMTIwMCk7XG4gICAgfSk7XG4gIH07XG4gIHJldHVybiBidG47XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEwIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IHN0eWxlPVwibWFyZ2luLXRvcDoxLjI1cmVtO1wiPlxuICA8cCBzdHlsZT1cImZvbnQtd2VpZ2h0OjYwMDttYXJnaW4tYm90dG9tOi40cmVtO1wiPjMuIE9yIGFzIHF1b3RlZCBzdHJpbmdzPC9wPlxuICAke29jZWFuU2luZ2xlUXVvdGVDb3B5QnRufVxuICA8cHJlIGNsYXNzPVwiaGV4LWxpc3QtYmxvY2tcIj4ke29jZWFuSGV4U2luZ2xlUXVvdGV9PC9wcmU+XG48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ29jZWFuQ2hvaWNlTGFiZWwnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

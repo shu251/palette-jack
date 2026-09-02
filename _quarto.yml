@@ -14,6 +14,8 @@ website:
       text: Werner
     - href: wada/index.qmd
       text: Wada
+    - href: oceanography/index.qmd
+      text: Oceanography    
     - href: woods-hole/index.qmd
       text: Woods Hole
     - href: aggieland/index.qmd
@@ -22,8 +24,7 @@ website:
       text: Imperial Pale Ale
     - href: kids/index.qmd
       text: Kids
-    - href: oceanography/index.qmd
-      text: Oceanography
+
     tools:
     - icon: github
       href: https://github.com/shu251/palette-jack
