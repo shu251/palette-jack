@@ -17,19 +17,11 @@ ocean_palettes <- read.csv("data/oceanography-colors.csv")
 head(ocean_palettes)
 ```
 
+:::: {layout="[1,1]"}
+![Nautical flags](../images/nautical-flags.jpeg)
 
 
-
-
-
-:::: {layout="[1,1,1,1]"}
-![](../images/image1.jpg)
-
-![](../images/image2.jpg)
-
-![](../images/image3.jpg)
-
-![](../images/image4.jpg)
+![ROVJaons](../images/jason.jpg)
 ::::
 
 ## The palettes
@@ -106,6 +98,7 @@ oceanChoice = oceanOptions.get(oceanChoiceLabel)
 oceanFiltered = oceanData.filter(d => d.palette === oceanChoice).sort((a, b) => a.position - b.position)
 oceanHexList = oceanFiltered.map(d => d.hex).join("\n")
 oceanHexVector = 'c(' + oceanFiltered.map(d => `"${d.hex}"`).join(', ') + ')'
+oceanHexSingleQuote = oceanFiltered.map(d => `'${d.hex}'`).join(', ')
 ```
 
 ```{ojs}
@@ -175,6 +168,30 @@ html`<div style="margin-top:1.25rem;">
 </div>`
 ```
 
+```{ojs}
+//| echo: false
+oceanSingleQuoteCopyBtn = {
+  const label = () => `Copy quoted hex (${oceanFiltered.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(oceanHexSingleQuote).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">3. Or as quoted strings</p>
+  ${oceanSingleQuoteCopyBtn}
+  <pre class="hex-list-block">${oceanHexSingleQuote}</pre>
+</div>`
+```
+
 ## Using a palette back in R
 
 ```{r}
@@ -186,6 +203,13 @@ ggplot(mpg, aes(class, fill = class)) +
   scale_fill_manual(values = my_pal)
 ```
 
-## Sources
+:::: {layout="[1,1]"}
+![BottleNet](../images/bottlenet.jpeg)
 
-Research vessel color assignments are drawn from their respective operational identities and institutional branding. Nautical flag colors follow traditional maritime convention.
+![PPE](../images/ppe.jpeg)
+::::
+
+
+
+## Sources
+Images from Sarah Hu. Research vessel color assignments were determined from their respective operational identities and institutional branding. Nautical flag colors follow traditional maritime convention.

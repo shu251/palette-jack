@@ -167,6 +167,30 @@ html`<div style="margin-top:1.25rem;">
 </div>`
 ```
 
+```{ojs}
+//| echo: false
+whSingleQuoteCopyBtn = {
+  const label = () => `Copy quoted hex (${whFiltered.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
+  btn.onclick = () => {
+    navigator.clipboard.writeText(whHexSingleQuote).then(() => {
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = label(); }, 1200);
+    });
+  };
+  return btn;
+}
+```
+
+```{ojs}
+//| echo: false
+html`<div style="margin-top:1.25rem;">
+  <p style="font-weight:600;margin-bottom:.4rem;">3. Or as quoted strings</p>
+  ${whSingleQuoteCopyBtn}
+  <pre class="hex-list-block">${whHexSingleQuote}</pre>
+</div>`
+```
+
 ## Using a palette back in R
 
 ```{r}

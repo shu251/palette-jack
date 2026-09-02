@@ -17,13 +17,13 @@ Palette Jack's _Aggieland_ mode lets you pick a palette category (Primary, Secon
 
 
 :::: {layout="[1,1,1,1]"}
-![](../images/image1.jpg)
+![TAMU Logo](../images/TAM-MaroonBox.jpg)
 
-![](../images/image2.jpg)
+![Reveille](../images/tamu_rev.png)
 
-![](../images/image3.jpg)
+![OMB](../images/omb.jpeg)
 
-![](../images/image4.jpg)
+![Archival OCNG logo](../images/archival-logo.jpg)
 ::::
 
 ## The palettes
@@ -126,9 +126,9 @@ function textColor(hex) {
 }
 
 html`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:1.5rem 0;">
-  \${sample.map(d => html`<div class="color-chip" style="background:\${d.hex};padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:\${textColor(d.hex)}">
-    <div style="font-weight:600;">\${d.hex}</div>
-    <div style="font-size:.82rem;">\${d.display_name}</div>
+  ${sample.map(d => html`<div class="color-chip" style="background:${d.hex};padding:12px;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:${textColor(d.hex)}">
+    <div style="font-weight:600;">${d.hex}</div>
+    <div style="font-size:.82rem;">${d.display_name}</div>
   </div>`)}
 </div>`
 ```
@@ -136,8 +136,8 @@ html`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150p
 ```{ojs}
 //| echo: false
 vectorCopyBtn = {
-  const label = () => `Copy R vector (\${sample.length})`;
-  const btn = html`<button class="swatch-copy-btn">\${label()}</button>`;
+  const label = () => `Copy R vector (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn">${label()}</button>`;
   btn.onclick = () => {
     navigator.clipboard.writeText(hexVector).then(() => {
       btn.textContent = "Copied!";
@@ -151,8 +151,8 @@ vectorCopyBtn = {
 ```{ojs}
 //| echo: false
 listCopyBtn = {
-  const label = () => `Copy hex list (\${sample.length})`;
-  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">\${label()}</button>`;
+  const label = () => `Copy hex list (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
   btn.onclick = () => {
     navigator.clipboard.writeText(hexList).then(() => {
       btn.textContent = "Copied!";
@@ -166,8 +166,8 @@ listCopyBtn = {
 ```{ojs}
 //| echo: false
 singleQuoteCopyBtn = {
-  const label = () => `Copy quoted hex (\${sample.length})`;
-  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">\${label()}</button>`;
+  const label = () => `Copy quoted hex (${sample.length})`;
+  const btn = html`<button class="swatch-copy-btn swatch-copy-btn--secondary">${label()}</button>`;
   btn.onclick = () => {
     navigator.clipboard.writeText(hexSingleQuote).then(() => {
       btn.textContent = "Copied!";
@@ -182,8 +182,8 @@ singleQuoteCopyBtn = {
 //| echo: false
 html`<div style="margin-top:1.5rem;">
   <p style="font-weight:600;margin-bottom:.4rem;">1. Ready for <code>scale_fill_manual()</code></p>
-  \${vectorCopyBtn}
-  <pre class="hex-list-block"><span class="hl-fu">c</span>(\${sample.map((d, i) => html`<span class="hl-st">"\${d.hex}"</span>\${i < sample.length - 1 ? ", " : ""}`)})</pre>
+  ${vectorCopyBtn}
+  <pre class="hex-list-block"><span class="hl-fu">c</span>(${sample.map((d, i) => html`<span class="hl-st">"${d.hex}"</span>${i < sample.length - 1 ? ", " : ""}`)})</pre>
 </div>`
 ```
 
@@ -191,8 +191,8 @@ html`<div style="margin-top:1.5rem;">
 //| echo: false
 html`<div style="margin-top:1.25rem;">
   <p style="font-weight:600;margin-bottom:.4rem;">2. Or just the hex codes</p>
-  \${listCopyBtn}
-  <pre class="hex-list-block">\${hexList}</pre>
+  ${listCopyBtn}
+  <pre class="hex-list-block">${hexList}</pre>
 </div>`
 ```
 
@@ -200,8 +200,8 @@ html`<div style="margin-top:1.25rem;">
 //| echo: false
 html`<div style="margin-top:1.25rem;">
   <p style="font-weight:600;margin-bottom:.4rem;">3. Or as quoted strings</p>
-  \${singleQuoteCopyBtn}
-  <pre class="hex-list-block">\${hexSingleQuote}</pre>
+  ${singleQuoteCopyBtn}
+  <pre class="hex-list-block">${hexSingleQuote}</pre>
 </div>`
 ```
 

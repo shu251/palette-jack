@@ -21,10 +21,15 @@ alvin,HOV Alvin,Colors from HOV Alvin.,4,#dbdbdb
 alvin,HOV Alvin,Colors from HOV Alvin.,5,#233133
 alvin,HOV Alvin,Colors from HOV Alvin.,6,#257c9b
 alvin,HOV Alvin,Colors from HOV Alvin.,7,#ffffff
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,1,#DC143C
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,2,#001F3F
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,3,#FFD700
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,4,#FFFFFF
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,5,#000000
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,6,#FF6600
-nautical_flags,Nautical Flags,Traditional nautical flag colors.,7,#FFC700
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,1,#2D5090
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,2,#9D3728
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,3,#E7D33F
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,4,#1C1916
+nautical_flags,Nautical Flags,Traditional nautical flag colors.,5,#F0EEED
+deck_ppe,PPE,Shipboard PPE,1,#0E4087
+deck_ppe,PPE,Shipboard PPE,2,#F97827
+deck_ppe,PPE,Shipboard PPE,3,#773A1B
+deck_ppe,PPE,Shipboard PPE,4,#EEB52A
+deck_ppe,PPE,Shipboard PPE,5,#F14030
+deck_ppe,PPE,Shipboard PPE,6,#0BAA94
+deck_ppe,PPE,Shipboard PPE,7,#F8FDF9

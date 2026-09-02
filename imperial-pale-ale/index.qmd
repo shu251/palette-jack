@@ -16,14 +16,12 @@ Palette Jack's Imperial Pale Ale mode lets you pick a palette and copy the hex c
 
 
 
-
-
 :::: {layout="[1,1,1]"}
-![](../images/image1.jpg)
+![](../images/zilker.jpeg)
 
-![](../images/image2.jpg)
+![](../images/brightwave.jpeg)
 
-![](../images/image3.jpg)
+![](../images/moderntimes.jpeg)
 ::::
 
 ## The palettes
@@ -207,6 +205,4 @@ html`<div style="margin-top:1.25rem;">
 
 ## Sources & citations
 
-::: {.citation}
-[Add citations here]
-:::
+Images taken by Sarah Hu, colors inspired by logos and designs from above breweries, coffee houses, and more.

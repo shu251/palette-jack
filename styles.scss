@@ -153,7 +153,6 @@ main.content > h2 { margin-top: 3rem; }
   line-height: 1.45;
 }
 .palette-module-swatches {
-  display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
@@ -179,10 +178,23 @@ main.content > h2 { margin-top: 3rem; }
   margin-block: 1.5rem;
 }
 
-.coming-soon-banner {
-  background: rgba($yellow, .18);
-  border: 1px solid rgba($yellow, .6);
-  border-radius: $border-radius;
-  padding: 1rem 1.25rem;
-  margin-block: 1.5rem;
+.image-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 30px 0;
+  
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-header {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
