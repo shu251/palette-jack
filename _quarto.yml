@@ -21,9 +21,7 @@ website:
     - href: aggieland/index.qmd
       text: Aggieland
     - href: imperial-pale-ale/index.qmd
-      text: Imperial Pale Ale
-    - href: kids/index.qmd
-      text: Kids
+      text: IPA
 
     tools:
     - icon: github

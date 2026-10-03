@@ -1,6 +1,0 @@
-palette,display_name,description,position,hex
-# palette: name of the palette group (e.g., "pale_ale", "ipa", "stout")
-# display_name: friendly display name (e.g., "Pale Ale", "IPA")
-# description: one-line description of the palette
-# position: order within the palette (1, 2, 3, ...)
-# hex: hex color code (e.g., #A94151)

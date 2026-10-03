@@ -4,29 +4,16 @@ subtitle: "2-, 3-, and 4-color combinations from Sanzo Wada's Dictionary of Colo
 format:
   html:
     code-fold: true
-    code-summary: "Show the R"
+    code-summary: "Show the code"
 execute:
   echo: true
 ---
 
-Sanzo Wada was a Japanese textile and costume designer whose 1933 reference book, *A Dictionary of Color Combinations* (配色総鑑), catalogued 348 named colors alongside hundreds of pre-tested pairings meant to be visually harmonious together -- closer to a curated palette-pairing tool than a raw color list. Each base color in this mode's data is matched to one, two, or three other colors Wada specifically paired with it, giving combos of 2, 3, or 4 total colors.
+Sanzo Wada was a Japanese textile and costume designer whose 1933 reference book, *A Dictionary of Color Combinations*, cataloged 348 named colors alongside hundreds of pre-tested pairings meant to be visually harmonious together. Each base color in this mode's data is matched to one, two, or three other colors Wada specifically paired with it, giving combos of 2, 3, or 4 total colors.
 
 Palette Jack's Wada mode lets you pick a combo size, randomize to one of Wada's own matched sets, and copy it straight into `scale_fill_manual()`.
 
 
-
-
-
-
-:::: {layout="[1,1,1,1]"}
-![](../images/image1.jpg)
-
-![](../images/image2.jpg)
-
-![](../images/image3.jpg)
-
-![](../images/image4.jpg)
-::::
 
 ## The combinations
 

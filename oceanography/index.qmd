@@ -4,7 +4,7 @@ subtitle: "Research vessel and oceanographic survey palettes"
 format:
   html:
     code-fold: true
-    code-summary: "Show the R"
+    code-summary: "Show the code"
 execute:
   echo: true
 ---

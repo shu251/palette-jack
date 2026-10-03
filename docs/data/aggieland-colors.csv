@@ -1,10 +1,26 @@
 palette,display_name,description,position,hex
-primary,Primary Colors,Texas A&M primary palette: Aggie Maroon and white.,1,#500000
-primary,Primary Colors,Texas A&M primary palette: Aggie Maroon and white.,2,#FFFFFF
-secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,1,#202020
-secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,2,#3E3E3E
-secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,3,#707070
-secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,4,#D1D1D1
-secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,5,#D6D3C4
-accent,Accent Colors,Texas A&M accent palette: dark maroon and burgundy.,1,#3C0000
-accent,Accent Colors,Texas A&M accent palette: dark maroon and burgundy.,2,#732F2F
+TAMU primary,Primary Colors,Texas A&M primary palette: Aggie Maroon and white.,1,#500000
+TAMU primary,Primary Colors,Texas A&M primary palette: Aggie Maroon and white.,2,#FFFFFF
+TAMU secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,1,#202020
+TAMU secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,2,#3E3E3E
+TAMU secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,3,#707070
+TAMU secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,4,#D1D1D1
+TAMU secondary,Secondary Colors,Texas A&M secondary/neutral palette: grays and tan.,5,#D6D3C4
+TAMU accent,Accent Colors,Texas A&M accent palette: dark maroon and burgundy.,1,#3C0000
+TAMU accent,Accent Colors,Texas A&M accent palette: dark maroon and burgundy.,2,#732F2F
+TAMU all,All colors,Texas A&M all colors,1,#500000
+TAMU all,All colors,Texas A&M all colors,2,#FFFFFF
+TAMU all,All colors,Texas A&M all colors,3,#202020
+TAMU all,All colors,Texas A&M all colors,4,#3E3E3E
+TAMU all,All colors,Texas A&M all colors,5,#707070
+TAMU all,All colors,Texas A&M all colors,6,#D1D1D1
+TAMU all,All colors,Texas A&M all colors,7,#D6D3C4
+TAMU all,All colors,Texas A&M all colors,8,#3C0000
+TAMU all,All colors,Texas A&M all colors,9,#732F2F
+Reveille,TAMU mascot,Reveille,1,#6B5844
+Reveille,TAMU mascot,Reveille,2,#E8A447
+Reveille,TAMU mascot,Reveille,3,#8B6F47
+Reveille,TAMU mascot,Reveille,4,#D4A574
+Reveille,TAMU mascot,Reveille,5,#D4844D
+Reveille,TAMU mascot,Reveille,6,#E8D7C3
+Reveille,TAMU mascot,Reveille,7,#3D3D3D

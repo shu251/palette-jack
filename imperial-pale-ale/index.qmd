@@ -1,18 +1,15 @@
 ---
-title: "Imperial Pale Ale"
+title: "IPA"
 subtitle: "Color palettes from craft beer brewing"
 format:
   html:
     code-fold: true
-    code-summary: "Show the R"
+    code-summary: "Show the code"
 execute:
   echo: true
 ---
 
-Imperial Pale Ales are bold, hoppy brews with rich amber and copper tones. Use this palette to represent strong, assertive color schemes in your visualizations.
-
-Palette Jack's Imperial Pale Ale mode lets you pick a palette and copy the hex colors ready to use in your plots.
-
+IPAs are hoppy brews with rich amber and copper tones. I'm always looking for the best West Coast IPAs and they usually come with great art. Use these palettes to represent color schemes I've seen on cans, bottles, and more. 
 
 
 

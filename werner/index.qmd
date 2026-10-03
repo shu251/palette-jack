@@ -4,7 +4,7 @@ subtitle: "Randomized palettes from a 1814 color classification system"
 format:
   html:
     code-fold: true
-    code-summary: "Show the R"
+    code-summary: "Show the code"
 execute:
   echo: true
 ---
@@ -19,13 +19,11 @@ Palette Jack's Werner mode lets you filter by classification and pull a randomiz
 
 
 :::: {layout="[1,1,1,1]"}
-![](../images/image1.jpg)
+![](../images/IMG_1909.jpeg)
 
-![](../images/image2.jpg)
+![](../images/IMG_1910.jpeg)
 
-![](../images/image3.jpg)
-
-![](../images/image4.jpg)
+![](../images/IMG_1911.jpeg)
 ::::
 
 ## The classifications

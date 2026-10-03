@@ -4,6 +4,7 @@ page-layout: full
 format:
   html:
     code-fold: true
+    code-summary: "Show the code"
 editor: source
 ---
 
@@ -93,7 +94,7 @@ aggieland_preview <- aggieland |>
   pull(hex) |>
   mini_swatches()
 
-# Imperial Pale Ale preview: one representative palette
+# IPA preview: one representative palette
 imperial_ale <- read_csv("data/imperial-pale-ale-colors.csv")
 
 imperial_preview <- imperial_ale |>
@@ -147,18 +148,13 @@ Texas A&M University's brand palette — Aggie Maroon, secondary neutrals, and a
 :::
 
 ::: mode-card
-### [Imperial Pale Ale](imperial-pale-ale/index.qmd)
+### [IPA](imperial-pale-ale/index.qmd)
 
 Color palettes pulled from craft beer labels and coasters.
 
 `r imperial_preview`
 :::
 
-::: mode-card
-### Kids
-
-Coming soon. inspiration from children's literature.
-:::
 :::::::
 
 
